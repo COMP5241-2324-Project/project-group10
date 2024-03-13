@@ -10,4 +10,4 @@ def hello():
 
 @hellobp.route('/test')
 def test():
-	return "ssssss"
+	return "ssss"
