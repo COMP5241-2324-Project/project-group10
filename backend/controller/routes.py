@@ -2,11 +2,17 @@ from flask import Blueprint,request,jsonify
 import requests
 from ..model import repoModel
 from backend import db
-import datetime
+from datetime import datetime
 
 github_api_url = 'https://api.github.com'
 
 repobp = Blueprint('repo', import_name=__name__)
+
+def formatted_time(time):
+    create_time = datetime.strptime(time, '%Y-%m-%dT%H:%M:%SZ')
+    formatted_create_time = create_time.strftime('%Y-%m-%d %H:%M:%S')
+
+    return formatted_create_time
 
 # get the id,created_at,description,fork_count,open_issues_count,updated_at of repository
 @repobp.route('/github/repository', methods=['POST'])
@@ -20,9 +26,18 @@ def get_repository():
         response = requests.get(url, headers=headers)
 
         response_json = response.json()
-        value = response_json['key']
+        id = response_json['id']
+        forks = response_json['forks_count']
+        issues = response_json['open_issues_count']
+        discription = response_json['description']
+        create_time = response_json['created_at']
+        update_time = response_json['updated_at']
 
-        repository = repoModel.Repo(repo_id=value, name=repo, create_user=owner, create_time=datetime.datetime.now())
+        create_time = formatted_time(create_time)
+        update_time = formatted_time(update_time)
+        repository = repoModel.Repo(repo_id=id, name=repo, create_user=owner,
+                                    forks = forks, issues = issues,discription = discription,
+                                    create_time=create_time,update_time = update_time)
         # insert into the db
         db.session.add(repository)
         db.session.commit()
