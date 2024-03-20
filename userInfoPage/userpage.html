@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <title>用户界面v1.0</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <p>basic function 1.0</p>
+
+    <p>User Details</p>
+    <div id="userDetails"></div>
+
+    <h1>individual statistics</h1>
+    <p>Contributions: <span id="contributions"></span></p>
+    <p>Commits: <span id="commits"></span></p>
+    <p>Issues Raised: <span id="issuesRaised"></span></p>
+    <p>Pull Requests: <span id="pullRequests"></span></p>
+
+
+    <button id="issueButton">ISSUE</button>
+    <button id="commitButton">COMMIT</button>
+    <button id="pullButton">PULL REQUEST</button>
+    <div id="issueTable"></div>
+    <div id="commitTable"></div>
+    <div id="pullTable"></div>
+    <script src="..\userInfoPage\userpage.js"></script>
+
+</body>
+</html>
