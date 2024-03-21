@@ -79,7 +79,6 @@ header {
     align-items: center;
     background: var(--bg);
     padding: 0rem 1rem;
-    position: fixed;
     left: calc(200px + 1rem);
     right: 1rem;
     top: .5rem;
@@ -117,7 +116,7 @@ header {
 }
 
 main {
-    margin-top: calc(70px + .5rem);
+    margin-top: .5rem;
     padding: 1rem 0rem;
     
 }
@@ -420,27 +419,82 @@ main {
     align-content: center;
 }
 
-.chart-grid {
-    margin-top: 2rem;
-    grid-gap: 2rem;
-}
-
-.chart-line, .chart-dount {
-    background: var(--bg);
-    padding: 1rem;
-    /*margin: 1rem 0;*/
+.tables {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     border-radius: 3px;
+    
+    
 }
-
-.chart-head{
+.table1 {
+    border-radius: 3px;
+    background: var(--bg);
+    margin-right: .5rem;
+}
+.table1-head{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     color: #efefef;
     border-bottom: 1px solid #3e454d;
-    /*
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    */
+    margin: .5rem;
+}
+.table1-content {
+    display: grid;
+    grid-template-rows: 50px 1fr;
+    border-radius: 3px;
+    margin: 1rem;
+}
+.btn4table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+    margin: 1rem;
+
+}
+button {
+    background-color: #597cfb; /* 设置按钮背景颜色 */
+    color: orange; /* 设置按钮字体颜色 */
+    border: none; /* 移除按钮边框 */
+    padding: .5rem; /* 设置按钮内边距 */
+    text-align: center; /* 设置文本居中对齐 */
+    text-decoration: none; /* 移除文本装饰 */
+    display: inline-block; /* 设置为内联块级元素 */
+    font-size: 1rem; /* 设置字体大小 */
+    margin: .5rem; /* 设置外边距 */
+    cursor: pointer; /* 设置鼠标悬停时的光标样式 */
+    transition: background-color 0.3s; /* 设置背景颜色过渡效果 */
+    border-radius: 3px; /* 设置边框圆角 */
+    font-weight: 700;
 }
 
+button:hover {
+    background-color: #d3cdfc; /* 设置鼠标悬停时的背景颜色 */
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 1rem;
+    
+}
+.table2 {
+    border-radius: 3px;
+    background: var(--bg);
+    margin-left: .5rem;
+}
+.table2-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #efefef;
+    border-bottom: 1px solid #3e454d;
+    margin: .5rem;
+}
+.table2-content {
+    display: grid;
+    grid-template-rows: 50px 1fr;
+    border-radius: 3px;
+    margin: 1rem;
+}
