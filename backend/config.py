@@ -7,3 +7,4 @@ class Config(object):
     SECRET_KEY = "wxn"
     # 6*60*60
     EXPIRES_IN = 21600
+    AUTH = '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'

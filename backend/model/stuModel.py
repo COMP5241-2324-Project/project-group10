@@ -4,11 +4,10 @@ class Stu(db.Model):
     """用户表"""
     __tablename__ = "student_info"
     user_id = db.Column(db.Integer, primary_key=True)
-    repo_id = db.Column(db.Integer, primary_key=True)
+    repo = db.Column(db.String(255), primary_key=True)
     user_name = db.Column(db.String(255))
     user_team_name = db.Column(db.String(255))
     user_contributions = db.Column(db.Integer)
-    user_commits = db.Column(db.Integer)
     user_issuses_raised = db.Column(db.Integer)
     user_pull_requests = db.Column(db.Integer)
     update_time = db.Column(db.DateTime,primary_key=True)

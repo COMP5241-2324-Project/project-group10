@@ -14,19 +14,17 @@ class Repo(db.Model):
     repo_issues = db.Column(db.Integer)
     repo_issues_creator = db.Column(db.Integer)
     repo_issues_open = db.Column(db.Integer)
-    repo_issues_rejected = db.Column(db.Integer)
     repo_issues_close = db.Column(db.Integer)
-    repo_issues_in_progress = db.Column(db.Integer)
     repo_pull = db.Column(db.Integer)
     repo_pull_open = db.Column(db.Integer)
-    repo_pull_merged = db.Column(db.Integer)
     repo_pull_close = db.Column(db.Integer)
     repo_commites = db.Column(db.Integer)
     repo_commiter = db.Column(db.Integer)
     update_time = db.Column(db.DateTime,primary_key=True)
+    repo_size = db.Column(db.Integer)
 
     def as_dict(self):
-        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+        return {c.repo_name: getattr(self, c.repo_name) for c in self.__table__.columns}
 
     def __repr__(self):
-        return '<Repo {}>'.format(self.name)
+        return '<Repo {}>'.format(self.repo_name)
