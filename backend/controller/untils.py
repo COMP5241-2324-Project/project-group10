@@ -73,8 +73,14 @@ def get_team(repo, owner):
     url = github_api_url + '/repos' + '/' + owner + '/' + repo + '/teams'
     headers = {'Authorization': 'Bearer ' + AUTH}
     response = requests.get(url, headers=headers)
-    teams = response.json()
-    return teams[0]["name"]
+    if(response.status_code !=200):
+        return "no auth"
+    else:
+        teams = response.json()
+        if teams:
+            return teams[0]["name"]
+        else:
+            return " "
 
 def get_issues(repo, owner):
     url2 = github_api_url + '/repos' + '/' + owner + '/' + repo + '/issues?state=' + 'close'

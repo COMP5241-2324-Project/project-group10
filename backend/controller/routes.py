@@ -113,14 +113,14 @@ def get_org(org,org_data,repo_count):
 
     org_id = response_json['id']
     org_fork = org_data["fork_count"]
-    org_issues = org_data["fork_count"]
-    org_watch = org_data["fork_count"]
-    org_commits = org_data["fork_count"]
-    org_commiter_num = org_data["fork_count"]
-    org_pull = org_data["fork_count"]
-    org_pull_open = org_data["fork_count"]
-    org_pull_close = org_data["fork_count"]
-    org_starts = org_data["fork_count"]
+    org_issues = org_data["issues_count"]
+    org_watch = org_data["watcher_count"]
+    org_commits = org_data["commits_count"]
+    org_commiter_num = org_data["commiter_count"]
+    org_pull = org_data["pulls_count"]
+    org_pull_open = org_data["pulls_open_count"]
+    org_pull_close = org_data["pulls_close_count"]
+    org_starts = org_data["stars_count"]
     update_time = datetime.now()
 
     organization = orgModel.Org(org_id = org_id, org_name = org, repo_count = repo_count, org_fork =org_fork,
