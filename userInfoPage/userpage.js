@@ -21,13 +21,14 @@ var userName = userDetails.user_name;
 var userId = userDetails.user_id;
 var user_team = userDetails.repo_id;
 
+var usernameshow = document.getElementById("names");
+usernameshow.textContent = userName;
 
-var userDetailsElement = document.getElementById("userDetails");
-userDetailsElement.innerHTML = `
-  <h1><p>${userName}</p></h1>
-  <p>user id ： ${userId}</p>
-  <p>user team ： ${user_team}</p>
-`;
+var useridshow = document.getElementById("ids");
+useridshow.textContent = userId;
+
+var usergroupshow = document.getElementById("groups")
+usergroupshow.textContent = user_team;
 
 
 var userDetails = user[0].data;

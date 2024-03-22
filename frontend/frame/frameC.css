@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --main: orange;
+    --bg: #0B1218;
+    --bg-body: #131D28;
+}
+
+
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+input, button {
+    outline: none;
+    
+
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 200px;
+    overflow-y: auto;
+    background: var(--bg);
+
+}
+
+.sidemenu {
+    padding: .5rem;
+    overflow-y: auto;
+}
+
+.sidemenu li {
+    margin-bottom: 1rem;
+}
+
+.sidemenu a {
+    color: #fff;
+    font-size: 1rem;
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    transition: .3s;
+}
+
+
+.sidemenu a span:first-child {
+    font-size: 1.3rem;
+    padding: 0rem, 1.6rem;
+    margin: 0rem .75rem;
+}
+
+.sidemenu a.active {
+    background: var(--main);
+    color: #fff;
+    border-radius: 4px;
+    height: 50px;
+}
+
+.main-content {
+    margin-left: 200px;
+    min-height: 100vh;
+    background: var(--bg-body);
+    padding: .5rem 1rem;
+}
+
+header {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg);
+    padding: 0rem 1rem;
+    /*position: fixed;*/
+    left: calc(200px + 1rem);
+    right: 1rem;
+    top: .5rem;
+    border-radius: 3px;
+}
+
+
+.search {
+    display: flex;
+    width: 300px;
+    border-radius: 20px;
+    overflow-x: hidden;
+    border: 1px solid #3e454d;
+    align-items: center;
+}
+
+.search span {
+    font-size: 1.3rem;
+    color: #fff;
+    padding-left: 1rem;
+
+}
+.search input {
+    flex: 1;
+    height: 45px;
+    border: none;
+    background: transparent;
+    padding: 1rem;
+    color: #fff;
+}
+
+.header-icons span{
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    color: #fff;
+}
+main {
+    margin-top: .5rem;
+    padding: 1rem 0rem;
+    
+}
