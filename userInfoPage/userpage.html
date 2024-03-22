@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-    <title>用户界面v1.0</title>
+    <title>用户界面</title>
     <style>
         table {
             border-collapse: collapse;
@@ -11,31 +11,139 @@
             padding: 8px;
         }
     </style>
+    <script src="https://kit.fontawesome.com/e48f71af9c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../css/frameC.css">
 </head>
 <body>
-    <p>basic function 1.0</p>
+    <!--侧栏-->
+    <div class="sidebar">
+        <div class="sidemenu">
+            <ul>
+                <li>
+                    <a href="../frontend/overview.html">
+                        <span class="fas fa-home"></span>
+                        <span>MainPage</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="fa fa-group"></span>
+                        <span>GroupInfo</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../test/userpage.html" class="active">
+                        <span class="fas fa-address-card"></span>
+                        <span>StudentInfo</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="fas fa-print"></span>
+                        <span>Print</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-    <p>User Details</p>
-    <div id="userDetails">    </div>
-    <h1>user name ：<span id = "names"></sapn></h1>
-    <p>user id ：<span id = "ids"></sapn></p>
-    <p>user team ：<span id = "groups"></sapn></p>
+    <div class="main-content">
+        <!--页眉-->
+        <header>
+            <div class="search">
+                <span class="fas fa-search"></span>
+                <input type="search" placeholder="Enter Keyword">
+            </div>
+            <div class="header-icons">
+                <span class="fas fa-bell"></span>
+                <span class="fas fa-bookmark"></span>
+                <span class="fas fa-calendar"></span>
+            </div>
+        </header>
 
-    
-    <h1>individual statistics</h1>
-    <p>Contributions: <span id="contributions"></span></p>
-    <p>Commits: <span id="commits"></span></p>
-    <p>Issues Raised: <span id="issuesRaised"></span></p>
-    <p>Pull Requests: <span id="pullRequests"></span></p>
+        <main>
+            <!-- 主页 -->
+          <div class="rectangle">
+                <p>不知道去哪里提取的课程前缀/<span id = "title_names"></sapn></p>
+          </div>
 
+          <div class="container">
 
-    <button id="issueButton">ISSUE</button>
-    <button id="commitButton">COMMIT</button>
-    <button id="pullButton">PULL REQUEST</button>
-    <div id="issueTable"></div>
-    <div id="commitTable"></div>
-    <div id="pullTable"></div>
-    <script src="..\userInfoPage\userpage.js"></script>
+              <div class="left1">
+                    <!-- <p>User Details</p> -->
+                    <br><br><br><br><br><br><br>
+                    <div class="image-container">
+                        <img src="../不知道 有没有办法提取的头像地址" alt="Your Image" width="200" height="200">
+                    </div>
+                    <br><br><br><br><br><br><br>
+                    <h1><span id="names"></span></h1>
+                    <p>user id: <span id="ids"></span></p>
+                    <p>user team: <span id="groups"></span></p>
+              </div>
+
+              <div class="right-container">
+                <div class="right1">
+                  <br>
+                  <h1 class="title">individual statistics</h1>
+                  <br>
+                  <div class="center-container">
+                    <table id="chart">
+                      <tr>
+                      <td>
+                        <p><span id="contributions" style="color: rgb(53, 108, 172);"></span></p>
+                      </td>
+                      <td>
+                        <p><span id="pullRequests" style="color: rgb(161, 205, 18);"></span></p>
+                      </td>
+                      <td>
+                        <p><span id="commits" style="color: rgb(114, 212, 132);"></span></p>
+                      </td>
+                      <td>
+                        <p><span id="issuesRaised" style="color: rgb(73, 131, 129);"></span></p>
+                      </td>
+                      </tr>
+                      <tr>
+                      <td>
+                        <p>Contributions</p>
+                      </td>
+                      <td>
+                        <p>Pull Requests</p>
+                      </td>
+                      <td>
+                        <p>Commits</p>
+                      </td>
+                      <td>
+                        <p>Issues Raised</p>
+                      </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <br><br>
+                <div class="table1">
+                  <div class="table1-head">
+                    <h1>Recent Activities</h1>
+                  </div>
+                  <div class="table1-content">
+                    <div class="btn4table">
+                      <button id="issueButton">ISSUE</button>
+                      <button id="commitButton">COMMIT</button>
+                      <button id="pullButton">PULL REQUEST</button>
+                    </div>
+                    <div class="fourtable">
+                      <div id="issueTable"></div>
+                      <div id="commitTable"></div>
+                      <div id="pullTable"></div>
+                    </div>
+                  </div>
+                </div>
+                    
+                <script src="..\test/js/userpage.js"></script>
+              </div>
+          </div>
+
+        </main>
+    </div>
 
 </body>
 </html>
