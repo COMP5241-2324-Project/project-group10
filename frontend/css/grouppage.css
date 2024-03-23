@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --main: orange;
+    --bg: #0B1218;
+    --bg-body: #131D28;
+}
+
+
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+input, button {
+    outline: none;
+    
+
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 200px;
+    overflow-y: auto;
+    background: var(--bg);
+
+}
+
+.sidemenu {
+    padding: .5rem;
+    overflow-y: auto;
+}
+
+.sidemenu li {
+    margin-bottom: 1rem;
+}
+
+.sidemenu a {
+    color: #fff;
+    font-size: 1rem;
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    transition: .3s;
+}
+
+
+.sidemenu a span:first-child {
+    font-size: 1.3rem;
+    padding: 0rem, 1.6rem;
+    margin: 0rem .75rem;
+}
+
+.sidemenu a.active {
+    background: var(--main);
+    color: #fff;
+    border-radius: 4px;
+    height: 50px;
+}
+
+.main-content {
+    margin-left: 200px;
+    min-height: 100vh;
+    background: var(--bg-body);
+    padding: .5rem 1rem;
+}
+
+header {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg);
+    padding: 0rem 1rem;
+    /*position: fixed;*/
+    left: calc(200px + 1rem);
+    right: 1rem;
+    top: .5rem;
+    border-radius: 3px;
+}
+
+
+.search {
+    display: flex;
+    width: 300px;
+    border-radius: 20px;
+    overflow-x: hidden;
+    border: 1px solid #3e454d;
+    align-items: center;
+}
+
+.search span {
+    font-size: 1.3rem;
+    color: #fff;
+    padding-left: 1rem;
+
+}
+.search p {
+    flex: 1;
+    height: 45px;
+    border: none;
+    background: transparent;
+    padding-top: .6rem;
+    text-align: center;
+    color: #fff;
+}
+
+.header-icons span{
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    color: #fff;
+}
+main {
+    margin-top: .5rem;
+    padding: 1rem 0rem;
+    
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 63% auto;
+    grid-gap: 1.5rem;
+}
+
+.leftside {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5rem;
+}
+
+.left1 {
+    grid-gap: 3rem;
+    background: var(--bg);
+    border-radius: 3px;
+    height: 300px;
+}
+
+.left1-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #efefef;
+    border-bottom: 1px solid #3e454d;
+    margin: .5rem;
+
+}
+
+.left1-content {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: .5rem;
+    border-radius: 3px;
+}
+
+.card-icon {
+    text-align: center;
+    display: grid;
+    place-items: center;
+}
+.card-icon span {
+    height: 45px;
+    width: 45px;
+    color: #fff;
+    font-size: 1.8rem;/* icon 大小*/
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.star span {
+    color: #f7b731;
+    background: #fef3e5;
+}
+
+.fork span {
+    color: #fd4258;
+    background: #f7e3e3;
+}
+
+.watch span {
+    color: #00b19b;
+    background: #e3f7f3;
+}
+
+.card {
+    padding: .5rem 1rem;
+    border-radius: 3px;
+}
+
+.card-info {
+    text-align: center;
+    margin-top: 0rem;
+}
+
+.card-info h2{
+    font-size: 3rem;
+    color: #efefef;
+}
+
+.card-info small {
+    display: inline-block;
+    color: var(--main);
+    font-weight: 500;
+}
+
+.mid1 {
+    grid-gap: 3rem;
+    background: var(--bg);
+    border-radius: 3px;
+    height: 300px;
+}
+
+.mid1-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #efefef;
+    border-bottom: 1px solid #3e454d;
+    margin: .5rem;
+
+}
+
+.mid1-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: .5rem;
+    border-radius: 3px;
+    margin-top: 2rem;
+}
+
+.card-commit {
+    margin: 1rem;
+    padding: .5rem 1rem;
+    border-radius: 3px;
+    text-align: center;
+    margin-top: 0rem;
+}
+
+.card-commit h2 {
+    margin-top: 1.5rem;
+    font-size: 3rem;
+    color: #efefef;
+}
+
+.card-commit p {
+    color: var(--main);
+}
+
+
+.right1 {
+    grid-gap: 3rem;
+    background: var(--bg);
+    border-radius: 3px;
+    height: auto;
+}
+
+.left2 {
+    grid-gap: 3rem;
+    background: var(--bg);
+    border-radius: 3px;
+    height: 300px;
+}
+
+.left2-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #efefef;
+    border-bottom: 1px solid #3e454d;
+    margin: .5rem;
+
+}
+
+.left2-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: .5rem;
+    border-radius: 3px;
+}
+.card-issue {
+    margin: .1rem .5rem;
+    padding: 1rem;
+    border-radius: 3px;
+}
+.card-pull {
+    margin: .1rem .5rem;
+    padding: 1rem;
+    border-radius: 3px;
+}
+.card-info-small {
+    
+    color: var(--main);
+    font-weight: 500;
+    text-align: center;
+}
+
+.card-info-small h2{
+    font-size: 2rem;
+    color: #efefef;
+    align-items: center;
+    text-align: center;
+}
+
+.mid2 {
+    grid-gap: 3rem;
+    background: var(--bg);
+    border-radius: 3px;
+    height: 300px;
+}
+
+.mid2-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #efefef;
+    border-bottom: 1px solid #3e454d;
+    margin: .5rem;
+
+}
+
+.mid2-content {
+    padding: .5rem;
+    border-radius: 3px;
+}
+
+.left3 {
+    grid-gap: 3rem;
+    background: var(--bg);
+    border-radius: 3px;
+    height: 300px;
+}
+
+.left3-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #efefef;
+    border-bottom: 1px solid #3e454d;
+    margin: .5rem;
+
+}
+
+.left3-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: .5rem;
+    border-radius: 3px;
+}
+
+.mid3 {
+    grid-gap: 3rem;
+    background: var(--bg);
+    border-radius: 3px;
+    height: 300px;
+}
+
+.mid3-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #efefef;
+    border-bottom: 1px solid #3e454d;
+    margin: .5rem;
+
+}
+
+.mid3-content {
+    padding: .5rem;
+    border-radius: 3px;
+}
