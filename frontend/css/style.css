@@ -121,6 +121,8 @@ main {
     padding: 1rem 0rem;
     
 }
+/* 以上为模板框架css */
+
 
 .cards {
     display: grid;
@@ -269,25 +271,25 @@ main {
     background: #b87333
 }
 
-.lc2-devided {
+.leftcards2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 1.5rem;
     height: 300px;
 }
 
-.leftcards2-info {
+.leftcards2-issue {
     background: var(--bg);
     border-radius: 3px;
     height: 280px;
 }
-.leftcards2-chart {
+.leftcards2-commit {
     background: var(--bg);
     border-radius: 3px;
     height: 280px;
 }
 
-.leftcards2-head{
+.card-head{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -297,18 +299,27 @@ main {
 
 }
 
-.leftcards2-content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.cardissue-content {
+    display: flex;
+    align-items: center;
     border-radius: 3px;
     margin: 1rem;
 }
 
-.card-l2 {
+.cardtext-issue {
+    align-content: center;
     margin: auto;
     padding: .5rem;
-    margin-top: .5rem;
+    margin-top: 2rem;
     border-radius: 3px;
+    display: inline-block;
+    color: var(--main);
+    font-weight: 500;
+    text-align: center;
+}
+#issuecnt {
+    font-size: 3rem;
+    color: #fff;
 }
 
 .card-info-small {
@@ -330,17 +341,9 @@ main {
     background: var(--bg);
     height: 280px;
 }
-.rightcards2-head{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #efefef;
-    border-bottom: 1px solid #3e454d;
-    margin: .5rem;
-    
-}
 
-.rightcards2-content {
+
+.cardcommit-content {
     display: flex;
     align-items: center;
     padding: .5rem;
@@ -420,6 +423,9 @@ main {
     align-content: center;
 }
 
+.tables {
+    width: 100%;
+}
 
 .table1 {
     border-radius: 3px;

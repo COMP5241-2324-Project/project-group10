@@ -1,4 +1,4 @@
-var json4charts = {
+var json4org = {
     "code": 32,
     "message": "success",
     "data": {
@@ -20,157 +20,50 @@ var json4charts = {
         "cur_time": "2024-03-21 11:01:31"
     }
 };
-var orgName = json4charts.data.org_name;
-var orgRepoCount = json4charts.data.repo_count;
-var orgFork = json4charts.data.org_fork;
-var orgIssues = json4charts.data.org_issues;
-var orgWatch = json4charts.data.org_watch;
-var orgCommits = json4charts.data.org_commites;
-var orgAuthors = json4charts.data.org_author_num;
-var orgCommiters = json4charts.data.org_commiter_num;
-var orgPulls = json4charts.data.org_pull;
-var orgPullsOpen = json4charts.data.org_pull_open;
-var orgPullsMerged = json4charts.data.org_pull_merged;
-var orgPullsClose = json4charts.data.org_pull_close;
-var orgStars = json4charts.data.org_starts;
+var orgName = json4org.data.org_name;
+var orgRepoCount = json4org.data.repo_count;
+var orgFork = json4org.data.org_fork;
+var orgIssues = json4org.data.org_issues;
+var orgWatch = json4org.data.org_watch;
+var orgCommits = json4org.data.org_commites;
+var orgAuthors = json4org.data.org_author_num;
+var orgCommiters = json4org.data.org_commiter_num;
+var orgPulls = json4org.data.org_pull;
+var orgPullsOpen = json4org.data.org_pull_open;
+var orgPullsMerged = json4org.data.org_pull_merged;
+var orgPullsClose = json4org.data.org_pull_close;
+var orgStars = json4org.data.org_starts;
 
 var ognm = document.getElementById("orgname");
 ognm.textContent = orgName;
 
-var ah2Elements = document.querySelectorAll(".card .card-info h2");
+var totalrepo = document.getElementById("totalrepo");
+totalrepo.textContent = orgRepoCount;
+var totalstars = document.getElementById("totalstars");
+totalstars.textContent = orgStars;
+var totalforks = document.getElementById("totalforks");
+totalforks.textContent = orgFork;
+var totalwatches = document.getElementById("totalwatches");
+totalwatches.textContent = orgWatch;
+//issue, commit, pull setting
+var issuecnt = document.getElementById("issuecnt");
+issuecnt.textContent = orgIssues;
 
-l1h2Elements[0].textContent = orgRepoCount;
-l1h2Elements[1].textContent = orgStars;
-l1h2Elements[2].textContent = orgFork;
-l1h2Elements[3].textContent = orgWatch;
+var commitcnt = document.getElementById("commitcnt");
+commitcnt.textContent = orgCommits;
+var commitauthors = document.getElementById("commitauthors");
+commitauthors.textContent = orgAuthors;
+var commiters = document.getElementById("commiters");
+commiters.textContent = orgCommiters;
 
-// 基于准备好的dom，初始化echarts实例
-var dountChart = echarts.init(document.getElementById('Dount4MainIssue'));
-
-var option = {
-    title: {
-        text: 'Issues',
-        left: 'center',
-        top: 'center'
-    },
-    series: [
-        {
-            type: 'pie',
-            data: [
-                {
-                    value: 335,
-                    name: 'A'
-                },
-                {
-                    value: 234,
-                    name: 'B'
-                },
-                {
-                    value: 1548,
-                    name: 'C'
-                },
-                {
-                    value: 1548,
-                    name: 'D'
-                }
-            ],
-            radius: ['40%', '70%']
-        }
-    ]
-};
-
-dountChart.setOption(option);
-
-
-// 基于准备好的dom，初始化echarts实例
-var dountChart = echarts.init(document.getElementById('Dount4MainPull'));
-
-var option = {
-    title: {
-        text: 'Status',
-        left: 'center',
-        top: 'center'
-    },
-    series: [
-        {
-            type: 'pie',
-            data: [
-                {
-                    value: 35,
-                    name: 'A'
-                },
-                {
-                    value: 55,
-                    name: 'B'
-                },
-                {
-                    value: 15,
-                    name: 'C'
-                },
-                {
-                    value: 78,
-                    name: 'D'
-                }
-            ],
-            radius: ['40%', '70%']
-        }
-    ]
-};
-
-dountChart.setOption(option);
-
-
-var lineChart = echarts.init(document.getElementById('Line4MainActs'));
-
-var option = {
-  title: {
-    text: 'Stacked Line'
-  },
-  tooltip: {
-    trigger: 'axis'
-  },
-  legend: {
-    data: ['Commits', 'Issues', 'Pull Requests']
-  },
-  grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
-    containLabel: true
-  },
-
-  xAxis: {
-    type: 'category',
-    boundaryGap: false,
-    data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
-  },
-  yAxis: {
-    type: 'value'
-  },
-  series: [
-    {
-      name: 'Commits',
-      type: 'line',
-      stack: 'Total',
-      data: [120, 132, 101, 134, 90, 230]
-    },
-    {
-      name: 'Issues',
-      type: 'line',
-      stack: 'Total',
-      data: [220, 182, 191, 234, 290, 330]
-    },
-    {
-      name: 'Pull Requests',
-      type: 'line',
-      stack: 'Total',
-      data: [150, 232, 201, 154, 190, 330]
-    }
-  ]
-};
-
-lineChart.setOption(option);
-
+var pullcnt = document.getElementById("pullcnt");
+pullcnt.textContent = orgPulls;
+var openpull = document.getElementById("openpull");
+openpull.textContent = orgPullsOpen;
+var mergepull = document.getElementById("mergepull");
+mergepull.textContent = orgPullsMerged;
+varclosedpull = document.getElementById("closedpull");
+closedpull.textContent = orgPullsClose;
 
 function createStyledHead(width) {
     // 创建一个新的表格表头单元格
@@ -361,6 +254,15 @@ var json4repos = [
     },
 ];
 
+var top3Repos = json4repos.sort(function(a, b) {
+    return b.data.repo_commites - a.data.repo_commites;
+}).slice(0, 3);
+var t1 = document.getElementById("t1");
+t1.textContent = top3Repos[0].data.repo_name;
+var t2 = document.getElementById("t2");
+t2.textContent = top3Repos[1].data.repo_name;
+var t3 = document.getElementById("t3");
+t3.textContent = top3Repos[2].data.repo_name;
 
 var table = document.getElementById("repo-list");
 
