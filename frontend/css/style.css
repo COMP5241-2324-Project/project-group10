@@ -127,7 +127,6 @@ main {
 .cards {
     display: grid;
     grid-template-columns: 65% auto;
-
     grid-gap: 1.5rem;
 }
 
