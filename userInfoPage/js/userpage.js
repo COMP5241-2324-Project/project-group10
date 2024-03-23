@@ -21,21 +21,25 @@ var userName = userDetails.user_name;
 var userId = userDetails.user_id;
 var user_team = userDetails.repo_id;
 
+var usernameshow = document.getElementById("title_names");
+usernameshow.textContent = userName;
 
-var userDetailsElement = document.getElementById("userDetails");
-userDetailsElement.innerHTML = `
-  <h1><p>${userName}</p></h1>
-  <p>user id ： ${userId}</p>
-  <p>user team ： ${user_team}</p>
-`;
+var usernameshow = document.getElementById("names");
+usernameshow.textContent = userName;
+
+var useridshow = document.getElementById("ids");
+useridshow.textContent = userId;
+
+var usergroupshow = document.getElementById("groups")
+usergroupshow.textContent = user_team;
 
 
-var userDetails = user[0].data;
+
+
 var userContributions = userDetails.user_contributions;
 var userCommits = userDetails.user_commits;
 var userIssuesRaised = userDetails.user_issuses_raised;
 var userPullRequests = userDetails.user_pull_request;
-
 
 var contributionsElement = document.getElementById("contributions");
 contributionsElement.textContent = userContributions;
@@ -52,6 +56,26 @@ pullRequestsElement.textContent = userPullRequests;
 
 
 
+// 整活隔离带
+
+
+function createStyledHead(width) {
+  var cell = document.createElement("th");
+  cell.style.width = width;
+  cell.style.wordWrap = "break-word";
+  return cell;
+}
+
+function createStyledCell(width) {
+  var cell = document.createElement("td");
+  cell.style.width = width;
+  cell.style.wordWrap = "break-word";
+  return cell;
+}
+
+// 整活隔离带
+
+
 
 
 
@@ -62,8 +86,8 @@ var json = [
         "data": {
           "user_id": 62,
           "activites_date": "1971-08-02 PM 13:52:20",
-          "activites_message": "N vfxpevj.",
-          "activites_ur": "htt323232b/qsrm",
+          "activites_message": "Nx  ubpjzyu flf vkexycdd rnkrfzw znm wptjxln wrtccdp hpom fovfiwho vfxpevj.",
+          "activites_ur": "http://vmcyb.bb/qsrm",
           "repo_id": 59,
           "type": "issues",
           "cur_time": "1985-12-10 AM 09:00:45"
@@ -75,8 +99,8 @@ var json = [
         "data": {
           "user_id": 62,
           "activites_date": "1971-08-02 PM 13:52:20",
-          "activites_message": "N vfxpevj.",
-          "activites_ur": "htt323232b/qsrm",
+          "activites_message": "Nx  ubpjzyu flf vkexycdd rnkrfzw znm wptjxln wrtccdp hpom fovfiwho vfxpevj.",
+          "activites_ur": "http://vmcyb.bb/qsrm",
           "repo_id": 59,
           "type": "issues",
           "cur_time": "1985-12-10 AM 09:00:45"
@@ -88,8 +112,8 @@ var json = [
         "data": {
           "user_id": 62,
           "activites_date": "1971-08-02 PM 13:52:20",
-          "activites_message": "N vfxpevj.",
-          "activites_ur": "htt323232b/qsrm",
+          "activites_message": "Nx  ubpjzyu flf vkexycdd rnkrfzw znm wptjxln wrtccdp hpom fovfiwho vfxpevj.",
+          "activites_ur": "http://vmcyb.bb/qsrm",
           "repo_id": 59,
           "type": "issues",
           "cur_time": "1985-12-10 AM 09:00:45"
@@ -101,8 +125,8 @@ var json = [
         "data": {
           "user_id": 62,
           "activites_date": "1971-08-02 PM 13:52:20",
-          "activites_message": "N vfxpevj.",
-          "activites_ur": "htt323232b/qsrm",
+          "activites_message": "Nx  ubpjzyu flf vkexycdd rnkrfzw znm wptjxln wrtccdp hpom fovfiwho vfxpevj.",
+          "activites_ur": "http://vmcyb.eewerwgvsvgsfbb/qsrm",
           "repo_id": 59,
           "type": "issues",
           "cur_time": "1985-12-10 AM 09:00:45"
@@ -114,8 +138,8 @@ var json = [
         "data": {
           "user_id": 62,
           "activites_date": "1971-08-02 PM 13:52:20",
-          "activites_message": "Nxo vfxpevj.",
-          "activites_ur": "223223m",
+          "activites_message": "Nx  ubpjzyu flf vkexycdd rnkrfzw znm wptjxln wrtccdp hpom fovfiwho vfxpevj.",
+          "activites_ur": "http://vmcyb.bb/qsrm",
           "repo_id": 59,
           "type": "commit",
           "cur_time": "1985-12-10 AM 09:00:45"
@@ -127,8 +151,8 @@ var json = [
         "data": {
           "user_id": 62,
           "activites_date": "1971-08-02 PM 13:52:20",
-          "activites_message": "N vfxpevj.",
-          "activites_ur": "htt323232b/qsrm",
+          "activites_message": "Nxubpjzyu flf vkexycdd rnkrfzw znm wptjxln wrtccdp hpom fovfiwho vfxpevj.",
+          "activites_ur": "http://vmcbbbbbbbbbbyb.bb/qsrm",
           "repo_id": 59,
           "type": "pull requests",
           "cur_time": "1985-12-10 AM 09:00:45"
@@ -140,8 +164,8 @@ var json = [
         "data": {
           "user_id": 62,
           "activites_date": "1971-08-02 PM 13:52:20",
-          "activites_message": "Nxo vfxpevj.",
-          "activites_ur": "223223m",
+          "activites_message": "Nx  ubpjzyu flf vkexycdd rnkrfzw znm wptjxln wrtccdp hpom fovfiwho vfxpevj.",
+          "activites_ur": "http://vbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbmcyb.bb/qsrm",
           "repo_id": 59,
           "type": "commit",
           "cur_time": "1985-12-10 AM 09:00:45"
@@ -153,8 +177,8 @@ var json = [
         "data": {
           "user_id": 62,
           "activites_date": "1971-08-02 PM 13:52:20",
-          "activites_message": "Nxlhz hpom fovfiwho vfxpevj.",
-          "activites_ur": "http://21321313123b.bb/qsrm",
+          "activites_message": "Nx  ubpjzyu flf vkexycdd rnkrfzw znm wptjxln wrtccdp hpom fovfiwho vfxpevj.",
+          "activites_ur": "http://vmeeeeecyb.bb/qsrm",
           "repo_id": 59,
           "type": "issues",
           "cur_time": "1985-12-10 AM 09:00:45"
@@ -168,44 +192,44 @@ var issueTable = document.getElementById("issueTable");
 var table = document.createElement("table");
 
 var headerRow = document.createElement("tr");
-var headerCell1 = document.createElement("th");
+var headerCell1 = createStyledHead('20%');
 headerCell1.textContent = "Date";
-var headerCell3 = document.createElement("th");
-headerCell3.textContent = "Messgae";
-var headerCell2 = document.createElement("th");
+var headerCell2 = createStyledHead('20%');
 headerCell2.textContent = "URL";
+var headerCell3 = createStyledHead('60%');
+headerCell3.textContent = "Message";
+
 headerRow.appendChild(headerCell1);
 headerRow.appendChild(headerCell2);
 headerRow.appendChild(headerCell3);
 table.appendChild(headerRow);
 
 for (var i = 0; i < json.length; i++) {
-    var rowData = json[i].data;
+  var rowData = json[i].data;
 
-    if (rowData.type == "issues") {
-        var dataRow = document.createElement("tr");
+  if (rowData.type == "issues") {
+    var dataRow = document.createElement("tr");
 
-        var dataCell1 = document.createElement("td");
-        dataCell1.textContent = rowData.type;
+    var dataCell1 = createStyledCell('20%');
+    dataCell1.textContent = rowData.activites_date;
 
-        var dataCell2 = document.createElement("td");
-        var link = document.createElement("a");
-        link.href = rowData.activites_ur;
-        link.textContent = rowData.activites_ur;
-        dataCell2.appendChild(link);
+    var dataCell2 = createStyledCell('20%');
+    var link = document.createElement("a");
+    link.href = rowData.activites_ur;
+    link.textContent = rowData.activites_ur;
+    dataCell2.appendChild(link);
 
-        var dataCell3 = document.createElement("td");
-        dataCell3.textContent = rowData.activites_message;
+    var dataCell3 = createStyledCell('60%');
+    dataCell3.textContent = rowData.activites_message;
 
-        dataRow.appendChild(dataCell1);
-        dataRow.appendChild(dataCell2);
-        dataRow.appendChild(dataCell3);
-        table.appendChild(dataRow);
-    }
+    dataRow.appendChild(dataCell1);
+    dataRow.appendChild(dataCell2);
+    dataRow.appendChild(dataCell3);
+    table.appendChild(dataRow);
+  }
 }
 
 issueTable.appendChild(table);
-
 
 
 
@@ -214,12 +238,13 @@ var commitTable = document.getElementById("commitTable");
 var table = document.createElement("table");
 
 var headerRow = document.createElement("tr");
-var headerCell1 = document.createElement("th");
+var headerCell1 = createStyledHead('20%');
 headerCell1.textContent = "Date";
-var headerCell3 = document.createElement("th");
-headerCell3.textContent = "Messgae";
-var headerCell2 = document.createElement("th");
+var headerCell2 = createStyledHead('20%');
 headerCell2.textContent = "URL";
+var headerCell3 = createStyledHead('60%');
+headerCell3.textContent = "Messgae";
+
 headerRow.appendChild(headerCell1);
 headerRow.appendChild(headerCell2);
 headerRow.appendChild(headerCell3);
@@ -232,16 +257,16 @@ for (var i = 0; i < json.length; i++) {
     if (rowData.type == "commit") {
         var dataRow = document.createElement("tr");
 
-        var dataCell1 = document.createElement("td");
-        dataCell1.textContent = rowData.type;
+        var dataCell1 = createStyledCell('20%');
+        dataCell1.textContent = rowData.activites_date;
 
-        var dataCell2 = document.createElement("td");
+        var dataCell2 = createStyledCell('20%');
         var link = document.createElement("a");
         link.href = rowData.activites_ur;
         link.textContent = rowData.activites_ur;
         dataCell2.appendChild(link);
 
-        var dataCell3 = document.createElement("td");
+        var dataCell3 = createStyledCell('60%');
         dataCell3.textContent = rowData.activites_message;
 
         dataRow.appendChild(dataCell1);
@@ -262,12 +287,13 @@ var pullTable = document.getElementById("pullTable");
 var table = document.createElement("table");
 
 var headerRow = document.createElement("tr");
-var headerCell1 = document.createElement("th");
+var headerCell1 = createStyledHead('20%');
 headerCell1.textContent = "Date";
-var headerCell3 = document.createElement("th");
-headerCell3.textContent = "Messgae";
-var headerCell2 = document.createElement("th");
+var headerCell2 = createStyledHead('20%');
 headerCell2.textContent = "URL";
+var headerCell3 = createStyledHead('60%');
+headerCell3.textContent = "Messgae";
+
 headerRow.appendChild(headerCell1);
 headerRow.appendChild(headerCell2);
 headerRow.appendChild(headerCell3);
@@ -279,16 +305,16 @@ for (var i = 0; i < json.length; i++) {
     if (rowData.type == "pull requests") {
         var dataRow = document.createElement("tr");
 
-        var dataCell1 = document.createElement("td");
-        dataCell1.textContent = rowData.type;
+        var dataCell1 = createStyledCell('20%');
+        dataCell1.textContent = rowData.activites_date;
 
-        var dataCell2 = document.createElement("td");
+        var dataCell2 = createStyledCell('20%');
         var link = document.createElement("a");
         link.href = rowData.activites_ur;
         link.textContent = rowData.activites_ur;
         dataCell2.appendChild(link);
 
-        var dataCell3 = document.createElement("td");
+        var dataCell3 = createStyledCell('60%');
         dataCell3.textContent = rowData.activites_message;
 
         dataRow.appendChild(dataCell1);
@@ -299,9 +325,6 @@ for (var i = 0; i < json.length; i++) {
 }
 
 pullTable.appendChild(table);
-
-
-
 
 
 
@@ -339,6 +362,5 @@ issueButton.addEventListener("click", function() {
     commitTable.style.display = "none";
     pullTable.style.display = "none";
 });
-
 
 

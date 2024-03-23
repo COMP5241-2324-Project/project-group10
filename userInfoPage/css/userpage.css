@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --main: orange;
+    --bg: #0B1218;
+    --bg-body: #131D28;
+}
+
+
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+input, button {
+    outline: none;
+    
+
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 200px;
+    overflow-y: auto;
+    background: var(--bg);
+
+}
+
+.sidemenu {
+    padding: .5rem;
+    overflow-y: auto;
+}
+
+.sidemenu li {
+    margin-bottom: 1rem;
+}
+
+.sidemenu a {
+    color: #fff;
+    font-size: 1rem;
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    transition: .3s;
+}
+
+
+.sidemenu a span:first-child {
+    font-size: 1.3rem;
+    padding: 0rem, 1.6rem;
+    margin: 0rem .75rem;
+}
+
+.sidemenu a.active {
+    background: var(--main);
+    color: #fff;
+    border-radius: 4px;
+    height: 50px;
+}
+
+.main-content {
+    margin-left: 200px;
+    min-height: 100vh;
+    background: var(--bg-body);
+    padding: .5rem 1rem;
+}
+
+header {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg);
+    padding: 0rem 1rem;
+    /*position: fixed;*/
+    left: calc(200px + 1rem);
+    right: 1rem;
+    top: .5rem;
+    border-radius: 3px;
+}
+
+
+.search {
+    display: flex;
+    width: 300px;
+    border-radius: 20px;
+    overflow-x: hidden;
+    border: 1px solid #3e454d;
+    align-items: center;
+}
+
+.search span {
+    font-size: 1.3rem;
+    color: #fff;
+    padding-left: 1rem;
+
+}
+.search input {
+    flex: 1;
+    height: 45px;
+    border: none;
+    background: transparent;
+    padding: 1rem;
+    color: #fff;
+}
+
+.header-icons span{
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    color: #ffffff;
+}
+main {
+    margin-top: .5rem;
+    padding: 1rem 0rem;
+    
+}
+
+/* 主界面样式修改 */
+
+/* 标头 */
+.rectangle {
+    display: inline-block;
+    width: fit-content;
+    height: 50px;
+    background-color: #ccc;
+    text-align: center;
+    line-height: 50px;
+}
+
+
+/* 个人信息 */
+.container {
+    display: flex;
+}
+  
+.left1 {
+    flex-basis: 30%;
+    height: 100vh;
+    border: none;
+    padding: 20px;
+    margin: 10px;
+    background-color: #c1c4ff; /* 设置背景颜色 */
+    /* margin-left: 20px; */
+    margin-right: 20px;
+    /* 其他样式 */
+}
+  
+.right-container {
+    flex-basis: 70%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.right1 {
+    height: 30%; /* 设置高度 */
+    background-color: #30456c; /* 设置背景颜色 */
+}
+
+/* 表格的整体框架 大小框死*/
+.table1 {
+    width: 1000px;
+    height: 600px;
+    background-color: #6c707a;/* 看表格框架位置用 */
+
+}
+/* 表格头那行字的样式 */
+.table1-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #efefef;
+    border-bottom: 1px solid #00000000;
+    margin: .5rem;
+}
+/* 表格内容的样式（包括按钮及表格） */
+.btn4table {
+    display: grid;
+    grid-template-rows: 50px auto;/*grid布局 把表格内容分为两行 button一行50px高 表格一行 */
+    margin: 1rem;
+}
+
+.table1 table {
+    table-layout: fixed;
+    width: 100%;
+    color: #efefef;
+  }
+  
+  .table1 th,
+  .table1 td {
+    width: 33.33%;
+  } 
+
+
+/* 表格中按钮的样式 让他们在这一行内居中 */
+.btn4table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+    margin: 1rem;
+
+}
+
+
+button {
+    background-color: #597cfb; /* 设置按钮背景颜色 */
+    color: orange; /* 设置按钮字体颜色 */
+    border: none; /* 移除按钮边框 */
+    padding: .5rem; /* 设置按钮内边距 */
+    text-align: center; /* 设置文本居中对齐 */
+    text-decoration: none; /* 移除文本装饰 */
+    display: inline-block; /* 设置为内联块级元素 */
+    font-size: 1rem; /* 设置字体大小 */
+    margin: .5rem; /* 设置外边距 */
+    cursor: pointer; /* 设置鼠标悬停时的光标样式 */
+    transition: background-color 0.3s; /* 设置背景颜色过渡效果 */
+    border-radius: 3px; /* 设置边框圆角 */
+    font-weight: 700;
+}
+
+button:hover {
+    background-color: #d3cdfc; /* 设置鼠标悬停时的背景颜色 */
+}
+
+/* 这是改右上的字体的 */
+.title {
+    color: white;
+    text-align: center;
+}
+
+/* 这是改右中的表的 */
+#chart {
+    font-family: "Times New Roman", Times, serif;
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+
+  #chart td {
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    width: 200px; /* 设置每列的宽度为25% */
+  }
+
+  #chart tr:first-child {
+    font-size: 40px; /* 设置您想要的字体大小 */
+  }
+
+  #chart tr:nth-child(2) {
+    color: white; /* 设置第二行的字体颜色为白色 */
+  }
+
+/* 这是插入图片用的 */
+.image-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+.image-container img {
+    width: 200px;
+    height: 200px;
+  }
+
+
+
+
+  /* 这是改左上的 */
+  .left1 {
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  .left1 h1 {
+    font-size: 48px; /* 设置姓名（name）的字体大小 */
+    font-weight: bold;
+    color: rgb(0, 0, 0); /* 设置姓名（name）的字体颜色 */
+  }
+
+  .left1 p {
+    color: rgb(0, 0, 0); /* 设置数字（number）的颜色 */
+    font-size: 32px;
+  }
+
+

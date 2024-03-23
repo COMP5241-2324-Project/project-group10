@@ -14,7 +14,8 @@ def create_app():
         # Imports
         from backend.controller import helloApi,routes
         app.register_blueprint(helloApi.hellobp)
-        app.register_blueprint(blueprint = routes.repobp, url_prefix='/repo')
+        app.register_blueprint(blueprint = routes.orgbp, url_prefix='/org')
+        # app.register_blueprint(blueprint=routes.repobp, url_prefix='/repo')
         # Create tables for our models
         # db.create_all()
         return app
