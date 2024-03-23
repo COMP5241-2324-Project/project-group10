@@ -45,8 +45,7 @@
     <div class="main-content">
         <header>
             <div class="search">
-                <span class="fas fa-search"></span>
-                <input type="search" placeholder="Enter Keyword">
+                <p id="orgname"></p>
             </div>
             <div class="header-icons">
                 <span class="fas fa-bell"></span>
@@ -102,7 +101,7 @@
 
                 <div class="rightcards1">
                     <div class="rightcards1-head">
-                        <h3>Top Repositories(Groups)</h3>
+                        <h3>Most Commits Repositories(Groups)</h3>
                     </div>
                     <div class="top-3">
                         <ul>
@@ -121,40 +120,28 @@
                             <h3>Issue Statistics</h3>
                         </div>
                         <div class="leftcards2-content">
-                            <div class="card smaller">
+                            <div class="card-l2">
                                 <div class="card-info-small">
                                     <h2>204</h2>
                                     <small>Issues</small>
                                 </div>
                             </div>
-                            <div class="card smaller">
+                            <div class="card-l2">
                                 <div class="card-info-small">
                                     <h2>30</h2>
-                                    <small>Creaters</small>
-                                </div>
-                            </div>
-                            <div class="card smaller">
-                                <div class="card-info-small">
-                                    <h2>70</h2>
                                     <small>Open Issues</small>
                                 </div>
                             </div>
-                            <div class="card smaller">
+                            <div class="card-l2">
                                 <div class="card-info-small">
-                                    <h2>32</h2>
-                                    <small>Rejected Issues</small>
+                                    <h2>70</h2>
+                                    <small>In Progess Issues</small>
                                 </div>
                             </div>
-                            <div class="card smaller">
-                                <div class="card-info-small">
-                                    <h2>84</h2>
-                                    <small>Closed Issues</small>
-                                </div>
-                            </div>
-                            <div class="card smaller">
+                            <div class="card-l2">
                                 <div class="card-info-small">
                                     <h2>48</h2>
-                                    <small>In Progess Issues</small>
+                                    <small>Other Issues</small>
                                 </div>
                             </div>
                         </div>
@@ -249,33 +236,26 @@
                         <h3>Repositories(Groups) Details</h3>
                     </div>
                     <div class="table1-content">
-                        <div class="btn4table">
-                            <button id="issueButton">ISSUE</button>
-                            <button id="commitButton">COMMIT</button>
-                            <button id="pullButton">PULL REQUEST</button>
-                        </div>
 
-                        <div id="issueTable"></div>
-                        <div id="commitTable"></div>
-                        <div id="pullTable"></div>
+                    
+                        <table id="repo-list">
+                            <tr>
+                                <th>Group_id</th>
+                                <th>Group_name</th>
+                                <th>Stars</th>
+                                <th>Commits</th>
+                                <th>Issues</th>
+                                <th>Pull Requests</th>
+                            </tr>
+                            <!-- 其他行... -->
+                        </table>
                     </div>
                 </div>
-                <div class="table2">
-                    <div class="table2-head">
-                        <h3>Commiter Ranking</h3>
-                    </div>
-                    <div class="table2-content">
-                        
-                    </div>
-                </div>
-
-
-
+                
             </div>
         </main>
     </div>
     <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
-    <script src="./js/echarts.js"></script>
     <script src="./js/tableConfig.js"></script>
 
 </body>

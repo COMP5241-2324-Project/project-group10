@@ -101,12 +101,13 @@ header {
     padding-left: 1rem;
 
 }
-.search input {
+.search p {
     flex: 1;
     height: 45px;
     border: none;
     background: transparent;
-    padding: 1rem;
+    padding-top: .6rem;
+    text-align: center;
     color: #fff;
 }
 .header-icons span{
@@ -298,14 +299,14 @@ main {
 
 .leftcards2-content {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     border-radius: 3px;
     margin: 1rem;
 }
 
-.smaller {
+.card-l2 {
     margin: auto;
-    padding: auto;
+    padding: .5rem;
     margin-top: .5rem;
     border-radius: 3px;
 }
@@ -419,13 +420,7 @@ main {
     align-content: center;
 }
 
-.tables {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-radius: 3px;
-    
-    
-}
+
 .table1 {
     border-radius: 3px;
     background: var(--bg);
@@ -440,11 +435,10 @@ main {
     margin: .5rem;
 }
 .table1-content {
-    display: grid;
-    grid-template-rows: 50px 1fr;
     border-radius: 3px;
     margin: 1rem;
 }
+
 .btn4table {
     display: flex;
     justify-content: center;
@@ -453,6 +447,7 @@ main {
     margin: 1rem;
 
 }
+
 button {
     background-color: #597cfb; /* 设置按钮背景颜色 */
     color: orange; /* 设置按钮字体颜色 */
@@ -472,29 +467,44 @@ button {
 button:hover {
     background-color: #d3cdfc; /* 设置鼠标悬停时的背景颜色 */
 }
-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    margin-top: 1rem;
-    
+
+#repo-list {
+    table-layout: fixed;
+    width: 100%; /* 设置表格宽度为100% */
 }
-.table2 {
-    border-radius: 3px;
-    background: var(--bg);
-    margin-left: .5rem;
+
+#repo-list th {
+    background-color: #3e454d; /* 设置表头背景颜色 */
+    color: #fff; /* 设置表头字体颜色 */
+    font-weight: 500; /* 设置表头字体粗细 */
+    padding: .5rem; /* 设置表头内边距 */
+    text-align: center; /* 设置文本左对齐 */
+    border : 1px solid white;
+    text-align: center;
+    padding : .5rem;
+    color : #fff;
 }
-.table2-head{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #efefef;
-    border-bottom: 1px solid #3e454d;
-    margin: .5rem;
+#repo-list th:nth-child(1) {
+    width: 20%;
 }
-.table2-content {
-    display: grid;
-    grid-template-rows: 50px 1fr;
-    border-radius: 3px;
-    margin: 1rem;
+
+#repo-list th:nth-child(2) {
+    width: 30%;
+}
+
+#repo-list th:nth-child(3) {
+    width: 12.5%;
+}
+
+#repo-list th:nth-child(4) {
+    width: 12.5%;
+}
+
+#repo-list th:nth-child(5) {
+    width: 12.5%;
+}
+
+#repo-list th:nth-child(6) {
+    width: 12.5%;
+
 }

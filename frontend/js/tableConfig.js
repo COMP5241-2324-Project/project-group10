@@ -1,5 +1,179 @@
+var json4charts = {
+    "code": 32,
+    "message": "success",
+    "data": {
+        "org_id": 6,
+        "org_name": "COMP5241-2324-Project",
+        "teacher_name": "cswclui",
+        "repo_count": 23,
+        "org_fork": 77,
+        "org_issues": 63,
+        "org_watch": 6,
+        "org_commites": 94,
+        "org_author_num": 28,
+        "org_commiter_num": 68,
+        "org_pull": 92,
+        "org_pull_open": 69,
+        "org_pull_merged": 40,
+        "org_pull_close": 79,
+        "org_starts": 17,
+        "cur_time": "2024-03-21 11:01:31"
+    }
+};
+var orgName = json4charts.data.org_name;
+var orgRepoCount = json4charts.data.repo_count;
+var orgFork = json4charts.data.org_fork;
+var orgIssues = json4charts.data.org_issues;
+var orgWatch = json4charts.data.org_watch;
+var orgCommits = json4charts.data.org_commites;
+var orgAuthors = json4charts.data.org_author_num;
+var orgCommiters = json4charts.data.org_commiter_num;
+var orgPulls = json4charts.data.org_pull;
+var orgPullsOpen = json4charts.data.org_pull_open;
+var orgPullsMerged = json4charts.data.org_pull_merged;
+var orgPullsClose = json4charts.data.org_pull_close;
+var orgStars = json4charts.data.org_starts;
+
+var ognm = document.getElementById("orgname");
+ognm.textContent = orgName;
+
+var ah2Elements = document.querySelectorAll(".card .card-info h2");
+
+l1h2Elements[0].textContent = orgRepoCount;
+l1h2Elements[1].textContent = orgStars;
+l1h2Elements[2].textContent = orgFork;
+l1h2Elements[3].textContent = orgWatch;
+
+// 基于准备好的dom，初始化echarts实例
+var dountChart = echarts.init(document.getElementById('Dount4MainIssue'));
+
+var option = {
+    title: {
+        text: 'Issues',
+        left: 'center',
+        top: 'center'
+    },
+    series: [
+        {
+            type: 'pie',
+            data: [
+                {
+                    value: 335,
+                    name: 'A'
+                },
+                {
+                    value: 234,
+                    name: 'B'
+                },
+                {
+                    value: 1548,
+                    name: 'C'
+                },
+                {
+                    value: 1548,
+                    name: 'D'
+                }
+            ],
+            radius: ['40%', '70%']
+        }
+    ]
+};
+
+dountChart.setOption(option);
+
+
+// 基于准备好的dom，初始化echarts实例
+var dountChart = echarts.init(document.getElementById('Dount4MainPull'));
+
+var option = {
+    title: {
+        text: 'Status',
+        left: 'center',
+        top: 'center'
+    },
+    series: [
+        {
+            type: 'pie',
+            data: [
+                {
+                    value: 35,
+                    name: 'A'
+                },
+                {
+                    value: 55,
+                    name: 'B'
+                },
+                {
+                    value: 15,
+                    name: 'C'
+                },
+                {
+                    value: 78,
+                    name: 'D'
+                }
+            ],
+            radius: ['40%', '70%']
+        }
+    ]
+};
+
+dountChart.setOption(option);
+
+
+var lineChart = echarts.init(document.getElementById('Line4MainActs'));
+
+var option = {
+  title: {
+    text: 'Stacked Line'
+  },
+  tooltip: {
+    trigger: 'axis'
+  },
+  legend: {
+    data: ['Commits', 'Issues', 'Pull Requests']
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+
+  xAxis: {
+    type: 'category',
+    boundaryGap: false,
+    data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      name: 'Commits',
+      type: 'line',
+      stack: 'Total',
+      data: [120, 132, 101, 134, 90, 230]
+    },
+    {
+      name: 'Issues',
+      type: 'line',
+      stack: 'Total',
+      data: [220, 182, 191, 234, 290, 330]
+    },
+    {
+      name: 'Pull Requests',
+      type: 'line',
+      stack: 'Total',
+      data: [150, 232, 201, 154, 190, 330]
+    }
+  ]
+};
+
+lineChart.setOption(option);
+
+
 function createStyledHead(width) {
-    // 创建一个新的表格单元格
+    // 创建一个新的表格表头单元格
     var cell = document.createElement('th');
 
     // 设置单元格的样式
@@ -27,297 +201,208 @@ function createStyledCell(width) {
 }
 
 
+var json4repos = [
 
-
-
-
-var json = [
     {
-        "code": 89,
+        "code": 46,
         "message": "success",
         "data": {
-          "user_id": 62,
-          "activites_date": "1971-08-02 PM 13:52:20",
-          "activites_message": "N vfxpevj.",
-          "activites_ur": "htt323232b/qsrm",
-          "repo_id": 59,
-          "type": "issues",
-          "cur_time": "1985-12-10 AM 09:00:45"
+            "org_id": 87,
+            "repo_id": 69,
+            "repo_name": "group_1",
+            "repo_create_time": "2019-03-26 AM 02:50:00",
+            "repo_fork": 86,
+            "repo_starts": 15,
+            "repo_watch": 27,
+            "repo_issues": 13,
+            "repo_issues_creator": 20,
+            "repo_issues_open": 46,
+            "repo_issues_rejected": 31,
+            "repo_issues_close": 79,
+            "repo_issues_in_progreess": 49,
+            "repo_pull": 19,
+            "repo_pull_open": 55,
+            "org_pull_merged": 60,
+            "org_pull_close": 15,
+            "repo_commites": 26,
+            "repo_commiter": 48,
+            "cur_time": "2019-12-07 PM 13:49:17"
         }
     },
     {
-        "code": 89,
+        "code": 46,
         "message": "success",
         "data": {
-          "user_id": 62,
-          "activites_date": "1971-08-02 PM 13:52:20",
-          "activites_message": "N vfxpevj.",
-          "activites_ur": "htt323232b/qsrm",
-          "repo_id": 59,
-          "type": "issues",
-          "cur_time": "1985-12-10 AM 09:00:45"
+            "org_id": 87,
+            "repo_id": 70,
+            "repo_name": "group_2",
+            "repo_create_time": "2019-03-26 AM 02:50:00",
+            "repo_fork": 10,
+            "repo_starts": 11,
+            "repo_watch": 27,
+            "repo_issues": 12,
+            "repo_issues_creator": 20,
+            "repo_issues_open": 46,
+            "repo_issues_rejected": 31,
+            "repo_issues_close": 79,
+            "repo_issues_in_progreess": 49,
+            "repo_pull": 13,
+            "repo_pull_open": 55,
+            "org_pull_merged": 60,
+            "org_pull_close": 15,
+            "repo_commites": 24,
+            "repo_commiter": 48,
+            "cur_time": "2019-12-07 PM 13:49:17"
         }
     },
     {
-        "code": 89,
+        "code": 46,
         "message": "success",
         "data": {
-          "user_id": 62,
-          "activites_date": "1971-08-02 PM 13:52:20",
-          "activites_message": "N vfxpevj.",
-          "activites_ur": "htt323232b/qsrm",
-          "repo_id": 59,
-          "type": "issues",
-          "cur_time": "1985-12-10 AM 09:00:45"
+            "org_id": 87,
+            "repo_id": 71,
+            "repo_name": "group_3",
+            "repo_create_time": "2019-03-26 AM 02:50:00",
+            "repo_fork": 15,
+            "repo_starts": 12,
+            "repo_watch": 27,
+            "repo_issues": 14,
+            "repo_issues_creator": 20,
+            "repo_issues_open": 46,
+            "repo_issues_rejected": 31,
+            "repo_issues_close": 79,
+            "repo_issues_in_progreess": 49,
+            "repo_pull": 20,
+            "repo_pull_open": 55,
+            "org_pull_merged": 60,
+            "org_pull_close": 15,
+            "repo_commites": 52,
+            "repo_commiter": 48,
+            "cur_time": "2019-12-07 PM 13:49:17"
         }
     },
     {
-        "code": 89,
+        "code": 46,
         "message": "success",
         "data": {
-          "user_id": 62,
-          "activites_date": "1971-08-02 PM 13:52:20",
-          "activites_message": "N vfxpevj.",
-          "activites_ur": "htt323232b/qsrm",
-          "repo_id": 59,
-          "type": "issues",
-          "cur_time": "1985-12-10 AM 09:00:45"
+            "org_id": 87,
+            "repo_id": 72,
+            "repo_name": "group_4",
+            "repo_create_time": "2019-03-26 AM 02:50:00",
+            "repo_fork": 86,
+            "repo_starts": 16,
+            "repo_watch": 27,
+            "repo_issues": 20,
+            "repo_issues_creator": 20,
+            "repo_issues_open": 46,
+            "repo_issues_rejected": 31,
+            "repo_issues_close": 79,
+            "repo_issues_in_progreess": 49,
+            "repo_pull": 19,
+            "repo_pull_open": 55,
+            "org_pull_merged": 60,
+            "org_pull_close": 15,
+            "repo_commites": 25,
+            "repo_commiter": 48,
+            "cur_time": "2019-12-07 PM 13:49:17"
         }
     },
     {
-        "code": 89,
+        "code": 46,
         "message": "success",
         "data": {
-          "user_id": 62,
-          "activites_date": "1971-08-02 PM 13:52:20",
-          "activites_message": "Nxo vfxpevj.",
-          "activites_ur": "223223m",
-          "repo_id": 59,
-          "type": "commit",
-          "cur_time": "1985-12-10 AM 09:00:45"
+            "org_id": 87,
+            "repo_id": 73,
+            "repo_name": "group_5",
+            "repo_create_time": "2019-03-26 AM 02:50:00",
+            "repo_fork": 86,
+            "repo_starts": 18,
+            "repo_watch": 27,
+            "repo_issues": 13,
+            "repo_issues_creator": 20,
+            "repo_issues_open": 46,
+            "repo_issues_rejected": 31,
+            "repo_issues_close": 79,
+            "repo_issues_in_progreess": 49,
+            "repo_pull": 19,
+            "repo_pull_open": 55,
+            "org_pull_merged": 60,
+            "org_pull_close": 15,
+            "repo_commites": 19,
+            "repo_commiter": 48,
+            "cur_time": "2019-12-07 PM 13:49:17"
         }
     },
     {
-        "code": 89,
+        "code": 46,
         "message": "success",
         "data": {
-          "user_id": 62,
-          "activites_date": "1971-08-02 PM 13:52:20",
-          "activites_message": "N vfxpevj.",
-          "activites_ur": "htt323232b/qsrm",
-          "repo_id": 59,
-          "type": "pull requests",
-          "cur_time": "1985-12-10 AM 09:00:45"
+            "org_id": 87,
+            "repo_id": 74,
+            "repo_name": "group_6",
+            "repo_create_time": "2019-03-26 AM 02:50:00",
+            "repo_fork": 86,
+            "repo_starts": 8,
+            "repo_watch": 27,
+            "repo_issues": 13,
+            "repo_issues_creator": 20,
+            "repo_issues_open": 46,
+            "repo_issues_rejected": 31,
+            "repo_issues_close": 79,
+            "repo_issues_in_progreess": 49,
+            "repo_pull": 10,
+            "repo_pull_open": 55,
+            "org_pull_merged": 60,
+            "org_pull_close": 15,
+            "repo_commites": 33,
+            "repo_commiter": 48,
+            "cur_time": "2019-12-07 PM 13:49:17"
         }
     },
-    {
-        "code": 89,
-        "message": "success",
-        "data": {
-          "user_id": 62,
-          "activites_date": "1971-08-02 PM 13:52:20",
-          "activites_message": "Nxo vfxpevj.",
-          "activites_ur": "223223m",
-          "repo_id": 59,
-          "type": "commit",
-          "cur_time": "1985-12-10 AM 09:00:45"
-        }
-    },
-    {
-        "code": 89,
-        "message": "success",
-        "data": {
-          "user_id": 62,
-          "activites_date": "1971-08-02 PM 13:52:20",
-          "activites_message": "Nxlhz hpom fovfiwho vfxpevj.",
-          "activites_ur": "http://21321313123b.bb/qsrm",
-          "repo_id": 59,
-          "type": "issues",
-          "cur_time": "1985-12-10 AM 09:00:45"
-        }
-    }
 ];
 
 
-var issueTable = document.getElementById("issueTable");
+var table = document.getElementById("repo-list");
 
-var table = document.createElement("table");
+for (var i = 0; i < json4repos.length; i++) {
+    var rowData = json4repos[i].data;
 
-var headerRow = document.createElement("tr");
-var headerCell1 = createStyledHead('20%');
-headerCell1.textContent = "Date";
-var headerCell2 = createStyledHead('20%');
-headerCell2.textContent = "URL";
-var headerCell3 = createStyledHead('60%');
-headerCell3.textContent = "Messgae";
+    var dataRow = document.createElement("tr");
 
-headerRow.appendChild(headerCell1);
-headerRow.appendChild(headerCell2);
-headerRow.appendChild(headerCell3);
-table.appendChild(headerRow);
+    var dataCell1 = createStyledCell('20%');
+    dataCell1.textContent = rowData.repo_id;
 
-for (var i = 0; i < json.length; i++) {
-    var rowData = json[i].data;
+    var dataCell2 = createStyledCell('30%');
+    var link = document.createElement("a");
+    link.href = rowData.activites_ur;
+    link.textContent = rowData.repo_name;
+    dataCell2.appendChild(link);
 
-    if (rowData.type == "issues") {
-        var dataRow = document.createElement("tr");
+    var dataCell3 = createStyledCell('12.5%');
+    dataCell3.textContent = rowData.repo_starts;
 
-        var dataCell1 = createStyledCell('20%');
-        dataCell1.textContent = rowData.activites_date;
+    var dataCell4 = createStyledCell('12.5%');
+    dataCell4.textContent = rowData.repo_commites;
 
-        var dataCell2 = createStyledCell('20%');
-        var link = document.createElement("a");
-        link.href = rowData.activites_ur;
-        link.textContent = rowData.activites_ur;
-        dataCell2.appendChild(link);
+    var dataCell5 = createStyledCell('12.5%');
+    dataCell5.textContent = rowData.repo_issues;
 
-        var dataCell3 = createStyledCell('60%');
-        dataCell3.textContent = rowData.activites_message;
+    var dataCell6 = createStyledCell('12.5%');
+    dataCell6.textContent = rowData.repo_pull;
 
-        dataRow.appendChild(dataCell1);
-        dataRow.appendChild(dataCell2);
-        dataRow.appendChild(dataCell3);
-        table.appendChild(dataRow);
-    }
+    dataRow.appendChild(dataCell1);
+    dataRow.appendChild(dataCell2);
+    dataRow.appendChild(dataCell3);
+    dataRow.appendChild(dataCell4);
+    dataRow.appendChild(dataCell5);
+    dataRow.appendChild(dataCell6);
+
+    table.appendChild(dataRow);
+
 }
 
 issueTable.appendChild(table);
 
-
-
-
-var commitTable = document.getElementById("commitTable");
-
-var table = document.createElement("table");
-
-var headerRow = document.createElement("tr");
-var headerCell1 = createStyledHead('20%');
-headerCell1.textContent = "Date";
-var headerCell2 = createStyledHead('20%');
-headerCell2.textContent = "URL";
-var headerCell3 = createStyledHead('60%');
-headerCell3.textContent = "Messgae";
-
-headerRow.appendChild(headerCell1);
-headerRow.appendChild(headerCell2);
-headerRow.appendChild(headerCell3);
-table.appendChild(headerRow);
-
-
-for (var i = 0; i < json.length; i++) {
-    var rowData = json[i].data;
-
-    if (rowData.type == "commit") {
-        var dataRow = document.createElement("tr");
-
-        var dataCell1 = createStyledCell('20%');
-        dataCell1.textContent = rowData.activites_date;
-
-        var dataCell2 = createStyledCell('20%');
-        var link = document.createElement("a");
-        link.href = rowData.activites_ur;
-        link.textContent = rowData.activites_ur;
-        dataCell2.appendChild(link);
-
-        var dataCell3 = createStyledCell('60%');
-        dataCell3.textContent = rowData.activites_message;
-
-        dataRow.appendChild(dataCell1);
-        dataRow.appendChild(dataCell2);
-        dataRow.appendChild(dataCell3);
-        table.appendChild(dataRow);
-    }
-}
-
-commitTable.appendChild(table);
-
-
-
-
-
-var pullTable = document.getElementById("pullTable");
-
-var table = document.createElement("table");
-
-var headerRow = document.createElement("tr");
-var headerCell1 = createStyledHead('20%');
-headerCell1.textContent = "Date";
-var headerCell2 = createStyledHead('20%');
-headerCell2.textContent = "URL";
-var headerCell3 = createStyledHead('60%');
-headerCell3.textContent = "Messgae";
-
-headerRow.appendChild(headerCell1);
-headerRow.appendChild(headerCell2);
-headerRow.appendChild(headerCell3);
-table.appendChild(headerRow);
-
-for (var i = 0; i < json.length; i++) {
-    var rowData = json[i].data;
-
-    if (rowData.type == "pull requests") {
-        var dataRow = document.createElement("tr");
-
-        var dataCell1 = createStyledCell('20%');
-        dataCell1.textContent = rowData.activites_date;
-
-        var dataCell2 = createStyledCell('20%');
-        var link = document.createElement("a");
-        link.href = rowData.activites_ur;
-        link.textContent = rowData.activites_ur;
-        dataCell2.appendChild(link);
-
-        var dataCell3 = createStyledCell('60%');
-        dataCell3.textContent = rowData.activites_message;
-
-        dataRow.appendChild(dataCell1);
-        dataRow.appendChild(dataCell2);
-        dataRow.appendChild(dataCell3);
-        table.appendChild(dataRow);
-    }
-}
-
-pullTable.appendChild(table);
-
-
-
-
-
-
-
-
-var issueButton = document.getElementById("issueButton");
-var issueTable = document.getElementById("issueTable");
-var commitButton = document.getElementById("commitButton");
-var commitTable = document.getElementById("commitTable");
-var pullButton = document.getElementById("pullButton");
-var pullTable = document.getElementById("pullTable");
-
-// 初始状态下只显示 issueTable
-issueTable.style.display = "table";
-commitTable.style.display = "none";
-pullTable.style.display = "none";
-
-
-commitButton.addEventListener("click", function() {
-    issueTable.style.display = "none";
-    commitTable.style.display = "table";
-    pullTable.style.display = "none";
-});
-
-
-pullButton.addEventListener("click", function() {
-    issueTable.style.display = "none";
-    commitTable.style.display = "none";
-    pullTable.style.display = "table";
-});
-
-
-issueButton.addEventListener("click", function() {
-    issueTable.style.display = "table";
-    commitTable.style.display = "none";
-    pullTable.style.display = "none";
-});
 
 
 
