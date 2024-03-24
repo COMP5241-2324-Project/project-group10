@@ -24,7 +24,7 @@ class Repo(db.Model):
     repo_size = db.Column(db.Integer)
 
     def as_dict(self):
-        return {c.repo_name: getattr(self, c.repo_name) for c in self.__table__.columns}
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
     def __repr__(self):
-        return '<Repo {}>'.format(self.repo_name)
+        return '<Repo {}>'.format(self.name)

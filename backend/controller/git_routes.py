@@ -9,15 +9,18 @@ from . import untils
 github_api_url = 'https://api.github.com'
 
 # repobp = Blueprint('repo', import_name=__name__)
-orgbp = Blueprint('org', import_name=__name__)
+gitbp = Blueprint('git', import_name=__name__)
 AUTH = config.Config.AUTH
+
+
 def formatted_time(time):
     create_time = datetime.strptime(time, '%Y-%m-%dT%H:%M:%SZ')
     formatted_create_time = create_time.strftime('%Y-%m-%d %H:%M:%S')
 
     return formatted_create_time
 
-def get_repo(org,org_id):
+
+def get_repo(org, org_id):
     url = github_api_url + '/orgs' + '/' + org + '/repos'
     headers = {'Authorization': 'Bearer ' + AUTH}
     response = requests.get(url, headers=headers)
@@ -61,11 +64,14 @@ def get_repo(org,org_id):
         pulls_open_count = repo_pull_open + pulls_open_count
         pulls_close_count = repo_pull_close + pulls_close_count
         stars_count = repo_stars + stars_count
-        repository = repoModel.Repo(org_id = org_id, repo_id=repo_id, repo_name=repo_name, repo_create_time=repo_create_time,
-                                    repo_watch=repo_watch, repo_stars=repo_stars, repo_forks=repo_forks,repo_issues=repo_issues,
-                                    repo_issues_open=repo_issues_open, repo_size=repo_size,repo_issues_close=repo_issues_close,
-                                    repo_pull= repo_pull, repo_pull_open= repo_pull_open, repo_pull_close=repo_pull_close,
-                                    repo_commiter = repo_commiter,repo_commites= repo_commites,update_time= update_time)
+        repository = repoModel.Repo(org_id=org_id, repo_id=repo_id, repo_name=repo_name,
+                                    repo_create_time=repo_create_time,
+                                    repo_watch=repo_watch, repo_stars=repo_stars, repo_forks=repo_forks,
+                                    repo_issues=repo_issues,
+                                    repo_issues_open=repo_issues_open, repo_size=repo_size,
+                                    repo_issues_close=repo_issues_close,
+                                    repo_pull=repo_pull, repo_pull_open=repo_pull_open, repo_pull_close=repo_pull_close,
+                                    repo_commiter=repo_commiter, repo_commites=repo_commites, update_time=update_time)
         db.session.add(repository)
     db.session.commit()
 
@@ -81,7 +87,8 @@ def get_repo(org,org_id):
         "stars_count": stars_count
     }
 
-    return repos,org_data
+    return repos, org_data
+
 
 def insert_repo_commiters(repo, owner):
     url = github_api_url + '/repos' + '/' + owner + '/' + repo + '/contributors'
@@ -98,14 +105,15 @@ def insert_repo_commiters(repo, owner):
         user_pull_requests = user_pull_request_counts.get(user_name, 0)
         user_issuses_raised = user_issues_count.get(user_name, 0)
         update_time = datetime.now()
-        student = stuModel.Stu(user_id=user_id,repo=repo,user_name=user_name,user_team_name=user_team_name,
-                               user_contributions=user_contributions,user_issuses_raised=user_issuses_raised,
-                               user_pull_requests=user_pull_requests,update_time=update_time)
+        student = stuModel.Stu(user_id=user_id, repo=repo, user_name=user_name, user_team_name=user_team_name,
+                               user_contributions=user_contributions, user_issuses_raised=user_issuses_raised,
+                               user_pull_requests=user_pull_requests, update_time=update_time)
         db.session.add(student)
     db.session.commit()
     return len(user_data)
 
-def get_org(org,org_data,repo_count):
+
+def get_org(org, org_data, repo_count):
     url = github_api_url + '/orgs' + '/' + org
     headers = {'Authorization': 'Bearer ' + AUTH}
     response = requests.get(url, headers=headers)
@@ -114,6 +122,7 @@ def get_org(org,org_data,repo_count):
     org_id = response_json['id']
     org_fork = org_data["fork_count"]
     org_issues = org_data["issues_count"]
+    teacher_name = "bot"
     org_watch = org_data["watcher_count"]
     org_commits = org_data["commits_count"]
     org_commiter_num = org_data["commiter_count"]
@@ -123,25 +132,28 @@ def get_org(org,org_data,repo_count):
     org_starts = org_data["stars_count"]
     update_time = datetime.now()
 
-    organization = orgModel.Org(org_id = org_id, org_name = org, repo_count = repo_count, org_fork =org_fork,
-                                org_issues= org_issues,org_watch = org_watch, org_commits= org_commits,
-                                org_commiter_num = org_commiter_num, org_pull = org_pull, org_pull_open= org_pull_open,
-                                org_pull_close = org_pull_close, org_starts = org_starts,update_time = update_time)
+    organization = orgModel.Org(org_id=org_id, org_name=org, repo_count=repo_count, org_fork=org_fork,
+                                org_issues=org_issues, org_watch=org_watch, org_commits=org_commits,
+                                teacher_name=teacher_name,
+                                org_commiter_num=org_commiter_num, org_pull=org_pull, org_pull_open=org_pull_open,
+                                org_pull_close=org_pull_close, org_starts=org_starts, update_time=update_time)
     # insert into the db
     db.session.add(organization)
     db.session.commit()
+
+
 # get the id,created_at,description,fork_count,open_issues_count,updated_at of repository
-@orgbp.route('/github/refresh', methods=['POST'])
+@gitbp.route('/refresh', methods=['POST'])
 def get_info():
     try:
         org = request.form.get('org')
         id = untils.getorg_id(org)
-        repos,org_data = get_repo(org, id)
+        repos, org_data = get_repo(org, id)
         for repo in repos:
             repo_name = repo[0]
             owner = repo[1]
-            insert_repo_commiters(repo_name,owner)
-        get_org(org,org_data,len(repos))
+            insert_repo_commiters(repo_name, owner)
+        get_org(org, org_data, len(repos))
         return jsonify(code=20000, flag=True, message="Success")
     except Exception as e:
         print(e)

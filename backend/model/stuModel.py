@@ -13,7 +13,7 @@ class Stu(db.Model):
     update_time = db.Column(db.DateTime,primary_key=True)
 
     def as_dict(self):
-        return {c.user_name: getattr(self, c.user_name) for c in self.__table__.columns}
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
     def __repr__(self):
-        return '<Stu {}>'.format(self.user_name)
+        return '<Stu {}>'.format(self.name)

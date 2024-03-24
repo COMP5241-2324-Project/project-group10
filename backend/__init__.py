@@ -2,7 +2,6 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from . import config
 
-
 app = Flask(__name__)
 db = SQLAlchemy()
 
@@ -12,10 +11,12 @@ def create_app():
     db.init_app(app)
     with app.app_context():
         # Imports
-        from backend.controller import helloApi,routes
+        from backend.controller import helloApi, git_routes, org_routes, repo_routes, user_routes
         app.register_blueprint(helloApi.hellobp)
-        app.register_blueprint(blueprint = routes.orgbp, url_prefix='/org')
-        # app.register_blueprint(blueprint=routes.repobp, url_prefix='/repo')
+        app.register_blueprint(blueprint=git_routes.gitbp, url_prefix='/github')
+        app.register_blueprint(blueprint=org_routes.orgbp, url_prefix='/org')
+        app.register_blueprint(blueprint=repo_routes.repobp, url_prefix='/repo')
+        app.register_blueprint(blueprint=user_routes.userbp, url_prefix='/user')
         # Create tables for our models
         # db.create_all()
         return app
