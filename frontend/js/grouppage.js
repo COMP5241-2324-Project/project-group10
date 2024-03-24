@@ -2,8 +2,9 @@
 
 var urlParams = new URLSearchParams(window.location.search);
 var groupid = urlParams.get('groupid');
-console.log(groupid);
-
+var orgname = urlParams.get('orgname');
+console.log(groupid+" "+orgname);
+//根据overview.js传来的groupid获取该repo(group)信息
 var json4repos = [
   {
     "code": 200,
@@ -231,7 +232,7 @@ console.log(repo);
 
 // 更新页面元素信息
 var org_repo = document.getElementById('org_repo');
-org_repo.textContent = repo.repo_name;
+org_repo.textContent = "Repository:  " + repo.repo_name;
 var repostars = document.getElementById('repostars');
 repostars.textContent = repo.repo_stars;
 var repoforks = document.getElementById('repoforks');
@@ -370,93 +371,93 @@ option2 = {
 // 使用刚指定的配置项和数据显示图表。
 pullChart.setOption(option2);
 
-
+//获取该组内的用户信息
 json4user = [
   {
     "code": 200,
     "data": {
-        "rows": {
-            "repo": "ex-3122",
-            "update_time": "Fri, 22 Mar 2024 19:36:20 GMT",
-            "user_contributions": 1,
-            "user_id": 157114473,
-            "user_issuses_raised": 0,
-            "user_name": "bot1",
-            "user_pull_requests": 0,
-            "user_team_name": "Group 10"
-        }
+      "rows": {
+        "repo": "ex-3122",
+        "update_time": "Fri, 22 Mar 2024 19:36:20 GMT",
+        "user_contributions": 1,
+        "user_id": 157114473,
+        "user_issuses_raised": 0,
+        "user_name": "bot1",
+        "user_pull_requests": 0,
+        "user_team_name": "Group 10"
+      }
     },
     "flag": true,
     "message": "查询成功"
-},
-{
-  "code": 200,
-  "data": {
-      "rows": {
-          "repo": "ex-3122",
-          "update_time": "Fri, 22 Mar 2024 19:36:20 GMT",
-          "user_contributions": 2,
-          "user_id": 157114474,
-          "user_issuses_raised": 1,
-          "user_name": "bot2",
-          "user_pull_requests": 0,
-          "user_team_name": "Group 10"
-      }
   },
-  "flag": true,
-  "message": "查询成功"
-},
-{
-  "code": 200,
-  "data": {
+  {
+    "code": 200,
+    "data": {
       "rows": {
-          "repo": "ex-3122",
-          "update_time": "Fri, 22 Mar 2024 19:36:20 GMT",
-          "user_contributions": 8,
-          "user_id": 157114475,
-          "user_issuses_raised": 3,
-          "user_name": "bot3",
-          "user_pull_requests": 4,
-          "user_team_name": "Group 10"
+        "repo": "ex-3122",
+        "update_time": "Fri, 22 Mar 2024 19:36:20 GMT",
+        "user_contributions": 2,
+        "user_id": 157114474,
+        "user_issuses_raised": 1,
+        "user_name": "bot2",
+        "user_pull_requests": 0,
+        "user_team_name": "Group 10"
       }
+    },
+    "flag": true,
+    "message": "查询成功"
   },
-  "flag": true,
-  "message": "查询成功"
-},
-{
-  "code": 200,
-  "data": {
+  {
+    "code": 200,
+    "data": {
       "rows": {
-          "repo": "ex-3122",
-          "update_time": "Fri, 22 Mar 2024 19:36:20 GMT",
-          "user_contributions": 7,
-          "user_id": 157114476,
-          "user_issuses_raised": 3,
-          "user_name": "bot4",
-          "user_pull_requests": 3,
-          "user_team_name": "Group 10"
+        "repo": "ex-3122",
+        "update_time": "Fri, 22 Mar 2024 19:36:20 GMT",
+        "user_contributions": 8,
+        "user_id": 157114475,
+        "user_issuses_raised": 3,
+        "user_name": "bot3",
+        "user_pull_requests": 4,
+        "user_team_name": "Group 10"
       }
+    },
+    "flag": true,
+    "message": "查询成功"
   },
-  "flag": true,
-  "message": "查询成功"
-},
-{
-  "code": 200,
-  "data": {
+  {
+    "code": 200,
+    "data": {
       "rows": {
-          "repo": "ex-3122",
-          "update_time": "Fri, 22 Mar 2024 19:36:20 GMT",
-          "user_contributions": 6,
-          "user_id": 157114477,
-          "user_issuses_raised": 5,
-          "user_name": "bot5",
-          "user_pull_requests": 1,
-          "user_team_name": "Group 10"
+        "repo": "ex-3122",
+        "update_time": "Fri, 22 Mar 2024 19:36:20 GMT",
+        "user_contributions": 7,
+        "user_id": 157114476,
+        "user_issuses_raised": 3,
+        "user_name": "bot4",
+        "user_pull_requests": 3,
+        "user_team_name": "Group 10"
       }
+    },
+    "flag": true,
+    "message": "查询成功"
   },
-  "flag": true,
-  "message": "查询成功"
-}
+  {
+    "code": 200,
+    "data": {
+      "rows": {
+        "repo": "ex-3122",
+        "update_time": "Fri, 22 Mar 2024 19:36:20 GMT",
+        "user_contributions": 6,
+        "user_id": 157114477,
+        "user_issuses_raised": 5,
+        "user_name": "bot5",
+        "user_pull_requests": 1,
+        "user_team_name": "Group 10"
+      }
+    },
+    "flag": true,
+    "message": "查询成功"
+  }
 ];
 
 function createStyledCell(width) {
@@ -474,14 +475,14 @@ function createStyledCell(width) {
   return cell;
 }
 // 先按照contributions降序排序
-json4user.sort(function(a, b) {
+json4user.sort(function (a, b) {
   return b.data.rows.user_contributions - a.data.rows.user_contributions;
 });
 
 var table = document.getElementById("user-list");
 
 for (var i = 0; i < json4user.length; i++) {
-    
+
   var rowData = json4user[i].data.rows;
   console.log(rowData);
   var dataRow = document.createElement("tr");
@@ -491,7 +492,7 @@ for (var i = 0; i < json4user.length; i++) {
 
   var dataCell2 = createStyledCell('33.3%');
   var link = document.createElement("a");
-  link.href = "userpage.html?userid=" + encodeURIComponent(rowData.user_id);
+  link.href = "userpage.html?userid=" + encodeURIComponent(rowData.user_id) + "&orgname=" + encodeURIComponent(orgname);
   link.textContent = rowData.user_name;
   dataCell2.appendChild(link);
 
@@ -510,7 +511,7 @@ for (var i = 0; i < json4user.length; i++) {
 var contriChart = echarts.init(document.getElementById('contrichart'));
 
 // 指定图表的配置项和数据
-var data = json4user.map(function(user) {
+var data = json4user.map(function (user) {
   return { value: user.data.rows.user_contributions, name: user.data.rows.user_name };
 });
 option3 = {

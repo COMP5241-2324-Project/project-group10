@@ -54,7 +54,7 @@ var orgPullsClose = json4org.data.rows[0].org_pull_close;
 var orgStars = json4org.data.rows[0].org_starts;
 //orgname setting
 var ognm = document.getElementById("orgname");
-ognm.textContent = orgName;
+ognm.textContent = "Organization:  "+orgName; 
 //repo, stars, forks, watches setting
 var totalrepo = document.getElementById("totalrepo");
 totalrepo.textContent = orgRepoCount;
@@ -343,7 +343,7 @@ for (var i = 0; i < json4repos.length; i++) {
 
     var dataCell2 = createStyledCell('30%');
     var link = document.createElement("a");
-    link.href = "grouppage.html?groupid=" + encodeURIComponent(rowData.repo_id);
+    link.href = "grouppage.html?groupid=" + encodeURIComponent(rowData.repo_id) + "&orgname=" + encodeURIComponent(json4org.data.rows[0].org_name);
     link.textContent = rowData.repo_name;
     dataCell2.appendChild(link);
 
