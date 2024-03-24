@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="card-info">
                                     <h2 id="repostars">168</h2>
-                                    <small>Total stars</small>
+                                    <small>Stars</small>
                                 </div>
                             </div>
                             <div class="card">
@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="card-info">
                                     <h2 id="repoforks">77</h2>
-                                    <small>Total forks</small>
+                                    <small>Forks</small>
                                 </div>
                             </div>
                             <div class="card">
@@ -83,8 +83,8 @@
                                     <span class="fas fa-eye"></span>
                                 </div>
                                 <div class="card-info">
-                                    <h2 id="repowatches">45</h2>
-                                    <small>Total watches</small>
+                                    <h2 id="repowatch">45</h2>
+                                    <small>Watches</small>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +133,7 @@
                             <div class="card-issue">
                                 <div class="card-info-small">
                                     <h2 id="otherissue">44</h2>
-                                    <small>Other Issues</small>
+                                    <small>Closed Issues</small>
                                 </div>
                             </div>
                         </div>
@@ -143,7 +143,7 @@
                             <h3>Issue Chart</h3>
                         </div>
                         <div class="mid2-content">
-                            
+                            <div id="issuechart" style="height: 260px;"></div>
                         </div>
                     </div>
                     <div class="left3">
@@ -165,12 +165,6 @@
                             </div>
                             <div class="card-pull">
                                 <div class="card-info-small">
-                                    <h2 id="mergedpull">45</h2>
-                                    <small>Merged Pulls</small>
-                                </div>
-                            </div>
-                            <div class="card-pull">
-                                <div class="card-info-small">
                                     <h2 id="closedpull">44</h2>
                                     <small>Closed Pulls</small>
                                 </div>
@@ -182,18 +176,38 @@
                             <h3>Pull Request Chart</h3>
                         </div>
                         <div class="mid3-content">
-                            
+                            <div id="pullchart" style="height: 260px;"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="right1">
+                <div class="right">
+                    <div class="right1">
+                        <div class="right1-head">
+                            <h3>Member Infos</h3>
+                        </div>
+                        <div class="right1-content">
+                            <table id="user-list">
+                                <tr>
+                                    <th>Student_ID</th>
+                                    <th>Student_Name</th>
+                                    <th>Contributions</th>
+                                </tr>
+                                <!-- 其他行... -->
+                            </table>
+                        </div>
+                    </div>
+                    <div class="right2">
+                        <div id="contrichart" style="height: 300px;"></div>
+                    </div>
 
                 </div>
 
             </div>
         </main>
     </div>
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script src="./js/grouppage.js"></script>
 </body>
 
 </html>

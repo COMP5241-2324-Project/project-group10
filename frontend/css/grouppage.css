@@ -255,13 +255,6 @@ main {
 }
 
 
-.right1 {
-    grid-gap: 3rem;
-    background: var(--bg);
-    border-radius: 3px;
-    height: auto;
-}
-
 .left2 {
     grid-gap: 3rem;
     background: var(--bg);
@@ -327,7 +320,7 @@ main {
 }
 
 .mid2-content {
-    padding: .5rem;
+    
     border-radius: 3px;
 }
 
@@ -373,6 +366,66 @@ main {
 }
 
 .mid3-content {
-    padding: .5rem;
     border-radius: 3px;
 }
+
+.right {
+    grid-gap: 3rem;
+    background: var(--bg);
+    border-radius: 3px;
+    height: auto;
+    display: grid;
+    grid-template-rows: 1.3fr 1fr;
+    
+}
+
+.right1 {
+    grid-gap: 3rem;
+    
+}
+
+.right1-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #efefef;
+    border-bottom: 1px solid #3e454d;
+    margin: .5rem;
+
+}
+
+.right1-content {
+
+    padding: .5rem;
+    margin: auto;
+}
+
+#user-list {
+    table-layout: fixed;
+    width: 100%; /* 设置表格宽度为100% */
+}
+
+#user-list th {
+    background-color: #3e454d; /* 设置表头背景颜色 */
+    color: #fff; /* 设置表头字体颜色 */
+    font-weight: 500; /* 设置表头字体粗细 */
+    padding: .5rem; /* 设置表头内边距 */
+    text-align: center; /* 设置文本左对齐 */
+    border : 1px solid white;
+    text-align: center;
+    padding : .5rem;
+    color : #fff;
+}
+#repo-list th:nth-child(1) {
+    width: 33.3%;
+}
+
+#repo-list th:nth-child(2) {
+    width: 33.3%;
+}
+
+#repo-list th:nth-child(3) {
+    width: 33.4%;
+}
+
+
