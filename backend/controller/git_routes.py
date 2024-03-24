@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 import requests
-from ..model import repoModel, stuModel, orgModel
+from ..model import repoModel, stuModel, orgModel, actModel
 from backend import db
 from datetime import datetime
 from .. import config
@@ -90,6 +90,32 @@ def get_repo(org, org_id):
     return repos, org_data
 
 
+def insert_activites(repo, owner):
+    url = github_api_url + '/repos' + '/' + owner + '/' + repo + '/events'
+    headers = {'Authorization': 'Bearer ' + AUTH}
+    response = requests.get(url, headers=headers)
+    activites_data = response.json()
+    for activity in activites_data:
+        activities_id = activity["id"]
+        user_id = activity["actor"]["id"]
+        type = activity["type"]
+        activities_date = formatted_time(activity["created_at"])
+        if type == "PushEvent":
+            payload = activity["payload"]
+            activities_message = ', '.join([commit["message"] for commit in payload["commits"]])
+            activities_url = ', '.join([commit["url"] for commit in payload["commits"]])
+        else:
+            activities_message = ""
+            activities_url = ""
+        update_time = datetime.now()
+
+        act = actModel.Act(user_id=user_id, activities_id=activities_id, activities_date=activities_date,
+                           activities_message=activities_message, activities_url=activities_url, repo_name=repo,
+                           update_time=update_time, type=type)
+        db.session.add(act)
+    db.session.commit()
+
+
 def insert_repo_commiters(repo, owner):
     url = github_api_url + '/repos' + '/' + owner + '/' + repo + '/contributors'
     headers = {'Authorization': 'Bearer ' + AUTH}
@@ -154,6 +180,18 @@ def get_info():
             owner = repo[1]
             insert_repo_commiters(repo_name, owner)
         get_org(org, org_data, len(repos))
+        return jsonify(code=20000, flag=True, message="Success")
+    except Exception as e:
+        print(e)
+        return jsonify(code=20001, flag=False, message="Fail")
+
+
+@gitbp.route('/activity', methods=['POST'])
+def get_activites():
+    try:
+        repo = request.form.get('repo')
+        owner = request.form.get('owner')
+        insert_activites(repo, owner)
         return jsonify(code=20000, flag=True, message="Success")
     except Exception as e:
         print(e)

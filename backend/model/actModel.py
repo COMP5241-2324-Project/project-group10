@@ -7,9 +7,10 @@ class Act(db.Model):
     activities_date = db.Column(db.DateTime)
     activities_message = db.Column(db.Text)
     activities_url = db.Column(db.Text)
-    repo_id = db.Column(db.Integer, primary_key=True)
+    repo_name = db.Column(db.String(255))
     update_time = db.Column(db.DateTime,primary_key=True)
-    type = db.Column(db.Integer)
+    activities_id = db.Column(db.String(255), primary_key=True)
+    type = db.Column(db.String(255))
 
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
