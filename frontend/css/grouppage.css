@@ -79,6 +79,7 @@ header {
     align-items: center;
     background: var(--bg);
     padding: 0rem 1rem;
+    /*position: fixed;*/
     left: calc(200px + 1rem);
     right: 1rem;
     top: .5rem;
@@ -110,34 +111,38 @@ header {
     text-align: center;
     color: #fff;
 }
+
 .header-icons span{
     font-size: 1.5rem;
     margin-left: 1rem;
     color: #fff;
 }
-
 main {
     margin-top: .5rem;
     padding: 1rem 0rem;
     
 }
-/* 以上为模板框架css */
 
-
-.cards {
+.container {
     display: grid;
-    grid-template-columns: 65% auto;
+    grid-template-columns: 63% auto;
     grid-gap: 1.5rem;
 }
 
-.leftcards1 {
+.leftside {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5rem;
+}
+
+.left1 {
     grid-gap: 3rem;
     background: var(--bg);
     border-radius: 3px;
-    height: 250px;
+    height: 300px;
 }
 
-.leftcards1-head{
+.left1-head{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,9 +152,10 @@ main {
 
 }
 
-.leftcards1-content {
+.left1-content {
+    margin-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     padding: .5rem;
     border-radius: 3px;
 }
@@ -167,11 +173,6 @@ main {
     border-radius: 50%;
     display: grid;
     place-items: center;
-}
-
-.group span {
-    color: #0072f2;
-    background: #e5f3fe;
 }
 
 .star span {
@@ -210,85 +211,14 @@ main {
     font-weight: 500;
 }
 
-
-.rightcards1 {
-    border-radius: 3px;
+.mid1 {
     grid-gap: 3rem;
     background: var(--bg);
-    height: 250px;
-}
-.rightcards1-head{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #efefef;
-    border-bottom: 1px solid #3e454d;
-    margin: .5rem;
-    
-}
-.top-3 {
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    justify-content: center;
-    color: #fff;
-}
-.top-3 ul {
-    counter-reset: section;
-}
-.top-3 li {
-    border-bottom: 1px solid #b8c2cc;
-    margin: 1rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-}
-
-.top-3 li:before {
-    counter-increment: section;
-    content: counter(section);
-    display: inline-block;
-    padding: 0 .75rem;
-    width: .75rem;
-    height: 1.2rem;
-    margin-right: 1rem;
-    line-height: 1rem;
-    background: #b8c2cc;
-    color: #fff;
     border-radius: 3px;
-    text-align: center;
-    font-weight: 800;
-}
-
-.top-3 li:nth-child(1):before {
-    background: #ffd700
-}
-
-.top-3 li:nth-child(2):before {
-    background: #c0c0c0
-}
-
-.top-3 li:nth-child(3):before {
-    background: #b87333
-}
-
-.leftcards2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 1.5rem;
     height: 300px;
 }
 
-.leftcards2-issue {
-    background: var(--bg);
-    border-radius: 3px;
-    height: 280px;
-}
-.leftcards2-commit {
-    background: var(--bg);
-    border-radius: 3px;
-    height: 280px;
-}
-
-.card-head{
+.mid1-head{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -298,31 +228,75 @@ main {
 
 }
 
-.cardissue-content {
-    display: flex;
-    align-items: center;
-    border-radius: 3px;
-    margin: 1rem;
-}
-
-.cardtext-issue {
-    align-content: center;
-    margin: auto;
+.mid1-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     padding: .5rem;
-    margin-top: 2rem;
     border-radius: 3px;
-    display: inline-block;
-    color: var(--main);
-    font-weight: 500;
-    text-align: center;
-}
-#issuecnt {
-    font-size: 3rem;
-    color: #fff;
+    margin-top: 2rem;
 }
 
+.card-commit {
+    margin: 1rem;
+    padding: .5rem 1rem;
+    border-radius: 3px;
+    text-align: center;
+    margin-top: 0rem;
+}
+
+.card-commit h2 {
+    margin-top: 1.5rem;
+    font-size: 3rem;
+    color: #efefef;
+}
+
+.card-commit p {
+    color: var(--main);
+}
+
+
+.right1 {
+    grid-gap: 3rem;
+    background: var(--bg);
+    border-radius: 3px;
+    height: auto;
+}
+
+.left2 {
+    grid-gap: 3rem;
+    background: var(--bg);
+    border-radius: 3px;
+    height: 300px;
+}
+
+.left2-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #efefef;
+    border-bottom: 1px solid #3e454d;
+    margin: .5rem;
+
+}
+
+.left2-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: .5rem;
+    border-radius: 3px;
+}
+.card-issue {
+    margin: .1rem .5rem;
+    padding: 1rem;
+    border-radius: 3px;
+}
+.card-pull {
+    margin: .1rem .5rem;
+    padding: 1rem;
+    border-radius: 3px;
+}
 .card-info-small {
-    display: inline-block;
+    
     color: var(--main);
     font-weight: 500;
     text-align: center;
@@ -335,47 +309,14 @@ main {
     text-align: center;
 }
 
-.rightcards2 {
-    border-radius: 3px;
+.mid2 {
+    grid-gap: 3rem;
     background: var(--bg);
-    height: 280px;
-}
-
-
-.cardcommit-content {
-    display: flex;
-    align-items: center;
-    padding: .5rem;
-    margin: 1rem;
     border-radius: 3px;
-    align-content: center;
-}
-.right2 {
-    margin: auto;
-    padding: auto;
-    border-radius: 3px;
-    margin-top: 2rem
-}
-
-.lc3-devided {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 1.5rem;
     height: 300px;
 }
 
-.leftcards3-info {
-    background: var(--bg);
-    border-radius: 3px;
-    height: 280px;
-}
-.leftcards3-chart {
-    background: var(--bg);
-    border-radius: 3px;
-    height: 280px;
-}
-
-.leftcards3-head{
+.mid2-head{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -385,131 +326,53 @@ main {
 
 }
 
-.leftcards3-content {
+.mid2-content {
+    padding: .5rem;
+    border-radius: 3px;
+}
+
+.left3 {
+    grid-gap: 3rem;
+    background: var(--bg);
+    border-radius: 3px;
+    height: 300px;
+}
+
+.left3-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #efefef;
+    border-bottom: 1px solid #3e454d;
+    margin: .5rem;
+
+}
+
+.left3-content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    padding: .5rem;
     border-radius: 3px;
-    margin: 1rem;
 }
 
-.lc3 {
-    padding: auto;
-    margin: auto;
-    margin-top: .5rem;
-}
-
-.rightcards3 {
-    border-radius: 3px;
+.mid3 {
+    grid-gap: 3rem;
     background: var(--bg);
-    height: 280px;
+    border-radius: 3px;
+    height: 300px;
 }
-.rightcards3-head{
+
+.mid3-head{
     display: flex;
     justify-content: center;
     align-items: center;
     color: #efefef;
     border-bottom: 1px solid #3e454d;
     margin: .5rem;
-    
+
 }
 
-.rightcards3-content {
-    display: flex;
-    align-items: center;
+.mid3-content {
     padding: .5rem;
-    margin: 1rem;
     border-radius: 3px;
-    align-content: center;
-}
-
-.tables {
-    width: 100%;
-}
-
-.table1 {
-    border-radius: 3px;
-    background: var(--bg);
-    margin-right: .5rem;
-}
-.table1-head{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #efefef;
-    border-bottom: 1px solid #3e454d;
-    margin: .5rem;
-}
-.table1-content {
-    border-radius: 3px;
-    margin: 1rem;
-}
-
-.btn4table {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: .5rem;
-    margin: 1rem;
-
-}
-
-button {
-    background-color: #597cfb; /* 设置按钮背景颜色 */
-    color: orange; /* 设置按钮字体颜色 */
-    border: none; /* 移除按钮边框 */
-    padding: .5rem; /* 设置按钮内边距 */
-    text-align: center; /* 设置文本居中对齐 */
-    text-decoration: none; /* 移除文本装饰 */
-    display: inline-block; /* 设置为内联块级元素 */
-    font-size: 1rem; /* 设置字体大小 */
-    margin: .5rem; /* 设置外边距 */
-    cursor: pointer; /* 设置鼠标悬停时的光标样式 */
-    transition: background-color 0.3s; /* 设置背景颜色过渡效果 */
-    border-radius: 3px; /* 设置边框圆角 */
-    font-weight: 700;
-}
-
-button:hover {
-    background-color: #d3cdfc; /* 设置鼠标悬停时的背景颜色 */
-}
-
-#repo-list {
-    table-layout: fixed;
-    width: 100%; /* 设置表格宽度为100% */
-}
-
-#repo-list th {
-    background-color: #3e454d; /* 设置表头背景颜色 */
-    color: #fff; /* 设置表头字体颜色 */
-    font-weight: 500; /* 设置表头字体粗细 */
-    padding: .5rem; /* 设置表头内边距 */
-    text-align: center; /* 设置文本左对齐 */
-    border : 1px solid white;
-    text-align: center;
-    padding : .5rem;
-    color : #fff;
-}
-#repo-list th:nth-child(1) {
-    width: 20%;
-}
-
-#repo-list th:nth-child(2) {
-    width: 30%;
-}
-
-#repo-list th:nth-child(3) {
-    width: 12.5%;
-}
-
-#repo-list th:nth-child(4) {
-    width: 12.5%;
-}
-
-#repo-list th:nth-child(5) {
-    width: 12.5%;
-}
-
-#repo-list th:nth-child(6) {
-    width: 12.5%;
-
 }

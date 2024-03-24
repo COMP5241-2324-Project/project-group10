@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>用户界面</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      padding: 8px;
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/e48f71af9c.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="./css/userpage.css">
+</head>
+
+<body>
+  <!--侧栏-->
+  <div class="sidebar">
+    <div class="sidemenu">
+      <ul>
+        <li>
+          <a href="../frontend/overview.html">
+            <span class="fas fa-home"></span>
+            <span>MainPage</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <span class="fa fa-group"></span>
+            <span>GroupInfo</span>
+          </a>
+        </li>
+        <li>
+          <a href="../test/userpage.html" class="active">
+            <span class="fas fa-address-card"></span>
+            <span>StudentInfo</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="fas fa-print"></span>
+            <span>Print</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <!--页眉-->
+    <header>
+      <div class="search">
+        <p id="nameteam">groupname/stuname</p>
+      </div>
+      <div class="header-icons">
+        <span class="fas fa-bell"></span>
+        <span class="fas fa-bookmark"></span>
+        <span class="fas fa-calendar"></span>
+      </div>
+    </header>
+
+    <main>
+      <!-- 主页 -->
+
+      <div class="container">
+
+        <div class="left1">
+
+          <div class="left1-icon">
+            <span class="fas fa-user-circle"></span>
+            <p id="icon_name" style="margin-top: 2rem;"></p>
+          </div>
+
+          <div class="left1-info">
+            <hr>
+            <h1><span id="names"></span></h1>
+            <p style="margin-top: 2rem; margin-bottom: 1rem;">User Id: <span id="ids"></span></p>
+            <p style="margin-bottom: 2rem;">User Team: <span id="groups"></span></p>
+            <hr>
+            <p style="display: flex; justify-content: center; align-items: center; margin-top: 2rem;">Working Repository
+            </p>
+            <div class="block">
+              <p> <span id="repo">123</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-container">
+          <div class="right1">
+            <div class="right1-head">
+              <h3>Individual Statistics</h3>
+            </div>
+            <div class="right1-content">
+              <div class="card">
+                <div class="card-info">
+                  <h2 id="contributions">18</h2>
+                  <p>Contributions</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-info">
+                  <h2 id="pullRequests">168</h2>
+                  <p>Pull Requests</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-info">
+                  <h2 id="commits">77</h2>
+                  <p>Commits</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-info">
+                  <h2 id="issuesRaised">45</h2>
+                  <p>Issues Raised</p>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+          <div class="right2">
+            <div class="right2-head">
+              <h3>Student Activities</h3>
+            </div>
+            <div class="right2-content">
+
+              <div class="btn4table">
+                <button id="issueButton">ISSUE</button>
+                <button id="commitButton">COMMIT</button>
+                <button id="pullButton">PULL REQUEST</button>
+              </div>
+              <div class="table1">
+                <div id="issueTable"></div>
+                <div id="commitTable"></div>
+                <div id="pullTable"></div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <script src="./js/userpage.js"></script>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+</body>
+
+</html>

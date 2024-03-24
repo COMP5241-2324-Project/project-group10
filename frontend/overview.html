@@ -45,8 +45,7 @@
     <div class="main-content">
         <header>
             <div class="search">
-                <span class="fas fa-search"></span>
-                <input type="search" placeholder="Enter Keyword">
+                <p id="orgname"></p>
             </div>
             <div class="header-icons">
                 <span class="fas fa-bell"></span>
@@ -66,7 +65,7 @@
                                 <span class="fa fa-users"></span>
                             </div>
                             <div class="card-info">
-                                <h2>18</h2>
+                                <h2 id="totalrepo">18</h2>
                                 <small>Total Repositories</small>
                             </div>
                         </div>
@@ -75,7 +74,7 @@
                                 <span class="fas fa-star"></span>
                             </div>
                             <div class="card-info">
-                                <h2>168</h2>
+                                <h2 id="totalstars">168</h2>
                                 <small>Total stars</small>
                             </div>
                         </div>
@@ -84,7 +83,7 @@
                                 <span class="fas fa-folder-plus"></span>
                             </div>
                             <div class="card-info">
-                                <h2>77</h2>
+                                <h2 id="totalforks">77</h2>
                                 <small>Total forks</small>
                             </div>
                         </div>
@@ -93,7 +92,7 @@
                                 <span class="fas fa-eye"></span>
                             </div>
                             <div class="card-info">
-                                <h2>45</h2>
+                                <h2 id="totalwatches">45</h2>
                                 <small>Total watches</small>
                             </div>
                         </div>
@@ -102,152 +101,120 @@
 
                 <div class="rightcards1">
                     <div class="rightcards1-head">
-                        <h3>Top Repositories(Groups)</h3>
+                        <h3>Most Commits Repositories(Groups)</h3>
                     </div>
                     <div class="top-3">
                         <ul>
-                            <li><a>Repo 1</a></li>
-                            <li><a>Repo 2</a></li>
-                            <li><a>Repo 3</a></li>
+                            <li><a id="t1">Repo 1</a></li>
+                            <li><a id="t2">Repo 2</a></li>
+                            <li><a id="t3">Repo 3</a></li>
                         </ul>
 
                     </div>
 
                 </div>
 
-                <div class="lc2-devided">
-                    <div class="leftcards2-info">
-                        <div class="leftcards2-head">
+                <div class="leftcards2">
+                    <div class="leftcards2-issue">
+                        <div class="card-head">
                             <h3>Issue Statistics</h3>
                         </div>
-                        <div class="leftcards2-content">
-                            <div class="card smaller">
-                                <div class="card-info-small">
-                                    <h2>204</h2>
-                                    <small>Issues</small>
-                                </div>
-                            </div>
-                            <div class="card smaller">
-                                <div class="card-info-small">
-                                    <h2>30</h2>
-                                    <small>Creaters</small>
-                                </div>
-                            </div>
-                            <div class="card smaller">
-                                <div class="card-info-small">
-                                    <h2>70</h2>
-                                    <small>Open Issues</small>
-                                </div>
-                            </div>
-                            <div class="card smaller">
-                                <div class="card-info-small">
-                                    <h2>32</h2>
-                                    <small>Rejected Issues</small>
-                                </div>
-                            </div>
-                            <div class="card smaller">
-                                <div class="card-info-small">
-                                    <h2>84</h2>
-                                    <small>Closed Issues</small>
-                                </div>
-                            </div>
-                            <div class="card smaller">
-                                <div class="card-info-small">
-                                    <h2>48</h2>
-                                    <small>In Progess Issues</small>
-                                </div>
+                        <div class="cardissue-content">
+                            <div class="cardtext-issue"> 
+                                    <h1 id="issuecnt">204</h1>
+                                    <p style="font-size: large;">Total Issues</p>   
+                                
                             </div>
                         </div>
                     </div>
 
-                    <div class="leftcards2-chart">
-                        <div class="leftcards2-head">
-                            <h3>Issue Distribution</h3>
+                    <div class="leftcards2-commit">
+                        <div class="card-head">
+                            <h3>Commits Statistics</h3>
+                        </div>
+                        <div class="cardcommit-content">
+                            <div class="card right2">
+                                <div class="card-info-small">
+                                    <h2 id="commitcnt">967</h2>
+                                    <small>Total Commits</small>
+                                </div>
+                            </div>
+                            <div class="card right2">
+                                <div class="card-info-small">
+                                    <h2 id="commitauthors">43</h2>
+                                    <small>Authors</small>
+                                </div>
+                            </div>
+                            <div class="card right2">
+                                <div class="card-info-small">
+                                    <h2 id="commiters">56</h2>
+                                    <small>Total Commiters</small>
+                                </div>
+                            </div>
                         </div>
 
-                        <div id="Dount4MainIssue" style="height: 240px;"></div>
                     </div>
                 </div>
 
                 <div class="rightcards2">
-                    <div class="rightcards2-head">
+                    <div class="card-head">
                         <h3>Commits Statistics</h3>
                     </div>
-                    <div class="rightcards2-content">
-                        <div class="card right2">
+                    <div class="leftcards3-content">
+                        <div class="card lc3">
                             <div class="card-info-small">
-                                <h2>967</h2>
-                                <small>Total Commits</small>
+                                <h2 id="pullcnt">108</h2>
+                                <small>Total Pulls</small>
                             </div>
                         </div>
-                        <div class="card right2">
+                        <div class="card lc3">
                             <div class="card-info-small">
-                                <h2>43</h2>
-                                <small>Authors</small>
+                                <h2 id="openpull">19</h2>
+                                <small>Open Pull Requests</small>
                             </div>
                         </div>
-                        <div class="card right2">
+                        <div class="card lc3">
                             <div class="card-info-small">
-                                <h2>56</h2>
-                                <small>Total Commiters</small>
+                                <h2 id="mergepull">45</h2>
+                                <small>Merge Pull Requests</small>
+                            </div>
+                        </div>
+                        <div class="card lc3">
+                            <div class="card-info-small">
+                                <h2 id="closedpull">44</h2>
+                                <small>Closed Pull Requests</small>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="lc3-devided">
-                    <div class="leftcards3-info">
-                        <div class="leftcards3-head">
-                            <h3>Pull Request Statistics</h3>
-                        </div>
-                        <div class="leftcards3-content">
-                            <div class="card lc3">
-                                <div class="card-info-small">
-                                    <h2>108</h2>
-                                    <small>Total Pulls</small>
-                                </div>
-                            </div>
-                            <div class="card lc3">
-                                <div class="card-info-small">
-                                    <h2>19</h2>
-                                    <small>Open Pull Requests</small>
-                                </div>
-                            </div>
-                            <div class="card lc3">
-                                <div class="card-info-small">
-                                    <h2>45</h2>
-                                    <small>Merge Pull Requests</small>
-                                </div>
-                            </div>
-                            <div class="card lc3">
-                                <div class="card-info-small">
-                                    <h2>44</h2>
-                                    <small>Closed Pull Requests</small>
-                                </div>
-                            </div>
-                        </div>
+            </div> 
+            <div class="tables">
+                <div class="table1">
+                    <div class="table1-head">
+                        <h3>Repositories(Groups) Details</h3>
                     </div>
+                    <div class="table1-content">
 
-                    <div class="leftcards3-chart">
-                        <div class="leftcards3-head">
-                            <h3>Pull Request Distribution</h3>
-                        </div>
-                        <div id="Dount4MainPull" style="height: 220px;"></div>
-                    </div>
-                </div>
-                <div class="rightcards3">
-                    <div class="rightcards3-head">
-                        <h3>Activities</h3>
-                    </div>
-                        <div id="Line4MainActs" style="height: 220px;"></div>
 
+                        <table id="repo-list">
+                            <tr>
+                                <th>Group_id</th>
+                                <th>Group_name</th>
+                                <th>Stars</th>
+                                <th>Commits</th>
+                                <th>Issues</th>
+                                <th>Pull Requests</th>
+                            </tr>
+                            <!-- 其他行... -->
+                        </table>
+                    </div>
                 </div>
+
             </div>
-
-
         </main>
     </div>
     <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
-    <script src="./js/echarts.js"></script>
+    <script src="./js/tableConfig.js"></script>
 
 </body>
 
