@@ -173,12 +173,15 @@ def get_org(org, org_data, repo_count):
 def get_info():
     try:
         org = request.form.get('org')
+        get_act = request.form.get('act')
         id = untils.getorg_id(org)
         repos, org_data = get_repo(org, id)
         for repo in repos:
             repo_name = repo[0]
             owner = repo[1]
             insert_repo_commiters(repo_name, owner)
+            if get_act == '1':
+                insert_activites(repo_name, owner)
         get_org(org, org_data, len(repos))
         return jsonify(code=20000, flag=True, message="Success")
     except Exception as e:
