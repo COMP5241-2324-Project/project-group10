@@ -31,6 +31,10 @@
 //     console.log(error);
 //   });
 
+
+
+
+//前端输入教师名称
 async function fetchData_org() {
   const response = await fetch("http://10.12.7.177:5000/org/get_orgs/bot");
   const json4org = await response.json();
@@ -47,7 +51,8 @@ async function fetchDataAllRepos(orgID) {
 fetchData_org().then(function (data) {
   // 处理返回的JSON数据
   console.log(data.data);
-  var row0 = data.data.rows[0];
+  //选择第一个组织
+  var row0 = data.data.rows[1];
   var orgID;
   var orgName;
   var orgRepoCount;
