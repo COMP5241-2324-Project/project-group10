@@ -88,7 +88,8 @@ header {
 
 .search {
     display: flex;
-    width: 300px;
+    padding: 0 1rem;
+    width: auto;
     border-radius: 20px;
     overflow-x: hidden;
     border: 1px solid #3e454d;
