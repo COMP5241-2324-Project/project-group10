@@ -15,7 +15,8 @@
     }
   </style>
   <script src="https://kit.fontawesome.com/e48f71af9c.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="./css/userpage.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/userpage.css') }}">
+
 </head>
 
 <body>
@@ -24,7 +25,7 @@
     <div class="sidemenu">
       <ul>
         <li>
-          <a href="../frontend/overview.html">
+          <a href="/">
             <span class="fas fa-home"></span>
             <span>MainPage</span>
           </a>
@@ -148,6 +149,7 @@
 
 
           <script src="./js/userpage.js"></script>
+
         </div>
       </div>
 
