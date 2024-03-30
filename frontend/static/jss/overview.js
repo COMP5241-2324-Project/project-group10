@@ -36,14 +36,14 @@
 
 //前端输入教师名称
 async function fetchData_org() {
-  const response = await fetch("http://10.12.7.177:5000/org/get_orgs/bot");
+  const response = await fetch("http://127.0.0.1:5001/org/get_orgs/bot");
   const json4org = await response.json();
   //console.log(json4org);
   return json4org;
   //console.log(json4org);
 }
 async function fetchDataAllRepos(orgID) {
-  const response = await fetch("http://10.12.7.177:5000/repo/get_all_repos/" + orgID);
+  const response = await fetch("http://127.0.0.1:5001/repo/get_all_repos/" + orgID);
   const json4org = await response.json();
   return json4org;
 }
