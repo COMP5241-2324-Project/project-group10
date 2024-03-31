@@ -1,3 +1,6 @@
+import sys
+sys.path.append("./")
+
 import backend
 from flask import Flask
 from flask_cors import CORS
