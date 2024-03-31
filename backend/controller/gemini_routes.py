@@ -4,10 +4,13 @@ from gemini.gemini_test import generate_std_score, generate_group_score, generat
 genaibp = Blueprint('genai', import_name=__name__)
 
 
-@genaibp.route('/genai_group/<repo_id>', methods=['POST'])
-def generate_group_info(repo_id):
+@genaibp.route('/genai_group', methods=['POST'])
+def generate_group_info():
     try:
+        print(1)
         data = request.get_json()
+        print(data)
+        data = data['data']
         repo_id = data['repo_id']
         fork = data['fork']
         result = generate_group_score(repo_id)
