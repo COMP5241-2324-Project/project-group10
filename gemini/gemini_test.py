@@ -16,7 +16,7 @@ def generate_std_score(std_name):
 
     messages.append({'role':'user',
                  'parts':[f"现在有一个学生{std_name}，请生成一个学生文档"]})
-    response = model.generate_content(messages)
+    response = model.generate_content(messages).text
     return response
 
 def generate_group_score(group_name):
@@ -25,18 +25,18 @@ def generate_group_score(group_name):
 
     messages.append({'role':'user',
                  'parts':[f"现在有一个小组{group_name}，请生成一个小组文档"]})
-    response = model.generate_content(messages)
+    response = model.generate_content(messages).text
     return response
 
 def generate_other(text):
-    response = model.generate_content(text)
+    response = model.generate_content(text).text
     return response
 
 
-student_report = generate_std_score('alien')
-print(student_report)
-group_report = generate_group_score('group_10')
-print(group_report)
-text = 'tell me what day is today'
-other = generate_other(text)
-print(text)
+# student_report = generate_std_score('alien')
+# print(student_report)
+# group_report = generate_group_score('group_10')
+# print(group_report)
+# test = 'tell me what day is today'
+# other = generate_other(test)
+# print(other)
