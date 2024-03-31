@@ -11,10 +11,10 @@ app = Flask(__name__)
 @app.route('/')
 def o():
     return  render_template("overview.html")
-@app.route('/g')
+@app.route('/grouppage.html')
 def g():
     return  render_template("grouppage.html")
-@app.route('/u')
+@app.route('/userpage.html')
 def u():
     return  render_template("userpage.html")
 if __name__ == '__main__':

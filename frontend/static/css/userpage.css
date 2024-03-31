@@ -167,13 +167,13 @@ main {
 .left1 p {
     color: #fff;
     /* 设置数字（number）的颜色 */
-    font-size: 32px;
+    font-size: 20px;
 }
 
 .block {
     padding: .5rem;
     margin-top: 1.5rem;
-    width: 400px;
+    width: 300px;
     height: 200px;
     border: 3px solid #3e454d;
     border-radius: 5px;
