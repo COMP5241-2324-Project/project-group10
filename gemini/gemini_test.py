@@ -28,7 +28,15 @@ def generate_group_score(group_name):
     response = model.generate_content(messages)
     return response
 
+def generate_other(text):
+    response = model.generate_content(text)
+    return response
+
+
 student_report = generate_std_score('alien')
-print(student_report.text)
+print(student_report)
 group_report = generate_group_score('group_10')
-print(group_report.text)
+print(group_report)
+text = 'tell me what day is today'
+other = generate_other(text)
+print(text)
