@@ -6,18 +6,23 @@ console.log(orgname);
 console.log(reponame);
 console.log(userid);
 
-
-
+// userid="156690386"
+// reponame= "week-4-lab-environment-23000633g"
 
 async function fetchData_user(userid, reponame) {
-  const response = await fetch("http://10.12.7.177:5000/user/get_user/" + userid + "/" + reponame);
+  // userid="156690386"
+  // reponame= "week-4-lab-environment-23000633g"
+  //const response = await fetch("http://127.0.0.1:5001/user/get_user/" + userid + "/" + reponame);
+  const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/user/get_user/" + userid + "/" + reponame);
   const json4org = await response.json();
   //console.log(json4org);
   return json4org;
   //console.log(json4org);
 }
 async function fetchDataAllActivities(userid) {
-  const response = await fetch("http://10.12.7.177:5000/act/get_acts/" + userid);
+   //userid="156690386"
+  //const response = await fetch("http://127.0.0.1:5001/act/get_acts/" + userid);
+  const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/act/get_acts/" + userid);
   const json4org = await response.json();
   return json4org;
 }
@@ -92,6 +97,7 @@ fetchData_user(userid, reponame).then(data => {
         link.href = rowData.activities_url;
         link.textContent = "Activity_url";
         dataCell2.appendChild(link);
+        console.log(link);
 
         var dataCell3 = createStyledCell('60%');
         dataCell3.textContent = rowData.activities_message;

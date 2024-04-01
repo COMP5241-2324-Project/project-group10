@@ -9,14 +9,19 @@ console.log(repoid + " " + orgname);
 
 
 async function fetchData_repo(repoid) {
-  const response = await fetch("http://10.12.7.177:5000/repo/get_repo/" + repoid);
+  //const response = await fetch("http://127.0.0.1:5001/repo/get_repo/1932083" );
+  //const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/repo/get_repo/" + repoid);
+  //const response = await fetch("http://127.0.0.1:5001/repo/get_repo/" + repoid);
+  const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/repo/get_repo/" + repoid);
   const json4org = await response.json();
   //console.log(json4org);
   return json4org;
   //console.log(json4org);
 }
 async function fetchDataAllUsers(reponame) {
-  const response = await fetch("http://10.12.7.177:5000/user/get_all_users/" + reponame);
+
+  //const response = await fetch("http://127.0.0.1:5001/user/get_all_users/" + reponame);
+  const response = await fetch("http://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/user/get_all_users/" + reponame);
   const json4org = await response.json();
   return json4org;
 }
