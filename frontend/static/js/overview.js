@@ -35,8 +35,13 @@
 
 
 //前端输入教师名称
+localStorage.removeItem("teacherName");
 console.log("Before prompt");
-var teacherName = prompt("Please enter the teacher name");
+var teacherName = sessionStorage.getItem("teacherName");
+if (!teacherName) {
+    teacherName = prompt("Please enter the teacher name");
+    sessionStorage.setItem("teacherName", teacherName);
+}
 console.log("After prompt, teacherName: " + teacherName);
 
 
