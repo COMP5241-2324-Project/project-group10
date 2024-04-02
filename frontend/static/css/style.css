@@ -16,6 +16,14 @@
     padding: 0;
 }
 
+a {
+    color: #b8c2cc;
+}
+
+a:visited {
+    color: #b8c2cc;
+}
+
 input, button {
     outline: none;
     

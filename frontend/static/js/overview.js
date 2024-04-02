@@ -35,8 +35,13 @@
 
 
 //前端输入教师名称
+console.log("Before prompt");
+var teacherName = prompt("Please enter the teacher name");
+console.log("After prompt, teacherName: " + teacherName);
+
+
 async function fetchData_org() {
-  const response = await fetch("http://127.0.0.1:5001/org/get_orgs/bot");
+  const response = await fetch("http://127.0.0.1:5001/org/get_orgs/"+teacherName);
   const json4org = await response.json();
   //console.log(json4org);
   return json4org;
