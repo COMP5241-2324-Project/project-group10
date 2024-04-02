@@ -259,7 +259,17 @@ main {
     padding: .5rem;
     border-radius: 3px;
 }
+#show_md_container {
+    border: 1px solid white;
+    padding: 10px;
+    background-color: #0B1218;
+    display: none;
+  }
+  
+  #show_md {
+    color: white;
 
+  }
 
 
 /* 表格的整体框架*/

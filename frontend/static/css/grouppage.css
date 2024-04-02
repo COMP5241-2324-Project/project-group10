@@ -400,6 +400,17 @@ main {
     margin: auto;
 }
 
+#show_md_container {
+    border: 1px solid white;
+    padding: 10px;
+    background-color: #0B1218;
+    display: none;
+  }
+  
+  #show_md {
+    color: white;
+
+  }
 #user-list {
     table-layout: fixed;
     width: 100%; /* 设置表格宽度为100% */
