@@ -1,18 +1,33 @@
-
-
+console.log(marked);
 var urlParams = new URLSearchParams(window.location.search);
 var repoid = urlParams.get('groupid');
 var orgname = urlParams.get('orgname');
 console.log(repoid + " " + orgname);
 
+var raw = {
+  "code": 0,
+  "message": "string",
+  "data": {
+    "repo_id": 0,
+    "repo_name": "test",
+    "repo_fork": 0,
+    "repo_starts": 0,
+    "repo_watch": 0,
+    "repo_issues": 0,
+    "repo_pull": 0,
+    "repo_commites": 0,
+    "cur_time": "string",
+    "users": 0
+  }
+};
 
-
+console.log(raw);
 
 async function fetchData_repo(repoid) {
   //const response = await fetch("http://127.0.0.1:5001/repo/get_repo/1932083" );
   //const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/repo/get_repo/" + repoid);
   //const response = await fetch("http://127.0.0.1:5001/repo/get_repo/" + repoid);
-  const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/repo/get_repo/" + repoid);
+  const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/repo/get_repo/" + repoid);
   const json4org = await response.json();
   //console.log(json4org);
   return json4org;
@@ -21,229 +36,13 @@ async function fetchData_repo(repoid) {
 async function fetchDataAllUsers(reponame) {
 
   //const response = await fetch("http://127.0.0.1:5001/user/get_all_users/" + reponame);
-  const response = await fetch("http://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/user/get_all_users/" + reponame);
+  const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/user/get_all_users/" + reponame);
   const json4org = await response.json();
   return json4org;
 }
-//根据overview.js传来的groupid获取该repo(group)信息
-// var json4repos = [
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "org_id": 155929916,
-//         "repo_commiter": 13,
-//         "repo_commites": 30,
-//         "repo_create_time": "Mon, 22 Jan 2024 14:29:48 GMT",
-//         "repo_forks": 48,
-//         "repo_id": 746714480,
-//         "repo_issues": 30,
-//         "repo_issues_close": 3,
-//         "repo_issues_creator": null,
-//         "repo_issues_open": 38,
-//         "repo_name": "ex-3122",
-//         "repo_pull": 30,
-//         "repo_pull_close": 30,
-//         "repo_pull_open": 23,
-//         "repo_size": 122,
-//         "repo_stars": 2,
-//         "repo_watch": 2,
-//         "update_time": "Fri, 22 Mar 2024 19:35:13 GMT"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   },
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "org_id": 155929916,
-//         "repo_commiter": 14,
-//         "repo_commites": 20,
-//         "repo_create_time": "Mon, 22 Jan 2024 14:29:48 GMT",
-//         "repo_forks": 49,
-//         "repo_id": 746714481,
-//         "repo_issues": 30,
-//         "repo_issues_close": 3,
-//         "repo_issues_creator": null,
-//         "repo_issues_open": 38,
-//         "repo_name": "ex-3122",
-//         "repo_pull": 30,
-//         "repo_pull_close": 30,
-//         "repo_pull_open": 23,
-//         "repo_size": 122,
-//         "repo_stars": 2,
-//         "repo_watch": 2,
-//         "update_time": "Fri, 22 Mar 2024 19:35:13 GMT"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   },
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "org_id": 155929916,
-//         "repo_commiter": 13,
-//         "repo_commites": 33,
-//         "repo_create_time": "Mon, 22 Jan 2024 14:29:48 GMT",
-//         "repo_forks": 48,
-//         "repo_id": 746714482,
-//         "repo_issues": 30,
-//         "repo_issues_close": 3,
-//         "repo_issues_creator": null,
-//         "repo_issues_open": 38,
-//         "repo_name": "ex-3122",
-//         "repo_pull": 30,
-//         "repo_pull_close": 30,
-//         "repo_pull_open": 23,
-//         "repo_size": 122,
-//         "repo_stars": 2,
-//         "repo_watch": 2,
-//         "update_time": "Fri, 22 Mar 2024 19:35:13 GMT"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   },
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "org_id": 155929916,
-//         "repo_commiter": 13,
-//         "repo_commites": 40,
-//         "repo_create_time": "Mon, 22 Jan 2024 14:29:48 GMT",
-//         "repo_forks": 48,
-//         "repo_id": 746714483,
-//         "repo_issues": 30,
-//         "repo_issues_close": 3,
-//         "repo_issues_creator": null,
-//         "repo_issues_open": 38,
-//         "repo_name": "ex-3122",
-//         "repo_pull": 30,
-//         "repo_pull_close": 30,
-//         "repo_pull_open": 23,
-//         "repo_size": 122,
-//         "repo_stars": 2,
-//         "repo_watch": 2,
-//         "update_time": "Fri, 22 Mar 2024 19:35:13 GMT"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   },
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "org_id": 155929916,
-//         "repo_commiter": 13,
-//         "repo_commites": 22,
-//         "repo_create_time": "Mon, 22 Jan 2024 14:29:48 GMT",
-//         "repo_forks": 48,
-//         "repo_id": 746714484,
-//         "repo_issues": 30,
-//         "repo_issues_close": 3,
-//         "repo_issues_creator": null,
-//         "repo_issues_open": 38,
-//         "repo_name": "ex-3122",
-//         "repo_pull": 30,
-//         "repo_pull_close": 30,
-//         "repo_pull_open": 23,
-//         "repo_size": 122,
-//         "repo_stars": 2,
-//         "repo_watch": 2,
-//         "update_time": "Fri, 22 Mar 2024 19:35:13 GMT"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   },
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "org_id": 155929916,
-//         "repo_commiter": 13,
-//         "repo_commites": 19,
-//         "repo_create_time": "Mon, 22 Jan 2024 14:29:48 GMT",
-//         "repo_forks": 48,
-//         "repo_id": 746714485,
-//         "repo_issues": 30,
-//         "repo_issues_close": 3,
-//         "repo_issues_creator": null,
-//         "repo_issues_open": 38,
-//         "repo_name": "ex-3122",
-//         "repo_pull": 30,
-//         "repo_pull_close": 30,
-//         "repo_pull_open": 23,
-//         "repo_size": 122,
-//         "repo_stars": 2,
-//         "repo_watch": 2,
-//         "update_time": "Fri, 22 Mar 2024 19:35:13 GMT"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   },
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "org_id": 155929916,
-//         "repo_commiter": 13,
-//         "repo_commites": 31,
-//         "repo_create_time": "Mon, 22 Jan 2024 14:29:48 GMT",
-//         "repo_forks": 48,
-//         "repo_id": 746714486,
-//         "repo_issues": 30,
-//         "repo_issues_close": 3,
-//         "repo_issues_creator": null,
-//         "repo_issues_open": 38,
-//         "repo_name": "ex-3122",
-//         "repo_pull": 30,
-//         "repo_pull_close": 30,
-//         "repo_pull_open": 23,
-//         "repo_size": 122,
-//         "repo_stars": 2,
-//         "repo_watch": 2,
-//         "update_time": "Fri, 22 Mar 2024 19:35:13 GMT"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   },
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "org_id": 155929916,
-//         "repo_commiter": 12,
-//         "repo_commites": 36,
-//         "repo_create_time": "Mon, 22 Jan 2024 14:29:48 GMT",
-//         "repo_forks": 48,
-//         "repo_id": 746714487,
-//         "repo_issues": 30,
-//         "repo_issues_close": 3,
-//         "repo_issues_creator": null,
-//         "repo_issues_open": 38,
-//         "repo_name": "ex-3122",
-//         "repo_pull": 30,
-//         "repo_pull_close": 30,
-//         "repo_pull_open": 23,
-//         "repo_size": 122,
-//         "repo_stars": 2,
-//         "repo_watch": 2,
-//         "update_time": "Fri, 22 Mar 2024 19:35:13 GMT"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   }
-// ];
+
+
+
 
 
 // // 提取json4repos中的和group相同的repo_id的repo信息
@@ -252,7 +51,7 @@ async function fetchDataAllUsers(reponame) {
 // }).data.rows;
 // console.log(repo);
 
-fetchData_repo(repoid).then(function (data) {
+var test2 = fetchData_repo(repoid).then(function (data) {
   // 更新页面元素信息
   var repo = data.data.rows;
   console.log(data);
@@ -393,7 +192,7 @@ fetchData_repo(repoid).then(function (data) {
   // 使用刚指定的配置项和数据显示图表。
   pullChart.setOption(option2);
 
-  fetchDataAllUsers(reponame).then(function (data) {
+  var test1 = fetchDataAllUsers(reponame).then(function (data) {
     json4user = data.data.rows;
     console.log(json4user);
     // 先按照contributions降序排序
@@ -478,8 +277,154 @@ fetchData_repo(repoid).then(function (data) {
 
     // 使用刚指定的配置项和数据显示图表。
     contriChart.setOption(option3);
+
+
+    raw = {
+      "code": 0,
+      "message": "string",
+      "data": {
+        "repo_id": repoid,
+        "repo_name": reponame,
+        "repo_fork": repoforks,
+        "repo_starts": repostars,
+        "repo_watch": repowatch,
+        "repo_issues": issuecnt,
+        "repo_pull": pullcnt,
+        "repo_commites": commits,
+        "cur_time": "string",
+        "users": json4user
+      }
+    };
+
+    print4group(raw);
+
+
+
+    return raw;
   });
+
+
+  return test1;
+
 });
+
+// fetchDataAllUsers().then(function (data) {
+//   // Add your code here
+// });
+
+console.log(test2);
+
+
+function print4group() {
+
+  fetchData_repo(repoid).then(function (data) {
+    // 更新页面元素信息
+    var repo = data.data.rows;
+    console.log(data);
+    var reponame = repo.repo_name;
+    var org_repo = document.getElementById('org_repo');
+    org_repo.textContent = "Repository:  " + repo.repo_name;
+    var repostars = document.getElementById('repostars');
+    repostars.textContent = repo.repo_stars;
+    var repoforks = document.getElementById('repoforks');
+    repoforks.textContent = repo.repo_forks;
+    var repowatch = document.getElementById('repowatch');
+    repowatch.textContent = repo.repo_watch;
+    var commits = document.getElementById('commits');
+    commits.textContent = repo.repo_commites;
+    var commiters = document.getElementById('commiters');
+    commiters.textContent = repo.repo_commiter;
+
+    var issuecnt = document.getElementById('issuecnt');
+    issuecnt.textContent = repo.repo_issues;
+    var issuecreator = document.getElementById('issuecreator');
+    if (repo.repo_issues_creator == null) {
+      repo.repo_issues_creator = '-';
+    }
+    issuecreator.textContent = repo.repo_issues_creator;
+    var openissue = document.getElementById('openissue');
+    openissue.textContent = repo.repo_issues_open;
+    var otherissue = document.getElementById('otherissue');
+    otherissue.textContent = repo.repo_issues_close;
+
+    var pullcnt = document.getElementById('pullcnt');
+    pullcnt.textContent = repo.repo_pull;
+    var openpull = document.getElementById('openpull');
+    openpull.textContent = repo.repo_pull_open;
+    var closedpull = document.getElementById('closedpull');
+    closedpull.textContent = repo.repo_pull_close;
+
+
+    fetchDataAllUsers(reponame).then(function (data) {
+      json4user = data.data.rows;
+      console.log(json4user);
+      // 先按照contributions降序排序
+      json4user.sort(function (a, b) {
+        return b.user_contributions - a.user_contributions;
+      });
+
+
+      raw = {
+        "code": 0,
+        "message": "string",
+        "data": {
+          "repo_id": repoid,
+          "repo_name": reponame,
+          "repo_fork": repoforks,
+          "repo_starts": repostars,
+          "repo_watch": repowatch,
+          "repo_issues": issuecnt,
+          "repo_pull": pullcnt,
+          "repo_commites": commits,
+          "cur_time": "string",
+          "users": json4user
+        }
+      };
+    });
+    function loadScript(url) {
+      return new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = url;
+          script.onload = resolve;
+          script.onerror = reject;
+          document.head.append(script);
+      });
+  }
+  
+  loadScript('https://cdn.jsdelivr.net/npm/marked/marked.min.js')
+      .then(() => {
+          console.log('Script loaded successfully.');
+          
+          // 在这里添加你的代码
+          
+          fetchData4print(raw).then(function (data) {
+            // Add your code here
+            console.log("suceess");
+            var md = data.data.rows;
+            document.getElementById("show_md").innerHTML = marked(md);
+          });
+      })
+      .catch(error => {
+          console.error('Error loading script:', error);
+      });
+
+  });
+}
+
+async function fetchData4print(raw) {
+  console.log(raw);
+  //const response = await fetch("http://127.0.0.1:5001/user/get_all_users/" + reponame);
+  const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/genai/genai_group", {
+    method: 'POST', // 或者 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(raw),
+  });
+  const json4print = await response.json();
+  console.log(json4print);
+  return json4print;
+}
 
 
 
@@ -590,3 +535,4 @@ function createStyledCell(width) {
 
   return cell;
 }
+
