@@ -25,9 +25,9 @@ async function fetchResult(question) {
 
   var raw = JSON.stringify({
     "code": 0,
-    "message": question,
+    "message": "string",
     "data": {
-      "text": "string"
+      "text": question
     }
   });
 
@@ -46,7 +46,9 @@ async function fetchResult(question) {
     console.log(typeof(data));
     var dom = document.getElementById('content');
     //console.log(data.data.rows);
-    dom.innerHTML = data.data.rows;
+    var formattedText = data.data.rows.replace(/\n/g, "<br>");
+    dom.innerHTML = formattedText;
+    
   } catch (error) {
     console.log('error', error);
     var dom = document.getElementById('content');
