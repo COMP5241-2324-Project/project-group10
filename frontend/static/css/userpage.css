@@ -16,6 +16,14 @@
     padding: 0;
 }
 
+a {
+    color: #b8c2cc;
+}
+
+a:visited {
+    color: #b8c2cc;
+}
+
 input,
 button {
     outline: none;
@@ -259,7 +267,17 @@ main {
     padding: .5rem;
     border-radius: 3px;
 }
+#show_md_container {
+    border: 1px solid white;
+    padding: 10px;
+    background-color: #0B1218;
+    display: none;
+  }
+  
+  #show_md {
+    color: white;
 
+  }
 
 
 /* 表格的整体框架*/

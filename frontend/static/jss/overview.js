@@ -1,43 +1,11 @@
-// var myHeaders = new Headers();
-// myHeaders.append("User-Agent", "Apifox/1.0.0 (https://apifox.com)");
-
-// var requestOptions = {
-//   method: 'GET',
-//   headers: myHeaders,
-//   //de: 'no-cors',
-//   redirect: 'follow'
-// };
-// var json4org;
-// fetch("http://10.12.7.177:5000/org/get_orgs/bot", requestOptions)
-//    .then(response => response.json())
-//    .then(result => console.log(result))
-//    .catch(error => console.log('error', error));
 
 
-// fetch("http://10.12.7.177:5000/org/get_orgs/bot", requestOptions)
-//   .then(function (response) {
-//     if (response.ok) {
-//       return response.json();
-//     }
-//     throw new Error('Network response was not ok.');
-//   })
-
-//   .then(function (data) {
-
-//     //console.log(orgName);
-//   })
-//   .catch(function (error) {
-//     // 处理错误
-//     console.log(error);
-//   });
-
-
-
-
-//前端输入教师名称
 async function fetchData_org() {
   // const response = await fetch("http://172.16.5.4:5001/org/get_orgs/bot);
-  const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/org/get_orgs/bot")
+  //const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5001.app.github.dev/org/get_orgs/bot")
+  const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/org/get_orgs/bot")
+  
+  //const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/org/get_orgs/bot")
   const json4org = await response.json();
   //console.log(json4org);
   return json4org;
@@ -45,7 +13,8 @@ async function fetchData_org() {
 }
 async function fetchDataAllRepos(orgID) {
   // const response = await fetch("http://172.16.5.4:5001/repo/get_all_repos/" + orgID);
-  const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/repo/get_all_repos/" + orgID);
+  const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/repo/get_all_repos/" + orgID);
+  //const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/repo/get_all_repos/" + orgID);
   const json4org = await response.json();
   return json4org;
 }
@@ -54,7 +23,7 @@ fetchData_org().then(function (data) {
   // 处理返回的JSON数据
   console.log(data.data);
   //选择第一个组织
-  var row0 = data.data.rows[1];
+  var row0 = data.data.rows[0];
   var orgID;
   var orgName;
   var orgRepoCount;

@@ -7,7 +7,11 @@
     , initial-scale=1.0">
     <title>Repo Page</title>
     <script src="https://kit.fontawesome.com/e48f71af9c.js" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/grouppage.css') }}">
+    <script>
+        
+    </script>
 </head>
 
 <body>
@@ -15,25 +19,19 @@
         <div class="sidemenu">
             <ul>
                 <li>
-                    <a href="/">
-                        <span class="fas fa-home"></span>
-                        <span>MainPage</span>
-                    </a>
-                </li>
-                <li>
                     <a href="#" class="active">
                         <span class="fa fa-group"></span>
                         <span>GroupInfo</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <span class="fas fa-address-card"></span>
-                        <span>StudentInfo</span>
+                    <a href="./overview.html">
+                        <span class="fas fa-backward"></span>
+                        <span>Return Main</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" onclick="doPrint()">
                         <span class="fas fa-print"></span>
                         <span>Print</span>
                     </a>
@@ -120,12 +118,6 @@
                             </div>
                             <div class="card-issue">
                                 <div class="card-info-small">
-                                    <h2 id="issuecreator">19</h2>
-                                    <small>Creators</small>
-                                </div>
-                            </div>
-                            <div class="card-issue">
-                                <div class="card-info-small">
                                     <h2 id="openissue">45</h2>
                                     <small>Open Issues</small>
                                 </div>
@@ -200,13 +192,23 @@
                     <div class="right2">
                         <div id="contrichart" style="height: 300px;"></div>
                     </div>
-
+                
+                    
+                    
+                </div>
+           
+                <div id="show_md_container">
+                    <div id="show_md">
+                        <!-- 这里是 Markdown 返回的文本 -->
+                    </div>
                 </div>
 
+              
             </div>
         </main>
     </div>
     <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@3.0.0/marked.min.js"></script>
     <script src="{{ url_for('static', filename='jss/grouppage.js') }}"></script>
 </body>
 

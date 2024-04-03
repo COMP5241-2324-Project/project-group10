@@ -16,6 +16,14 @@
     padding: 0;
 }
 
+a {
+    color: #b8c2cc;
+}
+
+a:visited {
+    color: #b8c2cc;
+}
+
 input, button {
     outline: none;
     
@@ -274,17 +282,17 @@ main {
 
 .left2-content {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     padding: .5rem;
     border-radius: 3px;
 }
 .card-issue {
-    margin: .1rem .5rem;
+    margin-top: 1.5rem;
     padding: 1rem;
     border-radius: 3px;
 }
 .card-pull {
-    margin: .1rem .5rem;
+    margin-top: 1.5rem;
     padding: 1rem;
     border-radius: 3px;
 }
@@ -343,7 +351,7 @@ main {
 
 .left3-content {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     padding: .5rem;
     border-radius: 3px;
 }
@@ -400,6 +408,17 @@ main {
     margin: auto;
 }
 
+#show_md_container {
+    border: 1px solid white;
+    padding: 10px;
+    background-color: #0B1218;
+    display: none;
+  }
+  
+  #show_md {
+    color: white;
+
+  }
 #user-list {
     table-layout: fixed;
     width: 100%; /* 设置表格宽度为100% */
