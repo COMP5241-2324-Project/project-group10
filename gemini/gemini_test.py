@@ -10,21 +10,26 @@ messages = [
     ]
 response_model = model.generate_content(messages)
 
-def generate_std_score(std_name):
+def generate_std_score(user_name, user_contribution, user_commit, user_issue, user_pull):
+    print(1)
     messages.append({'role':'model',
                  'parts':[response_model.text]})
-
+    msg = "现在有一个学生{user_name}，该学生的贡献值为{user_contribution}，commits数为：{user_commit}，发布的issues数为：{user_issue}，pull的次数为：{user_pull}请生成一个学生文档".format(user_name=user_name,user_contribution=user_contribution,user_commit=user_commit,user_issue=user_issue,user_pull=user_pull)
+    print(msg)
     messages.append({'role':'user',
-                 'parts':[f"现在有一个学生{std_name}，请生成一个学生文档"]})
+                 'parts':[msg]})
     response = model.generate_content(messages).text
     return response
 
-def generate_group_score(group_name):
+def generate_group_score(repo_name,group_star,group_fork,group_commit,group_issue,group_watch,group_pull,user_list):
     messages.append({'role':'model',
                  'parts':[response_model.text]})
-
+    user_name_list = []
+    for user in user_list:
+        user_name_list.append(user['user_name'])
+    msg = "现在有一个小组{repo_name}，这个小组成员有{user_name_list},这个小组的GitHub star数为{group_star},fork数为{group_fork},commites数为{group_commit},issues数为{group_issue},watch数为{group_watch},pull数为{group_pull},请生成一个小组文档".format(repo_name=repo_name,group_star=group_star,group_fork=group_fork,group_commit=group_commit,group_issue=group_issue,group_watch=group_watch,group_pull=group_pull,user_name_list=user_name_list)
     messages.append({'role':'user',
-                 'parts':[f"现在有一个小组{group_name}，请生成一个小组文档"]})
+                 'parts':[msg]})
     response = model.generate_content(messages).text
     return response
 

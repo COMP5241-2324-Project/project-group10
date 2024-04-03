@@ -9,11 +9,21 @@ def generate_group_info():
     try:
         data = request.get_json()
         data = data['data']
-        repo_id = data['repo_id']
-        result = generate_group_score(repo_id)
+        repo_name = data['repo_name']
+        repo_fork = data['repo_fork']
+        repo_starts = data['repo_starts']
+        repo_watch = data['repo_watch']
+        repo_issues = data['repo_issues']
+        repo_pull = data['repo_pull']
+        repo_commites = data['repo_commites']
+        cur_time = data['cur_time']
+        users = data['users']
+        result = generate_group_score(repo_name,repo_starts,repo_fork,repo_commites,repo_issues,repo_watch,repo_pull,users)
         # Return the result
         return jsonify(code=200, flag=True, message="Group score generated successfully", data={"rows": result})
     except Exception as e:
+        data = request.get_json()
+        print(data)
         print(e)
         return jsonify(code=500, flag=False, message="Failed to generate group score")
 
@@ -22,8 +32,13 @@ def generate_std_info():
     try:
         data = request.get_json()
         data = data['data']
+        print(data)
         user_name = data['user_name']
-        result = generate_std_score(user_name)
+        user_contribution = data['user_contributions']
+        user_commit = data['user_commits']
+        user_issue = data['user_issuses_raised']
+        user_pull = data['user_pull_request']
+        result = generate_std_score(user_name, user_contribution, user_commit, user_issue, user_pull)
         # Return the result
         return jsonify(code=200, flag=True, message="Student score generated successfully", data={"rows": result})
     except Exception as e:
