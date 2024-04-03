@@ -24,7 +24,7 @@ fetchData_org().then(function (data) {
   // 处理返回的JSON数据
   console.log(data.data);
   //选择第一个组织
-  var row0 = data.data.rows[1];
+  var row0 = data.data.rows[0];
   var orgID;
   var orgName;
   var orgRepoCount;

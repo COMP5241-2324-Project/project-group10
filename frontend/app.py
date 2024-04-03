@@ -17,5 +17,9 @@ def g():
 @app.route('/userpage.html')
 def u():
     return  render_template("userpage.html")
+@app.route('/search.html')
+def s():
+    return  render_template("search.html")
+
 if __name__ == '__main__':
     app.run()

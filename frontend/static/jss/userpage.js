@@ -53,7 +53,8 @@ async function fetchDataAllActivities(userid) {
 async function fetchData4print(raw) {
   console.log(raw);
   //const response = await fetch("http://127.0.0.1:5001/user/get_all_users/" + reponame);
-  const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/genai/genai_student", {
+  const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/genai/genai_student", {
+  //const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/genai/genai_student", {
     //const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/genai/genai_student", {
     method: 'POST', // 或者 'PUT'
     headers: {

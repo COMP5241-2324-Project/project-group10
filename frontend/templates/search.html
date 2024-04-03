@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimun-scale=1, maximum-scale=1
+    , initial-scale=1.0">
+    <title>Main Page</title>
+    <script src="https://kit.fontawesome.com/e48f71af9c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidemenu">
+            <ul>
+                <li>
+                    <a href="./">
+                        <span class="fas fa-backward"></span>
+                        <span>Return Main</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="doPrint()">
+                        <span class="fas fa-print"></span>
+                        <span>Print</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="active">
+                        <span class="fas fa-search"></span>
+                        <span>Search</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-content">
+        <header>
+       <div class="searchcontainer">
+            <input id="keywords" type="text" placeholder="Enter your question..." class="search">
+            <button class="btnsearch" onclick="doSearch();">search</button>
+        </div>
+
+        </header>
+        <main>
+            <div class="cards">
+                <div class="answer">
+                    <div class="answer-head">
+                        <h3>Search Result :</h3>
+                    </div>
+                    <div class="answer-content">
+                        <span id="content"></span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="{{ url_for('static', filename='jss/search.js') }}"></script>
+
+</body>
+
+</html>
