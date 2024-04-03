@@ -46,6 +46,22 @@ async function fetchDataAllUsers(reponame) {
 }
 
 
+async function fetchData4print(raw) {
+  console.log(raw);
+  //const response = await fetch("http://127.0.0.1:5001/user/get_all_users/" + reponame);
+  const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/genai/genai_group", {
+    //const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/genai/genai_group", {
+    method: 'POST', // 或者 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(raw),
+  });
+  const json4print = await response.json();
+  console.log(json4print);
+  return json4print;
+}
+
 
 
 
@@ -55,7 +71,7 @@ async function fetchDataAllUsers(reponame) {
 // }).data.rows;
 // console.log(repo);
 
-var test2 = fetchData_repo(repoid).then(function (data) {
+fetchData_repo(repoid).then(function (data) {
   // 更新页面元素信息
   var repo = data.data.rows;
   console.log(data);
@@ -192,7 +208,7 @@ var test2 = fetchData_repo(repoid).then(function (data) {
   // 使用刚指定的配置项和数据显示图表。
   pullChart.setOption(option2);
 
-  var test1 = fetchDataAllUsers(reponame).then(function (data) {
+  fetchDataAllUsers(reponame).then(function (data) {
     json4user = data.data.rows;
     console.log(json4user);
     // 先按照contributions降序排序
@@ -277,35 +293,112 @@ var test2 = fetchData_repo(repoid).then(function (data) {
     // 使用刚指定的配置项和数据显示图表。
     contriChart.setOption(option3);
 
-
     raw = {
       "code": 0,
       "message": "string",
       "data": {
-        "repo_id": repoid,
-        "repo_name": reponame,
-        "repo_fork": repoforks,
-        "repo_starts": repostars,
-        "repo_watch": repowatch,
-        "repo_issues": issuecnt,
-        "repo_pull": pullcnt,
-        "repo_commites": commits,
+        "repo_id": repo.repo_id,
+        "repo_name": repo.repo_name,
+        "repo_fork": repo.repo_forks,
+        "repo_starts": repo.repo_stars,
+        "repo_watch": repo.repo_watch,
+        "repo_issues": repo.repo_issues,
+        "repo_pull": repo.repo_pull,
+        "repo_commites": repo.repo_commites,
         "cur_time": "string",
         "users": json4user
       }
     };
 
-    print4group(raw);
+    fetchData4print(raw).then(function (data) {
+
+      console.log("suceess:" + data);
+
+      var md = data.data.rows;
+      console.log(md);
+      //md = json4test.data.rows;
+
+      document.getElementById("show_md").innerHTML = marked(md);
+      document.getElementById("show_md_container").style.display = "block";
+
+      // document.getElementById("print").addEventListener("click", function() {
+      //   document.getElementById("show_md_container").style.display = "block";
+      //});
+
+    });
 
 
-
-    return raw;
   });
 
 
-  return test1;
+
 
 });
+
+
+function print4group() {
+
+  fetchData_repo(repoid).then(function (data) {
+    // 更新页面元素信息
+    var repo = data.data.rows;
+    var reponame = repo.repo_name;
+
+    fetchDataAllUsers(reponame).then(function (data) {
+      json4user = data.data.rows;
+      console.log(json4user);
+      // 先按照contributions降序排序
+      json4user.sort(function (a, b) {
+        return b.user_contributions - a.user_contributions;
+      });
+
+
+      raw = {
+        "code": 0,
+        "message": "string",
+        "data": {
+          "repo_id": repo.repo_id,
+          "repo_name": repo.repo_name,
+          "repo_fork": repo.repo_forks,
+          "repo_starts": repo.repo_stars,
+          "repo_watch": repo.repo_watch,
+          "repo_issues": repo.repo_issues,
+          "repo_pull": repo.repo_pull,
+          "repo_commites": repo.repo_commites,
+          "cur_time": "string",
+          "users": json4user
+        }
+      };
+
+      fetchData4print(raw).then(function (data) {
+        // Add your code here
+        // var json4test = {
+        //   "code": 200,
+        //   "data": {
+        //     "rows": "**小组 1234 GitHub 分析文档**\n\n**总体小组得分：8.5/10**\n\n**指标细分：**\n\n* 提交数量：9/10\n* 问题数量：8/10\n* 拉取请求数量：9/10\n* 版本数量：9/10\n\n**定性评估：**\n\n小组 1234 表现出色，在所有指标上都获得了很高的分数。他们经常提交高质量的代码，及时解决错误，并有效协作。他们的代码审查流程也很完善，拉取请求数量多，表明小组成员之间存在良好的沟通和协作。\n\n小组在以下方面表现尤为出色：\n\n* 他们能够在整个项目中保持一致的高提交频率。\n* 他们有效地使用问题跟踪器来记录错误并跟踪进度。\n* 他们通过清晰的沟通和及时的反馈积极参与代码审查。\n\n**改进建议：**\n\n虽然小组表现出色，但仍有一些领域可以改进：\n\n* 尝试增加提交的评论和文档，以提高代码的可读性和可维护性。\n* 探索使用自动化测试工具来提高代码质量。\n* 继续鼓励小组成员积极参与代码审查，以促进代码的改进和学习。\n\n**结论：**\n\n小组 1234 是一个表现出色的小组，在 GitHub 上展示了很高的产出、协作和代码质量。通过继续努力改进其流程并探索新的工具和技术，他们可以进一步提高其绩效并在未来项目中取得更大的成功。"
+        //   },
+        //   "flag": true,
+        //   "message": "Group score generated successfully"
+        // };
+        console.log("suceess:" + data);
+
+        var md = data.data.rows;
+        console.log(md);
+        //md = json4test.data.rows;
+
+        document.getElementById("show_md").innerHTML = marked(md);
+        document.getElementById("show_md_container").style.display = "block";
+
+        // document.getElementById("print").addEventListener("click", function() {
+        //   document.getElementById("show_md_container").style.display = "block";
+        //});
+
+      });
+
+    });
+
+
+  });
+}
 
 function doPrint() {
   var dom = document.getElementById('show_md');
@@ -324,115 +417,6 @@ function doPrint() {
 
   return false;
 }
-
-function print4group() {
-
-  fetchData_repo(repoid).then(function (data) {
-    // 更新页面元素信息
-    var repo = data.data.rows;
-    var reponame = repo.repo_name;
-    var org_repo = document.getElementById('org_repo');
-    org_repo.textContent = "Repository:  " + repo.repo_name;
-    var repostars = document.getElementById('repostars');
-    repostars.textContent = repo.repo_stars;
-    var repoforks = document.getElementById('repoforks');
-    repoforks.textContent = repo.repo_forks;
-    var repowatch = document.getElementById('repowatch');
-    repowatch.textContent = repo.repo_watch;
-    var commits = document.getElementById('commits');
-    commits.textContent = repo.repo_commites;
-    var commiters = document.getElementById('commiters');
-    commiters.textContent = repo.repo_commiter;
-
-    var issuecnt = document.getElementById('issuecnt');
-    issuecnt.textContent = repo.repo_issues;
-
-    var openissue = document.getElementById('openissue');
-    openissue.textContent = repo.repo_issues_open;
-    var otherissue = document.getElementById('otherissue');
-    otherissue.textContent = repo.repo_issues_close;
-
-    var pullcnt = document.getElementById('pullcnt');
-    pullcnt.textContent = repo.repo_pull;
-    var openpull = document.getElementById('openpull');
-    openpull.textContent = repo.repo_pull_open;
-    var closedpull = document.getElementById('closedpull');
-    closedpull.textContent = repo.repo_pull_close;
-
-
-    fetchDataAllUsers(reponame).then(function (data) {
-      json4user = data.data.rows;
-      console.log(json4user);
-      // 先按照contributions降序排序
-      json4user.sort(function (a, b) {
-        return b.user_contributions - a.user_contributions;
-      });
-
-
-      raw = {
-        "code": 0,
-        "message": "string",
-        "data": {
-          "repo_id": repoid,
-          "repo_name": reponame,
-          "repo_fork": repoforks,
-          "repo_starts": repostars,
-          "repo_watch": repowatch,
-          "repo_issues": issuecnt,
-          "repo_pull": pullcnt,
-          "repo_commites": commits,
-          "cur_time": "string",
-          "users": json4user
-        }
-      };
-    });
-
-    fetchData4print(raw).then(function (data) {
-      // Add your code here
-      // var json4test = {
-      //   "code": 200,
-      //   "data": {
-      //     "rows": "**小组 1234 GitHub 分析文档**\n\n**总体小组得分：8.5/10**\n\n**指标细分：**\n\n* 提交数量：9/10\n* 问题数量：8/10\n* 拉取请求数量：9/10\n* 版本数量：9/10\n\n**定性评估：**\n\n小组 1234 表现出色，在所有指标上都获得了很高的分数。他们经常提交高质量的代码，及时解决错误，并有效协作。他们的代码审查流程也很完善，拉取请求数量多，表明小组成员之间存在良好的沟通和协作。\n\n小组在以下方面表现尤为出色：\n\n* 他们能够在整个项目中保持一致的高提交频率。\n* 他们有效地使用问题跟踪器来记录错误并跟踪进度。\n* 他们通过清晰的沟通和及时的反馈积极参与代码审查。\n\n**改进建议：**\n\n虽然小组表现出色，但仍有一些领域可以改进：\n\n* 尝试增加提交的评论和文档，以提高代码的可读性和可维护性。\n* 探索使用自动化测试工具来提高代码质量。\n* 继续鼓励小组成员积极参与代码审查，以促进代码的改进和学习。\n\n**结论：**\n\n小组 1234 是一个表现出色的小组，在 GitHub 上展示了很高的产出、协作和代码质量。通过继续努力改进其流程并探索新的工具和技术，他们可以进一步提高其绩效并在未来项目中取得更大的成功。"
-      //   },
-      //   "flag": true,
-      //   "message": "Group score generated successfully"
-      // };
-      console.log("suceess:" + data);
-
-      var md = data.data.rows;
-      //md = json4test.data.rows;
-
-      document.getElementById("show_md").innerHTML = marked(md);
-      document.getElementById("show_md_container").style.display = "block";
-
-      // document.getElementById("print").addEventListener("click", function() {
-      //   document.getElementById("show_md_container").style.display = "block";
-      //});
-
-    });
-
-
-
-  });
-}
-
-async function fetchData4print(raw) {
-  console.log(raw);
-  //const response = await fetch("http://127.0.0.1:5001/user/get_all_users/" + reponame);
-  //const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/genai/genai_group", {
-  //const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/genai/genai_group", {
-    const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/genai/genai_group/", {
-    method: 'POST', // 或者 'PUT'
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(raw),
-  });
-  const json4print = await response.json();
-  console.log(json4print);
-  return json4print;
-}
-
 
 function createStyledCell(width) {
   // 创建一个新的表格单元格

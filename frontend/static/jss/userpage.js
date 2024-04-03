@@ -50,6 +50,22 @@ async function fetchDataAllActivities(userid) {
   return json4org;
 }
 
+async function fetchData4print(raw) {
+  console.log(raw);
+  //const response = await fetch("http://127.0.0.1:5001/user/get_all_users/" + reponame);
+  const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/genai/genai_student", {
+    //const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/genai/genai_student", {
+    method: 'POST', // 或者 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(raw),
+  });
+  const json4print = await response.json();
+  console.log(json4print);
+  return json4print;
+}
+
 fetchData_user(userid, reponame).then(function (data) {
   var userDetails = data.data.rows;
   console.log(userDetails);
@@ -79,8 +95,8 @@ fetchData_user(userid, reponame).then(function (data) {
 
   var commitsElement = document.getElementById("commits");
   commitsElement.textContent = userCommits;
-  
-  
+
+
 
   var issuesRaisedElement = document.getElementById("issuesRaised");
   issuesRaisedElement.textContent = userIssuesRaised;
@@ -265,27 +281,40 @@ fetchData_user(userid, reponame).then(function (data) {
       commitTable.style.display = "none";
       pullTable.style.display = "none";
     });
+    raw = {
+      "code": 0,
+      "message": "string",
+      "data": {
+        "user_id": userId,
+        "user_name": userName,
+        "user_team_name": reponame,
+        "user_contributions": userContributions,
+        "user_commits": userCommits,
+        "user_issuses_raised": userIssuesRaised,
+        "user_pull_request": userPullRequests
+      }
+    };
 
+    fetchData4print(raw).then(function (data) {
+      console.log(raw);
+      console.log("suceess:" + data);
+
+      var md = data.data.rows;
+
+
+      document.getElementById("show_md").innerHTML = marked(md);
+      document.getElementById("show_md_container").style.display = "block";
+
+
+    });
 
   });
-  raw = {
-    "code": 0,
-    "message": "string",
-    "data": {
-      "user_id": userId,
-      "user_name": "string",
-      "user_team_name": "string",
-      "user_contributions": userContributions,
-      "user_commits": userCommits,
-      "user_issuses_raised": userIssuesRaised,
-      "user_pull_request": userPullRequests,
-      "cur_time": "string"
-    }
-  };
-  print4group(raw);
+
 
 
 });
+
+
 
 function doPrint() {
   var dom = document.getElementById('show_md');
