@@ -32,10 +32,10 @@
         </li>
         <li>
           <a href="./overview.html">
-              <span class="fas fa-backward"></span>
-              <span>Return Main</span>
+            <span class="fas fa-backward"></span>
+            <span>Return Main</span>
           </a>
-      </li>
+        </li>
         <li>
           <a href="#" onclick="doPrint()">
             <span class="fas fa-print"></span>
@@ -99,20 +99,20 @@
               </div>
               <div class="card">
                 <div class="card-info">
-                  <h2 id="pullRequests">168</h2>
-                  <p>Pull Requests</p>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-info">
-                  <h2 id="commits">-</h2>
+                  <h2 id="commits">10</h2>
                   <p>Commits</p>
                 </div>
               </div>
               <div class="card">
                 <div class="card-info">
-                  <h2 id="issuesRaised">45</h2>
+                  <h2 id="issuesRaised">-</h2>
                   <p>Issues Raised</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-info">
+                  <h2 id="createEvent">45</h2>
+                  <p>Created Events</p>
                 </div>
               </div>
             </div>
@@ -127,36 +127,32 @@
             <div class="right2-content">
 
               <div class="btn4table">
-                <button id="issueButton">ISSUE</button>
                 <button id="commitButton">COMMIT</button>
-                <button id="pullButton">PULL REQUEST</button>
+                <button id="issueButton">ISSUE</button>
+                <button id="pullButton">CREATE_EVENT</button>
               </div>
               <div class="table1">
-                <div id="issueTable"></div>
                 <div id="commitTable"></div>
+                <div id="issueTable"></div>
                 <div id="pullTable"></div>
               </div>
 
             </div>
 
           </div>
-          <div id="show_md_container">
-            <div id="show_md">
-                <!-- 这里是 Markdown 返回的文本 -->
-            </div>
+
         </div>
-
-
-
-          <script src="{{ url_for('static', filename='jss/userpage.js') }}"></script>
-          <script src="https://cdn.jsdelivr.net/npm/marked@3.0.0/marked.min.js"></script>
-
+        
+      </div>
+      <div id="show_md_container">
+        <div id="show_md">
+          <!-- 这里是 Markdown 返回的文本 -->
         </div>
       </div>
-
     </main>
   </div>
-
+  <script src="{{ url_for('static', filename='jss/userpage.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@3.0.0/marked.min.js"></script>
 </body>
 
 </html>

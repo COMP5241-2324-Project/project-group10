@@ -25,7 +25,9 @@ console.log(raw);
 
 async function fetchData_repo(repoid) {
   //const response = await fetch("http://127.0.0.1:5001/repo/get_repo/1932083" );
-  const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/repo/get_repo/" + repoid);
+  //const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/repo/get_repo/" + repoid);
+  const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/repo/get_repo/" + repoid);
+  
   //const response = await fetch("http://127.0.0.1:5001/repo/get_repo/" + repoid);
   //const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/repo/get_repo/" + repoid);
   const json4org = await response.json();
@@ -36,7 +38,7 @@ async function fetchData_repo(repoid) {
 async function fetchDataAllUsers(reponame) {
 
   //const response = await fetch("http://127.0.0.1:5001/user/get_all_users/" + reponame);
-  const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/user/get_all_users/" + reponame);
+  const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/user/get_all_users/" + reponame);
   //const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/user/get_all_users/" + reponame);
   const json4org = await response.json();
   return json4org;
@@ -72,11 +74,7 @@ var test2 = fetchData_repo(repoid).then(function (data) {
 
   var issuecnt = document.getElementById('issuecnt');
   issuecnt.textContent = repo.repo_issues;
-  var issuecreator = document.getElementById('issuecreator');
-  if (repo.repo_issues_creator == null) {
-    repo.repo_issues_creator = '-';
-  }
-  issuecreator.textContent = repo.repo_issues_creator;
+
   var openissue = document.getElementById('openissue');
   openissue.textContent = repo.repo_issues_open;
   var otherissue = document.getElementById('otherissue');
@@ -206,7 +204,6 @@ var test2 = fetchData_repo(repoid).then(function (data) {
     for (var i = 0; i < json4user.length; i++) {
 
       var rowData = json4user[i];
-      console.log(rowData);
       var dataRow = document.createElement("tr");
 
       var dataCell1 = createStyledCell('33.3%');
@@ -310,11 +307,11 @@ var test2 = fetchData_repo(repoid).then(function (data) {
 });
 
 function doPrint() {
-  var dom = document.getElementById ('show_md');
-  var win = window.open ('', '_blank', '');
-  win.document.write (dom.outerHTML);
-  win.print ();
-  win.close ();
+  var dom = document.getElementById('show_md');
+  var win = window.open('', '_blank', '');
+  win.document.write(dom.outerHTML);
+  win.print();
+  win.close();
 
   // bdhtml=window.document.body.innerHTML;
   // var jubuData = document.getElementById("show_md").innerHTML;
@@ -348,11 +345,7 @@ function print4group() {
 
     var issuecnt = document.getElementById('issuecnt');
     issuecnt.textContent = repo.repo_issues;
-    var issuecreator = document.getElementById('issuecreator');
-    if (repo.repo_issues_creator == null) {
-      repo.repo_issues_creator = '-';
-    }
-    issuecreator.textContent = repo.repo_issues_creator;
+
     var openissue = document.getElementById('openissue');
     openissue.textContent = repo.repo_issues_open;
     var otherissue = document.getElementById('otherissue');
@@ -414,7 +407,7 @@ function print4group() {
       // document.getElementById("print").addEventListener("click", function() {
       //   document.getElementById("show_md_container").style.display = "block";
       //});
-      
+
     });
 
 
@@ -425,8 +418,8 @@ function print4group() {
 async function fetchData4print(raw) {
   console.log(raw);
   //const response = await fetch("http://127.0.0.1:5001/user/get_all_users/" + reponame);
-  const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/genai/genai_group", {
-  //const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/genai/genai_group", {
+  const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/genai/genai_group", {
+    //const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/genai/genai_group", {
     method: 'POST', // 或者 'PUT'
     headers: {
       'Content-Type': 'application/json',
@@ -438,100 +431,6 @@ async function fetchData4print(raw) {
   return json4print;
 }
 
-
-
-
-
-
-
-//获取该组内的用户信息
-// json4user = [
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "repo": "ex-3122",
-//         "update_time": "Fri, 22 Mar 2024 19:36:20 GMT",
-//         "user_contributions": 1,
-//         "user_id": 157114473,
-//         "user_issuses_raised": 0,
-//         "user_name": "bot1",
-//         "user_pull_requests": 0,
-//         "user_team_name": "Group 10"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   },
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "repo": "ex-3122",
-//         "update_time": "Fri, 22 Mar 2024 19:36:20 GMT",
-//         "user_contributions": 2,
-//         "user_id": 157114474,
-//         "user_issuses_raised": 1,
-//         "user_name": "bot2",
-//         "user_pull_requests": 0,
-//         "user_team_name": "Group 10"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   },
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "repo": "ex-3122",
-//         "update_time": "Fri, 22 Mar 2024 19:36:20 GMT",
-//         "user_contributions": 8,
-//         "user_id": 157114475,
-//         "user_issuses_raised": 3,
-//         "user_name": "bot3",
-//         "user_pull_requests": 4,
-//         "user_team_name": "Group 10"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   },
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "repo": "ex-3122",
-//         "update_time": "Fri, 22 Mar 2024 19:36:20 GMT",
-//         "user_contributions": 7,
-//         "user_id": 157114476,
-//         "user_issuses_raised": 3,
-//         "user_name": "bot4",
-//         "user_pull_requests": 3,
-//         "user_team_name": "Group 10"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   },
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "repo": "ex-3122",
-//         "update_time": "Fri, 22 Mar 2024 19:36:20 GMT",
-//         "user_contributions": 6,
-//         "user_id": 157114477,
-//         "user_issuses_raised": 5,
-//         "user_name": "bot5",
-//         "user_pull_requests": 1,
-//         "user_team_name": "Group 10"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   }
-// ];
 
 function createStyledCell(width) {
   // 创建一个新的表格单元格
