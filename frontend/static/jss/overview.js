@@ -3,8 +3,9 @@
 async function fetchData_org() {
   // const response = await fetch("http://172.16.5.4:5001/org/get_orgs/bot);
   //const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5001.app.github.dev/org/get_orgs/bot")
-  //const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/org/get_orgs/bot")
-  const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/org/get_orgs/bot")
+  const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/org/get_orgs/bot")
+  //const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/org/get_orgs/bot")
+  
   //const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/org/get_orgs/bot")
   const json4org = await response.json();
   //console.log(json4org);
@@ -13,8 +14,8 @@ async function fetchData_org() {
 }
 async function fetchDataAllRepos(orgID) {
   // const response = await fetch("http://172.16.5.4:5001/repo/get_all_repos/" + orgID);
-  const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/repo/get_all_repos/" + orgID);
-  //const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/repo/get_all_repos/" + orgID);
+  //const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/repo/get_all_repos/" + orgID);
+  const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/repo/get_all_repos/" + orgID);
   //const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/repo/get_all_repos/" + orgID);
   const json4org = await response.json();
   return json4org;
@@ -145,52 +146,6 @@ fetchData_org().then(function (data) {
 
 
 
-// var json4org = {
-//     "code": 200,
-//     "data": {
-//         "rows": [
-//             {
-//                 "org_commiter_num": 82,
-//                 "org_commits": 169,
-//                 "org_fork": 136,
-//                 "org_id": 155929916,
-//                 "org_issues": 69,
-//                 "org_name": "polyulabs",
-//                 "org_pull": 62,
-//                 "org_pull_close": 66,
-//                 "org_pull_open": 57,
-//                 "org_starts": 3,
-//                 "org_watch": 3,
-//                 "repo_count": 28,
-//                 "teacher_name": "bot",
-//                 "update_time": "Fri, 22 Mar 2024 19:37:24 GMT"
-//             },
-//             {
-//                 "org_commiter_num": 10,
-//                 "org_commits": 18,
-//                 "org_fork": 0,
-//                 "org_id": 159103350,
-//                 "org_issues": 31,
-//                 "org_name": "COMP5241-2324-Project",
-//                 "org_pull": 0,
-//                 "org_pull_close": 1,
-//                 "org_pull_open": 1,
-//                 "org_starts": 0,
-//                 "org_watch": 0,
-//                 "repo_count": 6,
-//                 "teacher_name": "bot",
-//                 "update_time": "Fri, 22 Mar 2024 19:31:31 GMT"
-//             }
-//         ],
-//         "total": 2
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-// };
-
-
-
-
 function createStyledHead(width) {
   // 创建一个新的表格表头单元格
   var cell = document.createElement('th');
@@ -218,225 +173,5 @@ function createStyledCell(width) {
 
   return cell;
 }
-
-
-// var json4repos = [
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "org_id": 155929916,
-//         "repo_commiter": 13,
-//         "repo_commites": 30,
-//         "repo_create_time": "Mon, 22 Jan 2024 14:29:48 GMT",
-//         "repo_forks": 48,
-//         "repo_id": 746714480,
-//         "repo_issues": 30,
-//         "repo_issues_close": 3,
-//         "repo_issues_creator": null,
-//         "repo_issues_open": 38,
-//         "repo_name": "ex-3122",
-//         "repo_pull": 30,
-//         "repo_pull_close": 30,
-//         "repo_pull_open": 23,
-//         "repo_size": 122,
-//         "repo_stars": 2,
-//         "repo_watch": 2,
-//         "update_time": "Fri, 22 Mar 2024 19:35:13 GMT"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   },
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "org_id": 155929916,
-//         "repo_commiter": 14,
-//         "repo_commites": 20,
-//         "repo_create_time": "Mon, 22 Jan 2024 14:29:48 GMT",
-//         "repo_forks": 49,
-//         "repo_id": 746714481,
-//         "repo_issues": 30,
-//         "repo_issues_close": 3,
-//         "repo_issues_creator": null,
-//         "repo_issues_open": 38,
-//         "repo_name": "ex-3122",
-//         "repo_pull": 30,
-//         "repo_pull_close": 30,
-//         "repo_pull_open": 23,
-//         "repo_size": 122,
-//         "repo_stars": 2,
-//         "repo_watch": 2,
-//         "update_time": "Fri, 22 Mar 2024 19:35:13 GMT"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   },
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "org_id": 155929916,
-//         "repo_commiter": 13,
-//         "repo_commites": 33,
-//         "repo_create_time": "Mon, 22 Jan 2024 14:29:48 GMT",
-//         "repo_forks": 48,
-//         "repo_id": 746714482,
-//         "repo_issues": 30,
-//         "repo_issues_close": 3,
-//         "repo_issues_creator": null,
-//         "repo_issues_open": 38,
-//         "repo_name": "ex-3122",
-//         "repo_pull": 30,
-//         "repo_pull_close": 30,
-//         "repo_pull_open": 23,
-//         "repo_size": 122,
-//         "repo_stars": 2,
-//         "repo_watch": 2,
-//         "update_time": "Fri, 22 Mar 2024 19:35:13 GMT"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   },
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "org_id": 155929916,
-//         "repo_commiter": 13,
-//         "repo_commites": 40,
-//         "repo_create_time": "Mon, 22 Jan 2024 14:29:48 GMT",
-//         "repo_forks": 48,
-//         "repo_id": 746714483,
-//         "repo_issues": 30,
-//         "repo_issues_close": 3,
-//         "repo_issues_creator": null,
-//         "repo_issues_open": 38,
-//         "repo_name": "ex-3122",
-//         "repo_pull": 30,
-//         "repo_pull_close": 30,
-//         "repo_pull_open": 23,
-//         "repo_size": 122,
-//         "repo_stars": 2,
-//         "repo_watch": 2,
-//         "update_time": "Fri, 22 Mar 2024 19:35:13 GMT"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   },
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "org_id": 155929916,
-//         "repo_commiter": 13,
-//         "repo_commites": 22,
-//         "repo_create_time": "Mon, 22 Jan 2024 14:29:48 GMT",
-//         "repo_forks": 48,
-//         "repo_id": 746714484,
-//         "repo_issues": 30,
-//         "repo_issues_close": 3,
-//         "repo_issues_creator": null,
-//         "repo_issues_open": 38,
-//         "repo_name": "ex-3122",
-//         "repo_pull": 30,
-//         "repo_pull_close": 30,
-//         "repo_pull_open": 23,
-//         "repo_size": 122,
-//         "repo_stars": 2,
-//         "repo_watch": 2,
-//         "update_time": "Fri, 22 Mar 2024 19:35:13 GMT"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   },
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "org_id": 155929916,
-//         "repo_commiter": 13,
-//         "repo_commites": 19,
-//         "repo_create_time": "Mon, 22 Jan 2024 14:29:48 GMT",
-//         "repo_forks": 48,
-//         "repo_id": 746714485,
-//         "repo_issues": 30,
-//         "repo_issues_close": 3,
-//         "repo_issues_creator": null,
-//         "repo_issues_open": 38,
-//         "repo_name": "ex-3122",
-//         "repo_pull": 30,
-//         "repo_pull_close": 30,
-//         "repo_pull_open": 23,
-//         "repo_size": 122,
-//         "repo_stars": 2,
-//         "repo_watch": 2,
-//         "update_time": "Fri, 22 Mar 2024 19:35:13 GMT"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   },
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "org_id": 155929916,
-//         "repo_commiter": 13,
-//         "repo_commites": 31,
-//         "repo_create_time": "Mon, 22 Jan 2024 14:29:48 GMT",
-//         "repo_forks": 48,
-//         "repo_id": 746714486,
-//         "repo_issues": 30,
-//         "repo_issues_close": 3,
-//         "repo_issues_creator": null,
-//         "repo_issues_open": 38,
-//         "repo_name": "ex-3122",
-//         "repo_pull": 30,
-//         "repo_pull_close": 30,
-//         "repo_pull_open": 23,
-//         "repo_size": 122,
-//         "repo_stars": 2,
-//         "repo_watch": 2,
-//         "update_time": "Fri, 22 Mar 2024 19:35:13 GMT"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   },
-//   {
-//     "code": 200,
-//     "data": {
-//       "rows": {
-//         "org_id": 155929916,
-//         "repo_commiter": 12,
-//         "repo_commites": 36,
-//         "repo_create_time": "Mon, 22 Jan 2024 14:29:48 GMT",
-//         "repo_forks": 48,
-//         "repo_id": 746714487,
-//         "repo_issues": 30,
-//         "repo_issues_close": 3,
-//         "repo_issues_creator": null,
-//         "repo_issues_open": 38,
-//         "repo_name": "ex-3122",
-//         "repo_pull": 30,
-//         "repo_pull_close": 30,
-//         "repo_pull_open": 23,
-//         "repo_size": 122,
-//         "repo_stars": 2,
-//         "repo_watch": 2,
-//         "update_time": "Fri, 22 Mar 2024 19:35:13 GMT"
-//       }
-//     },
-//     "flag": true,
-//     "message": "查询成功"
-//   }
-// ];
 
 

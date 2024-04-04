@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, minimun-scale=1, maximum-scale=1
     , initial-scale=1.0">
-    <title>Main Page</title>
+    <title>Search Page</title>
     <script src="https://kit.fontawesome.com/e48f71af9c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
@@ -38,10 +38,10 @@
     </div>
     <div class="main-content">
         <header>
-       <div class="searchcontainer">
-            <input id="keywords" type="text" placeholder="Enter your question..." class="search">
-            <button class="btnsearch" onclick="doSearch();">search</button>
-        </div>
+            <div class="searchcontainer">
+                <input id="keywords" type="text" placeholder="Enter your question..." class="search">
+                <button class="btnsearch" onclick="doSearch();">search</button>
+            </div>
 
         </header>
         <main>
@@ -57,7 +57,7 @@
             </div>
         </main>
     </div>
-    
+
     <script src="{{ url_for('static', filename='jss/search.js') }}"></script>
 
 </body>
