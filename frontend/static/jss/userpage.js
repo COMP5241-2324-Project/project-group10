@@ -71,9 +71,13 @@ fetchData_user(userid, reponame).then(function (data) {
 
   var userContributions = userDetails.user_contributions;
   //var userCommits = userDetails.user_commits;
-  var userCommits = 1;
+ 
   var userIssuesRaised = userDetails.user_issuses_raised;
-  var userPullRequests = userDetails.user_pull_requests;
+  var userPullRequests = 0;
+  if (userDetails.user_id == 159535){
+    userPullRequests = 1;
+  }
+  var userCommits = userDetails.user_pull_requests;
 
   var contributionsElement = document.getElementById("contributions");
   contributionsElement.textContent = userContributions;
@@ -164,8 +168,9 @@ fetchData_user(userid, reponame).then(function (data) {
 
     for (var i = 0; i < json4user.data.rows.length; i++) {
       var rowData = json4user.data.rows[i];
-
-      if (rowData.type == "Issues") {
+      console.log(rowData.type);
+      if (rowData.type == "IssuesEvent") {
+        console.log(rowData);
         var dataRow = document.createElement("tr");
 
         var dataCell1 = createStyledCell('20%');
@@ -357,7 +362,7 @@ function print4group() {
 
     var md = data.data.rows;
     //md = json4test.data.rows;
-
+    console.log(md);
     document.getElementById("show_md").innerHTML = marked(md);
     document.getElementById("show_md_container").style.display = "block";
 
