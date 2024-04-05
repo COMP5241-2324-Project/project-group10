@@ -147,7 +147,6 @@ fetchData_repo(repoid).then(function (data) {
           show: false
         },
         data: [
-          { value: repo.repo_issues, name: 'Issue' },
           { value: repo.repo_issues_close, name: 'Closed' },
           { value: repo.repo_issues_open, name: 'Open' }
         ]
