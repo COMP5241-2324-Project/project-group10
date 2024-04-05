@@ -40,8 +40,8 @@ async function fetchResult(question) {
   };
 
   try {
-    //const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/genai/genai_other", requestOptions);
-    const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/genai/genai_other", requestOptions);
+    const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/genai/genai_other", requestOptions);
+    //const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/genai/genai_other", requestOptions);
     const data = await response.json();
     console.log(data);
     console.log(typeof(data));
