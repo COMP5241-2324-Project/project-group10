@@ -1,9 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_caching import Cache
 from . import config
 
 app = Flask(__name__)
 db = SQLAlchemy()
+cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 
 def create_app():

@@ -10,8 +10,15 @@ messages = [
     ]
 response_model = model.generate_content(messages)
 
+def generate_other(chartext,response):
+    messages.append({'role':'model',
+                 'parts':[response]})
+    messages.append({'role':'user',
+                    'parts':[chartext]})
+    response = model.generate_content(messages).text
+    return response
+
 def generate_std_score(user_name, user_contribution, user_commit, user_issue, user_create):
-    print(1)
     messages.append({'role':'model',
                  'parts':[response_model.text]})
     msg = "现在有一个学生{user_name}，该学生的贡献值为{user_contribution}，commits数为：{user_commit}，发布的issues数为：{user_issue}，创建事件的次数为：{user_create}请生成一个学生文档".format(user_name=user_name,user_contribution=user_contribution,user_commit=user_commit,user_issue=user_issue,user_create=user_create)
@@ -31,10 +38,6 @@ def generate_group_score(repo_name,group_star,group_fork,group_commit,group_issu
     messages.append({'role':'user',
                  'parts':[msg]})
     response = model.generate_content(messages).text
-    return response
-
-def generate_other(text):
-    response = model.generate_content(text).text
     return response
 
 
