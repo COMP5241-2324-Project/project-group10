@@ -1,14 +1,17 @@
-   | 版本 | 日期       | 描述                   | 作者 |
+   | Version | Date       | description                   | Author |
    | ---- | ---------- | ---------------------- | ---- |
-   | 1.0  | 01/03/2024 | 功能需求分析，模块设计 | ninowang |
-   | 1.1  | 10/03/2024 | Github API接口设计 | Kilingbot |
-   | 1.2  | 17/03/2024 | Github API接口文档完善 | Kilingbot |
-   | 1.3  | 18/03/2024 | 前端接口文档设计 | ninowang |
-   | 1.4  | 24/03/2024 | 前后端连通实现完成 |Kilingbot,ninowang,zyboi,Cathy,Yuning|
-   | 2.0  | 28/03/2024 | genai功能基本完成 |ninowang |
-   | 2.1  | 31/03/2024 | genai前后端连通 |Kilingbot,ninowang,zyboi,Cathy,Yuning|
-   | 2.2  | 04/04/2024 | search功能添加 |Cathy|
-   | 2.3  | 06/04/2024 | 前端页面优化完善 |Cathy,zyboi,Yuning|
+   | 1.0  | 01/03/2024 | Functional requirement analysis, module design | ninowang |
+   | 1.1  | 10/03/2024 | Github API interface design | Kilingbot |
+   | 1.2  | 17/03/2024 | Github API interface refinement | Kilingbot |
+   | 1.3  | 18/03/2024 | Front-end page framework Implemented | zyboi,Yuning,Cathy |
+   | 2.0  | 20/03/2024 | OverView Page&GroupPage Implemented | zyboi |
+   | 2.1  | 20/03/2024 | StudentPage Implemented | Yuning |
+   | 2.2  | 21/03/2024 | Front-end interface document design | ninowang |
+   | 2.3  | 24/03/2024 | Front and back end connectivity completed | Kilingbot,ninowang,zyboi,Cathy,Yuning |
+   | 3.0  | 28/03/2024 | Genai function Implemented | ninowang |
+   | 3.1  | 31/03/2024 | Genai connected to front and back end  | Kilingbot,ninowang,zyboi,Cathy,Yuning |
+   | 3.2  | 04/04/2024 | Added genai Q&A feature to front-end | Cathy |
+   | 3.3  | 06/04/2024 | Front-end page optimization | Cathy,zyboi,Yuning |
 
 # 运行
 
