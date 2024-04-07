@@ -33,14 +33,15 @@ python app.py
 
 首先是主页面，该页面左上角显示当前的organization是什么
 
-
+![grouppage](./img/mainpage.png)
 
 可以通过点击页面下方的repository name 进入具体的repository展示页面：
 
-
+![grouppage](./img/grouppage.png)
 
 进入该页面，会自动调用genai生成一份小组文档，若无，请点击刷新并耐心等待。同时你也可以通过在输入框输入更多的信息来得到更多的信息。点击右上角的组员信息，你可以进去到组员的详情页面，该页面也会自动生成组员的文档，同时你也可以选择自由输入。
 
+![grouppage](./img/studentpage.png)
 
 组员活动一般分为commit，issue和create，你可以点击相应按钮查看该学生活动，并通过点击url链接，可以进入到该活动对应的github页面，如issue页面你可以查看该成员具体提了什么issue。
 
