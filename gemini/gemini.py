@@ -6,7 +6,7 @@ model = genai.GenerativeModel('gemini-pro')
 
 messages = [
         {'role':'user',
-        'parts': ["小组作业往往通过github进行提交，我们将4～6人分为一个小组，每个小组拥有一个代码仓库。我们的任务是通过对github数据进行分析，从而对每个小组进行打分，生成小组文档，同时也需要对每个学生进行打分，生成学生文档"]}
+        'parts': ["小组作业往往通过github进行提交，我们将4～6人分为一个小组，每个小组拥有一个代码仓库。我们的任务是通过对github数据进行分析，从而对每个小组进行打分，生成小组文档，同时也需要对每个学生进行打分，生成学生文档，用英文回答"]}
     ]
 response_model = model.generate_content(messages)
 

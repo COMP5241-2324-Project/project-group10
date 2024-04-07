@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from backend import cache
-from gemini.gemini_test import generate_std_score, generate_group_score, generate_other
+from gemini.gemini import generate_std_score, generate_group_score, generate_other
 
 genaibp = Blueprint('genai', import_name=__name__)
 
