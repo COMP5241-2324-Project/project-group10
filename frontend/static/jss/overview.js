@@ -2,9 +2,8 @@
 
 async function fetchData_org() {
   // const response = await fetch("http://172.16.5.4:5001/org/get_orgs/bot);
-  //const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5001.app.github.dev/org/get_orgs/bot")
-  //const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/org/get_orgs/bot")
-  const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/org/get_orgs/bot")
+  const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/org/get_orgs/bot")
+  //const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/org/get_orgs/bot")
   
   //const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/org/get_orgs/bot")
   const json4org = await response.json();
@@ -14,8 +13,8 @@ async function fetchData_org() {
 }
 async function fetchDataAllRepos(orgID) {
   // const response = await fetch("http://172.16.5.4:5001/repo/get_all_repos/" + orgID);
-  const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/repo/get_all_repos/" + orgID);
-  //const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/repo/get_all_repos/" + orgID);
+  //const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/repo/get_all_repos/" + orgID);
+  const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/repo/get_all_repos/" + orgID);
   //const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/repo/get_all_repos/" + orgID);
   const json4org = await response.json();
   return json4org;

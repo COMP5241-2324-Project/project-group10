@@ -31,8 +31,8 @@ async function fetchData_user(userid, reponame) {
   // userid="156690386"
   // reponame= "week-4-lab-environment-23000633g"
   //const response = await fetch("http://127.0.0.1:5001/user/get_user/" + userid + "/" + reponame);
-  const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/user/get_user/" + userid + "/" + reponame);
-  //const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/user/get_user/" + userid + "/" + reponame);
+  //const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/user/get_user/" + userid + "/" + reponame);
+  const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/user/get_user/" + userid + "/" + reponame);
 
   //const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/user/get_user/" + userid + "/" + reponame);
   const json4org = await response.json();
@@ -43,8 +43,8 @@ async function fetchData_user(userid, reponame) {
 async function fetchDataAllActivities(userid) {
   //userid="156690386"
   //const response = await fetch("http://127.0.0.1:5001/act/get_acts/" + userid);
-  const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/act/get_acts/" + userid);
-  //const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/act/get_acts/" + userid);
+  //const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/act/get_acts/" + userid);
+  const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/act/get_acts/" + userid);
   //const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/act/get_acts/" + userid);
   const json4org = await response.json();
   return json4org;
@@ -377,10 +377,9 @@ function print4group() {
 }
 async function fetchData4print(raw) {
   console.log(raw);
-  //const response = await fetch("http://127.0.0.1:5001/user/get_all_users/" + reponame);
-  //const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/genai/genai_student", {
+  const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/genai/genai_student", {
   //const response = await fetch("https://studious-tribble-7vv65q69677jhrrxq-5000.app.github.dev/genai/genai_student", {
-  const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/genai/genai_student", {
+  //const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/genai/genai_student", {
     method: 'POST', // 或者 'PUT'
     headers: {
       'Content-Type': 'application/json',
@@ -438,7 +437,8 @@ async function fetchResult(question) {
     "code": 0,
     "message": "string",
     "data": {
-      "text": question
+      "text": question,
+      "method": "student"
     }
   });
 
@@ -451,8 +451,8 @@ async function fetchResult(question) {
   };
 
   try {
-    const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/genai/genai_other", requestOptions);
-    //const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/genai/genai_other", requestOptions);
+    //const response = await fetch("https://bug-free-orbit-jjjvj5wgx995c5ggp-5001.app.github.dev/genai/genai_other", requestOptions);
+    const response = await fetch("https://studious-space-acorn-r44qgpg79pp6255q6-5000.app.github.dev/genai/genai_other", requestOptions);
     const data = await response.json();
     console.log(data);
     console.log(typeof(data));

@@ -6,6 +6,17 @@
     --bg-body: #131D28;
 }
 
+a {
+    color: #66FCF1;  /* 鲜艳的青色 */
+}
+
+a:visited {
+    color: #45A29E;  /* 深青色，用于已访问的链接 */
+}
+
+a:hover {
+    color: #C5C6C7;  /* 浅灰色，用于鼠标悬停在链接上时 */
+}
 
 * {
     font-family: 'Poppins', sans-serif;
