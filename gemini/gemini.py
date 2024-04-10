@@ -18,10 +18,10 @@ def generate_other(chartext,response):
     response = model.generate_content(messages).text
     return response
 
-def generate_std_score(user_name, user_contribution, user_commit, user_issue, user_create):
+def generate_std_score(user_name, user_contribution, user_commit, user_issue, user_pull):
     messages.append({'role':'model',
                  'parts':[response_model.text]})
-    msg = "现在有一个学生{user_name}，该学生的贡献值为{user_contribution}，commits数为：{user_commit}，发布的issues数为：{user_issue}，创建事件的次数为：{user_create}请生成一个学生文档".format(user_name=user_name,user_contribution=user_contribution,user_commit=user_commit,user_issue=user_issue,user_create=user_create)
+    msg = "现在有一个学生{user_name}，该学生的贡献值为{user_contribution}，commits数为：{user_commit}，发布的issues数为：{user_issue}，pull事件的次数为：{user_pull}请生成一个学生文档".format(user_name=user_name,user_contribution=user_contribution,user_commit=user_commit,user_issue=user_issue,user_pull=user_pull)
     messages.append({'role':'user',
                  'parts':[msg]})
     response = model.generate_content(messages).text
