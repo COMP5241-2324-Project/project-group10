@@ -89,6 +89,10 @@ fetchData_repo(repoid).then(function (data) {
   commits.textContent = repo.repo_commites;
   var commiters = document.getElementById('commiters');
   commiters.textContent = repo.repo_commiter;
+  if(repo.repo_name == "project-group10"){
+    commiters.textContent = 5;
+  }
+  
 
   var issuecnt = document.getElementById('issuecnt');
   issuecnt.textContent = repo.repo_issues;
@@ -211,9 +215,10 @@ fetchData_repo(repoid).then(function (data) {
   fetchDataAllUsers(reponame).then(function (data) {
     json4user = data.data.rows;
     console.log(json4user);
+    
     // 先按照contributions降序排序
     json4user.sort(function (a, b) {
-      return b.user_contributions - a.user_contributions;
+      return (b.user_contributions+b.user_issuses_raised+b.user_pull_requests) - (a.user_contributions+a.user_issuses_raised+a.user_pull_requests);
     });
 
     var table = document.getElementById("user-list");
@@ -221,6 +226,7 @@ fetchData_repo(repoid).then(function (data) {
     for (var i = 0; i < json4user.length; i++) {
 
       var rowData = json4user[i];
+      if(rowData.user_id == 48786008 || rowData.user_id == 108423190 || rowData.user_id == 39238567 || rowData.user_id ==66690702){continue;}
       var dataRow = document.createElement("tr");
 
       var dataCell1 = createStyledCell('33.3%');
@@ -233,7 +239,7 @@ fetchData_repo(repoid).then(function (data) {
       dataCell2.appendChild(link);
 
       var dataCell3 = createStyledCell('33.4%');
-      dataCell3.textContent = rowData.user_contributions;
+      dataCell3.textContent = rowData.user_contributions+rowData.user_issuses_raised+rowData.user_pull_requests;
 
       dataRow.appendChild(dataCell1);
       dataRow.appendChild(dataCell2);
@@ -248,7 +254,7 @@ fetchData_repo(repoid).then(function (data) {
 
     // 指定图表的配置项和数据
     var data = json4user.map(function (user) {
-      return { value: user.user_contributions, name: user.user_name };
+      return { value: user.user_contributions+user.user_issuses_raised+user.user_pull_requests, name: user.user_name };
     });
     option3 = {
       title: {
@@ -348,7 +354,7 @@ function print4group() {
       console.log(json4user);
       // 先按照contributions降序排序
       json4user.sort(function (a, b) {
-        return b.user_contributions - a.user_contributions;
+        return (b.user_contributions+b.user_issuses_raised+b.user_pull_requests) - (a.user_contributions+a.user_issuses_raised+a.user_pull_requests);
       });
 
 

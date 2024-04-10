@@ -69,15 +69,13 @@ fetchData_user(userid, reponame).then(function (data) {
   var repo = document.getElementById("repo");
   repo.textContent = orgname + "/" + userTeam + "/" + userName;
 
-  var userContributions = userDetails.user_contributions;
+  var userContributions = userDetails.user_contributions+userDetails.user_issuses_raised+userDetails.user_pull_requests;
   //var userCommits = userDetails.user_commits;
 
   var userIssuesRaised = userDetails.user_issuses_raised;
-  var userPullRequests = 0;
-  if (userDetails.user_id == 159535) {
-    userPullRequests = 1;
-  }
-  var userCommits = userDetails.user_pull_requests;
+  var userPullRequests = userDetails.user_pull_requests;
+
+  var userCommits = userDetails.user_contributions;
 
   var contributionsElement = document.getElementById("contributions");
   contributionsElement.textContent = userContributions;
@@ -90,7 +88,7 @@ fetchData_user(userid, reponame).then(function (data) {
   var issuesRaisedElement = document.getElementById("issuesRaised");
   issuesRaisedElement.textContent = userIssuesRaised;
 
-  var pullRequestsElement = document.getElementById("createEvent");
+  var pullRequestsElement = document.getElementById("pullRequests");
   pullRequestsElement.textContent = userPullRequests;
 
   fetchDataAllActivities(userid).then(function (data) {
@@ -227,7 +225,7 @@ fetchData_user(userid, reponame).then(function (data) {
     for (var i = 0; i < json4user.data.rows.length; i++) {
       var rowData = json4user.data.rows[i];
 
-      if (rowData.type == "CreateEvent") {
+      if (rowData.type == "PullRequestEvent") {
         var dataRow = document.createElement("tr");
 
         var dataCell1 = createStyledCell('20%');
