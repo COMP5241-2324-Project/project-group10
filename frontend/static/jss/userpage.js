@@ -69,40 +69,129 @@ fetchData_user(userid, reponame).then(function (data) {
   var repo = document.getElementById("repo");
   repo.textContent = orgname + "/" + userTeam + "/" + userName;
 
-  var userContributions = userDetails.user_contributions+userDetails.user_issuses_raised+userDetails.user_pull_requests;
-  //var userCommits = userDetails.user_commits;
+  // var userContributions = userDetails.user_contributions+userDetails.user_issuses_raised+userDetails.user_pull_requests;
+  // //var userCommits = userDetails.user_commits;
 
-  var userIssuesRaised = userDetails.user_issuses_raised;
-  var userPullRequests = userDetails.user_pull_requests;
+  // var userIssuesRaised = userDetails.user_issuses_raised;
+  // var userPullRequests = userDetails.user_pull_requests;
 
-  var userCommits = userDetails.user_contributions;
+  // var userCommits = userDetails.user_contributions;
 
-  var contributionsElement = document.getElementById("contributions");
-  contributionsElement.textContent = userContributions;
+  // var contributionsElement = document.getElementById("contributions");
+  // contributionsElement.textContent = userContributions;
 
-  var commitsElement = document.getElementById("commits");
-  commitsElement.textContent = userCommits;
+  // var commitsElement = document.getElementById("commits");
+  // commitsElement.textContent = userCommits;
 
+  // var issuesRaisedElement = document.getElementById("issuesRaised");
+  // issuesRaisedElement.textContent = userIssuesRaised;
 
-
-  var issuesRaisedElement = document.getElementById("issuesRaised");
-  issuesRaisedElement.textContent = userIssuesRaised;
-
-  var pullRequestsElement = document.getElementById("pullRequests");
-  pullRequestsElement.textContent = userPullRequests;
+  // var pullRequestsElement = document.getElementById("pullRequests");
+  // pullRequestsElement.textContent = userPullRequests;
 
   fetchDataAllActivities(userid).then(function (data) {
 
     var json4user = data;
     console.log(json4user);
+    var userCommits = 0;
+    var userIssuesRaised = 0;
+    var userPullRequests = 0;
+    var userContributions = 0;
+    for (var i = 0; i < json4user.data.rows.length; i++) {
+      if (json4user.data.rows[i].type == "PushEvent") {
+        userCommits++;
+      }
+      if (json4user.data.rows[i].type == "IssuesEvent") {
+        userIssuesRaised++;
+      }
+      if (json4user.data.rows[i].type == "PullRequestEvent") {
+        userPullRequests++;
+      }
+    }
+    userContributions = userCommits + userIssuesRaised + userPullRequests;
 
+    var contributionsElement = document.getElementById("contributions");
+    contributionsElement.textContent = userContributions;
+
+    var commitsElement = document.getElementById("commits");
+    commitsElement.textContent = userCommits;
+
+    var issuesRaisedElement = document.getElementById("issuesRaised");
+    issuesRaisedElement.textContent = userIssuesRaised;
+
+    var pullRequestsElement = document.getElementById("pullRequests");
+    pullRequestsElement.textContent = userPullRequests;
     var commitTable = document.getElementById("commitTable");
+
+    var actChart = echarts.init(document.getElementById('indiActChart'));
+
+    option4 = {
+      title: {
+        text: 'Student Activities',
+        textStyle: {
+          color: '#fff'
+        }
+      },
+      tooltip: {
+        trigger: 'axis'
+      },
+      legend: {
+        data: ['Commits', 'Issues', 'Pull Requests'],
+        textStyle: {
+          color: '#fff'
+        }
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      toolbox: {
+        feature: {
+          saveAsImage: {}
+        }
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['MarWeek2', 'MarWeek3', 'MarWeek4', 'AprWeek1'],
+        axisLabel: {
+          color: '#fff'
+        }
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          name: 'Commits',
+          type: 'line',
+          data: [1, 0, 0, 9]
+        },
+        {
+          name: 'Issues',
+          type: 'line',
+          data: [0, 0, 4, 0]
+        },
+        {
+          name: 'Pull Requests',
+          type: 'line',
+          data: [0, 0, 0, 1]
+        }
+      ]
+    };
+    actChart.setOption(option4);
+
+
+
+    // 创建表格
     var commitTableContent = createTableContent(json4user, json4user.data.rows.length);
     commitTable.appendChild(commitTableContent);
 
     // 创建 limitTable 表格
     var limitCommitTable = document.getElementById("limitCommitTable");
-    var limitTableContent = createTableContent(json4user, 3);
+    var limitTableContent = createTableContent(json4user, 4);
     limitCommitTable.appendChild(limitTableContent);
 
     function createTableContent(json4user, limit) {
@@ -145,7 +234,7 @@ fetchData_user(userid, reponame).then(function (data) {
           table.appendChild(dataRow);
         }
       }
-      
+
       return table;
     }
 
@@ -156,7 +245,7 @@ fetchData_user(userid, reponame).then(function (data) {
     issueTable.appendChild(issueTableContent);
 
     var limiitIssueTable = document.getElementById("limiitIssueTable");
-    var limiitIssueTableContent = createIssueTableContent(json4user, 2);
+    var limiitIssueTableContent = createIssueTableContent(json4user, 4);
     limiitIssueTable.appendChild(limiitIssueTableContent);
 
     function createIssueTableContent(json4user, limit) {
