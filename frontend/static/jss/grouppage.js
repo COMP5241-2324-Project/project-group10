@@ -343,22 +343,28 @@ fetchData_repo(repoid).then(function (data) {
         }
       },
       yAxis: {
-        type: 'value'
+        type: 'value',
+        axisLabel: {
+          color: '#fff'
+        }
       },
       series: [
         {
           name: 'Commits',
           type: 'line',
+          areaStyle: {},
           data: [3, 25, 39, 30]
         },
         {
           name: 'Issues',
           type: 'line',
+          areaStyle: {},
           data: [0, 0, 2, 4]
         },
         {
           name: 'Pull Requests',
           type: 'line',
+          areaStyle: {},
           data: [0, 0, 1, 1]
         }
       ]

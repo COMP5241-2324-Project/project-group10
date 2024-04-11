@@ -161,22 +161,28 @@ fetchData_user(userid, reponame).then(function (data) {
         }
       },
       yAxis: {
-        type: 'value'
+        type: 'value',
+        axisLabel: {
+          color: '#fff'
+        }
       },
       series: [
         {
           name: 'Commits',
           type: 'line',
+          areaStyle: {},
           data: [1, 0, 0, 9]
         },
         {
           name: 'Issues',
           type: 'line',
+          areaStyle: {},
           data: [0, 0, 4, 0]
         },
         {
           name: 'Pull Requests',
           type: 'line',
+          areaStyle: {},
           data: [0, 0, 0, 1]
         }
       ]
