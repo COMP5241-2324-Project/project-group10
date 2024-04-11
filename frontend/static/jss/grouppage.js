@@ -254,8 +254,10 @@ fetchData_repo(repoid).then(function (data) {
 
     // 指定图表的配置项和数据
     var data = json4user.map(function (user) {
+      if(user.user_id == 48786008 || user.user_id == 108423190 || user.user_id == 39238567 || user.user_id ==66690702){return null;}
       return { value: user.user_contributions+user.user_issuses_raised+user.user_pull_requests, name: user.user_name };
-    });
+    }).filter(Boolean) ;
+
     option3 = {
       title: {
         text: 'Contributions Chart',
@@ -266,7 +268,10 @@ fetchData_repo(repoid).then(function (data) {
         }
       },
       legend: {
-        top: 'bottom'
+        top: 'bottom',
+        textStyle: {
+          color: '#fff'
+        }
       },
       tooltip: {
         trigger: 'item',
@@ -298,7 +303,68 @@ fetchData_repo(repoid).then(function (data) {
 
     // 使用刚指定的配置项和数据显示图表。
     contriChart.setOption(option3);
+    
+    //recent activities chart
+    var actChart = echarts.init(document.getElementById('activitychart'));
 
+    option4 = {
+      title: {
+        text: 'Recent Activities',
+        textStyle: {
+          color: '#fff'
+        }
+      },
+      tooltip: {
+        trigger: 'axis'
+      },
+      legend: {
+        data: ['Commits', 'Issues', 'Pull Requests'],
+        textStyle: {
+          color: '#fff'
+        }
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      toolbox: {
+        feature: {
+          saveAsImage: {}
+        }
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['MarWeek2', 'MarWeek3', 'MarWeek4', 'AprWeek1'],
+        axisLabel: {
+          color: '#fff'
+        }
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          name: 'Commits',
+          type: 'line',
+          data: [3, 25, 39, 30]
+        },
+        {
+          name: 'Issues',
+          type: 'line',
+          data: [0, 0, 2, 4]
+        },
+        {
+          name: 'Pull Requests',
+          type: 'line',
+          data: [0, 0, 1, 1]
+        }
+      ]
+    };
+    actChart.setOption(option4);
+    //
     raw = {
       "code": 0,
       "message": "string",
