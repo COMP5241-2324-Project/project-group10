@@ -42,7 +42,7 @@
             <span>Print</span>
           </a>
         </li>
-        
+
       </ul>
     </div>
   </div>
@@ -112,14 +112,21 @@
               </div>
               <div class="card">
                 <div class="card-info">
-                  <h2 id="createEvent">0</h2>
-                  <p>Created Events</p>
+                  <h2 id="pullRequests">0</h2>
+                  <p>Pull Requests</p>
                 </div>
               </div>
             </div>
 
-
-
+          </div>
+          <div class="right3">
+            <div class="right3-head">
+              <h3>Student Activities</h3>
+            </div>
+            <div class="right3-content">
+              <div id="indiActChart" style="height: 300px;">
+              </div>
+            </div>
           </div>
           <div class="right2">
             <div class="right2-head">
@@ -130,14 +137,19 @@
               <div class="btn4table">
                 <button id="commitButton">COMMIT</button>
                 <button id="issueButton">ISSUE</button>
-                <button id="pullButton">CREATE EVENT</button>
+                <button id="pullButton">PULL EVENT</button>
               </div>
               <div class="table1">
                 <div id="commitTable"></div>
                 <div id="issueTable"></div>
                 <div id="pullTable"></div>
+                <div id="limitCommitTable"></div>
+                <div id="limiitIssueTable"></div>
               </div>
-
+              <button id="moreCommitButton" style="display: none;">Show More</button>
+              <button id="closeCommitButton" style="display: none;">Close</button>
+              <button id="moreIssueButton" style="display: none;">Show More</button>
+              <button id="closeIssueButton" style="display: none;">Close</button>
             </div>
 
           </div>
@@ -159,6 +171,7 @@
       </div>
     </main>
   </div>
+  <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
   <script src="{{ url_for('static', filename='jss/userpage.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked@3.0.0/marked.min.js"></script>
 </body>

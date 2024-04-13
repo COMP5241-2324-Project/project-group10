@@ -8,3 +8,14 @@ class Config(object):
     # 6*60*60
     EXPIRES_IN = 21600
     AUTH = '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'
+
+
+db_config = {
+    'host': 'gz-cynosdbmysql-grp-km73xj9v.sql.tencentcdb.com',
+    'port': 26428,
+    'user': 'root',
+    'password': 'Db12345678',
+    'database': 'githubdata'
+}
+
+API_KEY = "AIzaSyA5AcrN9fAW-PrGzPRG3kEfX1OftWssT3k"

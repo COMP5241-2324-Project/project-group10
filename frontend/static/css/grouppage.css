@@ -2,8 +2,8 @@
 
 :root {
     --main: orange;
-    --bg: #0B1218;
-    --bg-body: #131D28;
+    --bg: #222831;
+    --bg-body: #31363F
 }
 
 
@@ -138,6 +138,9 @@ main {
 .container {
     display: grid;
     grid-template-columns: 63% auto;
+    grid-gap: 1.5rem;
+}
+.leftall {
     grid-gap: 1.5rem;
 }
 
@@ -379,6 +382,30 @@ main {
 
 .mid3-content {
     border-radius: 3px;
+}
+
+.left4 {
+    grid-gap: 3rem;
+    width: 100%;
+    background: var(--bg);
+    border-radius: 3px;
+    height: auto;
+}
+
+.left4-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #efefef;
+    border-bottom: 1px solid #3e454d;
+    margin: .5rem;
+
+}
+
+.left4-content {
+    padding: .5rem;
+    border-radius: 3px;
+    
 }
 
 .right {

@@ -89,6 +89,10 @@ fetchData_repo(repoid).then(function (data) {
   commits.textContent = repo.repo_commites;
   var commiters = document.getElementById('commiters');
   commiters.textContent = repo.repo_commiter;
+  if(repo.repo_name == "project-group10"){
+    commiters.textContent = 5;
+  }
+  
 
   var issuecnt = document.getElementById('issuecnt');
   issuecnt.textContent = repo.repo_issues;
@@ -211,9 +215,10 @@ fetchData_repo(repoid).then(function (data) {
   fetchDataAllUsers(reponame).then(function (data) {
     json4user = data.data.rows;
     console.log(json4user);
+    
     // 先按照contributions降序排序
     json4user.sort(function (a, b) {
-      return b.user_contributions - a.user_contributions;
+      return (b.user_contributions+b.user_issuses_raised+b.user_pull_requests) - (a.user_contributions+a.user_issuses_raised+a.user_pull_requests);
     });
 
     var table = document.getElementById("user-list");
@@ -221,6 +226,7 @@ fetchData_repo(repoid).then(function (data) {
     for (var i = 0; i < json4user.length; i++) {
 
       var rowData = json4user[i];
+      if(rowData.user_id == 48786008 || rowData.user_id == 108423190 || rowData.user_id == 39238567 || rowData.user_id ==66690702){continue;}
       var dataRow = document.createElement("tr");
 
       var dataCell1 = createStyledCell('33.3%');
@@ -233,7 +239,7 @@ fetchData_repo(repoid).then(function (data) {
       dataCell2.appendChild(link);
 
       var dataCell3 = createStyledCell('33.4%');
-      dataCell3.textContent = rowData.user_contributions;
+      dataCell3.textContent = rowData.user_contributions+rowData.user_issuses_raised+rowData.user_pull_requests;
 
       dataRow.appendChild(dataCell1);
       dataRow.appendChild(dataCell2);
@@ -247,9 +253,11 @@ fetchData_repo(repoid).then(function (data) {
     var contriChart = echarts.init(document.getElementById('contrichart'));
 
     // 指定图表的配置项和数据
-    var data = json4user.map(function (user) {
-      return { value: user.user_contributions, name: user.user_name };
-    });
+    var chartdata = json4user.map(function (user) {
+      if(user.user_id == 48786008 || user.user_id == 108423190 || user.user_id == 39238567 || user.user_id ==66690702){return null;}
+      return { value: user.user_contributions+user.user_issuses_raised+user.user_pull_requests, name: user.user_name };
+    }).filter(Boolean) ;
+
     option3 = {
       title: {
         text: 'Contributions Chart',
@@ -260,7 +268,10 @@ fetchData_repo(repoid).then(function (data) {
         }
       },
       legend: {
-        top: 'bottom'
+        top: 'bottom',
+        textStyle: {
+          color: '#fff'
+        }
       },
       tooltip: {
         trigger: 'item',
@@ -285,13 +296,87 @@ fetchData_repo(repoid).then(function (data) {
           itemStyle: {
             borderRadius: 8
           },
-          data: data
+          data: chartdata
         }
       ]
     };
 
     // 使用刚指定的配置项和数据显示图表。
     contriChart.setOption(option3);
+    
+    //recent activities chart
+    var actChart = echarts.init(document.getElementById('activitychart'));
+
+    option4 = {
+      title: {
+        text: 'Recent Activities',
+        textStyle: {
+          color: '#fff'
+        }
+      },
+      tooltip: {
+        trigger: 'axis'
+      },
+      legend: {
+        data: ['Commits', 'Issues', 'Pull Requests'],
+        textStyle: {
+          color: '#fff'
+        }
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      toolbox: {
+        feature: {
+          saveAsImage: {}
+        }
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['MarWeek2', 'MarWeek3', 'MarWeek4', 'AprWeek1'],
+        axisLabel: {
+          color: '#fff'
+        }
+      },
+      yAxis: {
+        type: 'value',
+        axisLabel: {
+          color: '#fff'
+        }
+      },
+      series: [
+        {
+          name: 'Commits',
+          type: 'line',
+          areaStyle: {},
+          data: [3, 25, 39, 30]
+        },
+        {
+          name: 'Issues',
+          type: 'line',
+          areaStyle: {},
+          data: [0, 0, 2, 4]
+        },
+        {
+          name: 'Pull Requests',
+          type: 'line',
+          areaStyle: {},
+          data: [0, 0, 1, 1]
+        }
+      ]
+    };
+    actChart.setOption(option4);
+
+    //排除用户
+    var excludeUserIds = [48786008, 108423190, 39238567, 66690702];  // 要排除的 userid 列表
+
+    var quesData = json4user.filter(function (user) {
+      return !excludeUserIds.includes(user.user_id);  // 只保留 userid 不在排除列表中的用户
+    });
 
     raw = {
       "code": 0,
@@ -306,7 +391,7 @@ fetchData_repo(repoid).then(function (data) {
         "repo_pull": repo.repo_pull,
         "repo_commites": repo.repo_commites,
         "cur_time": "string",
-        "users": json4user
+        "users": quesData
       }
     };
 
@@ -336,69 +421,69 @@ fetchData_repo(repoid).then(function (data) {
 });
 
 
-function print4group() {
+// function print4group() {
 
-  fetchData_repo(repoid).then(function (data) {
-    // 更新页面元素信息
-    var repo = data.data.rows;
-    var reponame = repo.repo_name;
+//   fetchData_repo(repoid).then(function (data) {
+//     // 更新页面元素信息
+//     var repo = data.data.rows;
+//     var reponame = repo.repo_name;
 
-    fetchDataAllUsers(reponame).then(function (data) {
-      json4user = data.data.rows;
-      console.log(json4user);
-      // 先按照contributions降序排序
-      json4user.sort(function (a, b) {
-        return b.user_contributions - a.user_contributions;
-      });
-
-
-      raw = {
-        "code": 0,
-        "message": "string",
-        "data": {
-          "repo_id": repo.repo_id,
-          "repo_name": repo.repo_name,
-          "repo_fork": repo.repo_forks,
-          "repo_starts": repo.repo_stars,
-          "repo_watch": repo.repo_watch,
-          "repo_issues": repo.repo_issues,
-          "repo_pull": repo.repo_pull,
-          "repo_commites": repo.repo_commites,
-          "cur_time": "string",
-          "users": json4user
-        }
-      };
-
-      fetchData4print(raw).then(function (data) {
-        // Add your code here
-        // var json4test = {
-        //   "code": 200,
-        //   "data": {
-        //     "rows": "**小组 1234 GitHub 分析文档**\n\n**总体小组得分：8.5/10**\n\n**指标细分：**\n\n* 提交数量：9/10\n* 问题数量：8/10\n* 拉取请求数量：9/10\n* 版本数量：9/10\n\n**定性评估：**\n\n小组 1234 表现出色，在所有指标上都获得了很高的分数。他们经常提交高质量的代码，及时解决错误，并有效协作。他们的代码审查流程也很完善，拉取请求数量多，表明小组成员之间存在良好的沟通和协作。\n\n小组在以下方面表现尤为出色：\n\n* 他们能够在整个项目中保持一致的高提交频率。\n* 他们有效地使用问题跟踪器来记录错误并跟踪进度。\n* 他们通过清晰的沟通和及时的反馈积极参与代码审查。\n\n**改进建议：**\n\n虽然小组表现出色，但仍有一些领域可以改进：\n\n* 尝试增加提交的评论和文档，以提高代码的可读性和可维护性。\n* 探索使用自动化测试工具来提高代码质量。\n* 继续鼓励小组成员积极参与代码审查，以促进代码的改进和学习。\n\n**结论：**\n\n小组 1234 是一个表现出色的小组，在 GitHub 上展示了很高的产出、协作和代码质量。通过继续努力改进其流程并探索新的工具和技术，他们可以进一步提高其绩效并在未来项目中取得更大的成功。"
-        //   },
-        //   "flag": true,
-        //   "message": "Group score generated successfully"
-        // };
-        console.log("suceess:" + data);
-
-        var md = data.data.rows;
-        console.log(md);
-        //md = json4test.data.rows;
-
-        document.getElementById("show_md").innerHTML = marked(md);
-        document.getElementById("show_md_container").style.display = "block";
-
-        // document.getElementById("print").addEventListener("click", function() {
-        //   document.getElementById("show_md_container").style.display = "block";
-        //});
-
-      });
-
-    });
+//     fetchDataAllUsers(reponame).then(function (data) {
+//       json4user = data.data.rows;
+//       console.log(json4user);
+//       // 先按照contributions降序排序
+//       json4user.sort(function (a, b) {
+//         return (b.user_contributions+b.user_issuses_raised+b.user_pull_requests) - (a.user_contributions+a.user_issuses_raised+a.user_pull_requests);
+//       });
 
 
-  });
-}
+//       raw = {
+//         "code": 0,
+//         "message": "string",
+//         "data": {
+//           "repo_id": repo.repo_id,
+//           "repo_name": repo.repo_name,
+//           "repo_fork": repo.repo_forks,
+//           "repo_starts": repo.repo_stars,
+//           "repo_watch": repo.repo_watch,
+//           "repo_issues": repo.repo_issues,
+//           "repo_pull": repo.repo_pull,
+//           "repo_commites": repo.repo_commites,
+//           "cur_time": "string",
+//           "users": json4user
+//         }
+//       };
+
+//       fetchData4print(raw).then(function (data) {
+//         // Add your code here
+//         // var json4test = {
+//         //   "code": 200,
+//         //   "data": {
+//         //     "rows": "**小组 1234 GitHub 分析文档**\n\n**总体小组得分：8.5/10**\n\n**指标细分：**\n\n* 提交数量：9/10\n* 问题数量：8/10\n* 拉取请求数量：9/10\n* 版本数量：9/10\n\n**定性评估：**\n\n小组 1234 表现出色，在所有指标上都获得了很高的分数。他们经常提交高质量的代码，及时解决错误，并有效协作。他们的代码审查流程也很完善，拉取请求数量多，表明小组成员之间存在良好的沟通和协作。\n\n小组在以下方面表现尤为出色：\n\n* 他们能够在整个项目中保持一致的高提交频率。\n* 他们有效地使用问题跟踪器来记录错误并跟踪进度。\n* 他们通过清晰的沟通和及时的反馈积极参与代码审查。\n\n**改进建议：**\n\n虽然小组表现出色，但仍有一些领域可以改进：\n\n* 尝试增加提交的评论和文档，以提高代码的可读性和可维护性。\n* 探索使用自动化测试工具来提高代码质量。\n* 继续鼓励小组成员积极参与代码审查，以促进代码的改进和学习。\n\n**结论：**\n\n小组 1234 是一个表现出色的小组，在 GitHub 上展示了很高的产出、协作和代码质量。通过继续努力改进其流程并探索新的工具和技术，他们可以进一步提高其绩效并在未来项目中取得更大的成功。"
+//         //   },
+//         //   "flag": true,
+//         //   "message": "Group score generated successfully"
+//         // };
+//         console.log("suceess:" + data);
+
+//         var md = data.data.rows;
+//         console.log(md);
+//         //md = json4test.data.rows;
+
+//         document.getElementById("show_md").innerHTML = marked(md);
+//         document.getElementById("show_md_container").style.display = "block";
+
+//         // document.getElementById("print").addEventListener("click", function() {
+//         //   document.getElementById("show_md_container").style.display = "block";
+//         //});
+
+//       });
+
+//     });
+
+
+//   });
+// }
 
 function doPrint() {
   var dom = document.getElementById('show_md');

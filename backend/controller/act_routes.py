@@ -10,7 +10,7 @@ actbp = Blueprint('act', import_name=__name__)
 def get_org_info(user_id):
     try:
         acts = (actModel.Act.query.filter_by(user_id=user_id).
-                order_by(desc(actModel.Act.activities_date), desc(actModel.Act.update_time)).limit(10).all())
+                order_by(desc(actModel.Act.activities_date), desc(actModel.Act.update_time)).all())
         if acts is None:
             return jsonify(code=201, flag=False, message="Not exist acts")
         data_json = []

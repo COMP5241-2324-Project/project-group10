@@ -53,127 +53,138 @@
         </header>
         <main>
             <div class="container">
-                <div class="leftside">
-                    <div class="left1">
-                        <div class="left1-head">
-                            <h3>Repositories(Groups) Statistics</h3>
+                <div class="leftall">
+                    <div class="leftside">
+                        <div class="left1">
+                            <div class="left1-head">
+                                <h3>Repositories(Groups) Statistics</h3>
+                            </div>
+                            <div class="left1-content">
+                                <div class="card">
+                                    <div class="card-icon star">
+                                        <span class="fas fa-star"></span>
+                                    </div>
+                                    <div class="card-info">
+                                        <h2 id="repostars">0</h2>
+                                        <small>Stars</small>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-icon fork">
+                                        <span class="fas fa-folder-plus"></span>
+                                    </div>
+                                    <div class="card-info">
+                                        <h2 id="repoforks">0</h2>
+                                        <small>Forks</small>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-icon watch">
+                                        <span class="fas fa-eye"></span>
+                                    </div>
+                                    <div class="card-info">
+                                        <h2 id="repowatch">0</h2>
+                                        <small>Watches</small>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="left1-content">
-                            <div class="card">
-                                <div class="card-icon star">
-                                    <span class="fas fa-star"></span>
-                                </div>
-                                <div class="card-info">
-                                    <h2 id="repostars">0</h2>
-                                    <small>Stars</small>
-                                </div>
+    
+                        <div class="mid1">
+                            <div class="mid1-head">
+                                <h3>Commit Statistics</h3>
                             </div>
-                            <div class="card">
-                                <div class="card-icon fork">
-                                    <span class="fas fa-folder-plus"></span>
+                            <div class="mid1-content">
+                                <div class="card-commit">
+                                    <h2 id="commits">0</h2>
+                                    <p style="font-size: large;">Recent Commits</p>
+    
                                 </div>
-                                <div class="card-info">
-                                    <h2 id="repoforks">0</h2>
-                                    <small>Forks</small>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-icon watch">
-                                    <span class="fas fa-eye"></span>
-                                </div>
-                                <div class="card-info">
-                                    <h2 id="repowatch">0</h2>
-                                    <small>Watches</small>
+                                <div class="card-commit">
+                                    <h2 id="commiters">0</h2>
+                                    <p style="font-size: large;">Commiters</p>
+    
                                 </div>
                             </div>
                         </div>
+                        <div class="left2">
+                            <div class="left2-head">
+                                <h3>Issue Statistics</h3>
+                            </div>
+                            <div class="left2-content">
+                                <div class="card-issue">
+                                    <div class="card-info-small">
+                                        <h2 id="issuecnt">0</h2>
+                                        <small>Issues</small>
+                                    </div>
+                                </div>
+                                <div class="card-issue">
+                                    <div class="card-info-small">
+                                        <h2 id="openissue">0</h2>
+                                        <small>Open Issues</small>
+                                    </div>
+                                </div>
+                                <div class="card-issue">
+                                    <div class="card-info-small">
+                                        <h2 id="otherissue">0</h2>
+                                        <small>Closed Issues</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mid2">
+                            <div class="mid2-head">
+                                <h3>Issue Chart</h3>
+                            </div>
+                            <div class="mid2-content">
+                                <div id="issuechart" style="height: 260px;"></div>
+                            </div>
+                        </div>
+                        <div class="left3">
+                            <div class="left3-head">
+                                <h3>Pull Request Statistics</h3>
+                            </div>
+                            <div class="left3-content">
+                                <div class="card-pull">
+                                    <div class="card-info-small">
+                                        <h2 id="pullcnt">0</h2>
+                                        <small>Pull Requests</small>
+                                    </div>
+                                </div>
+                                <div class="card-pull">
+                                    <div class="card-info-small">
+                                        <h2 id="openpull">0</h2>
+                                        <small>Open Pulls</small>
+                                    </div>
+                                </div>
+                                <div class="card-pull">
+                                    <div class="card-info-small">
+                                        <h2 id="closedpull">0</h2>
+                                        <small>Closed Pulls</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mid3">
+                            <div class="mid3-head">
+                                <h3>Pull Request Chart</h3>
+                            </div>
+                            <div class="mid3-content">
+                                <div id="pullchart" style="height: 260px;"></div>
+                            </div>
+                        </div>
+                        
                     </div>
-
-                    <div class="mid1">
-                        <div class="mid1-head">
-                            <h3>Commit Statistics</h3>
+                    <div class="left4">
+                        <div class="left4-head">
+                            <h3>Recent Activities Chart</h3>
                         </div>
-                        <div class="mid1-content">
-                            <div class="card-commit">
-                                <h2 id="commits">0</h2>
-                                <p style="font-size: large;">Commits</p>
-
-                            </div>
-                            <div class="card-commit">
-                                <h2 id="commiters">0</h2>
-                                <p style="font-size: large;">Commiters</p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="left2">
-                        <div class="left2-head">
-                            <h3>Issue Statistics</h3>
-                        </div>
-                        <div class="left2-content">
-                            <div class="card-issue">
-                                <div class="card-info-small">
-                                    <h2 id="issuecnt">0</h2>
-                                    <small>Issues</small>
-                                </div>
-                            </div>
-                            <div class="card-issue">
-                                <div class="card-info-small">
-                                    <h2 id="openissue">0</h2>
-                                    <small>Open Issues</small>
-                                </div>
-                            </div>
-                            <div class="card-issue">
-                                <div class="card-info-small">
-                                    <h2 id="otherissue">0</h2>
-                                    <small>Closed Issues</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mid2">
-                        <div class="mid2-head">
-                            <h3>Issue Chart</h3>
-                        </div>
-                        <div class="mid2-content">
-                            <div id="issuechart" style="height: 260px;"></div>
-                        </div>
-                    </div>
-                    <div class="left3">
-                        <div class="left3-head">
-                            <h3>Pull Request Statistics</h3>
-                        </div>
-                        <div class="left3-content">
-                            <div class="card-pull">
-                                <div class="card-info-small">
-                                    <h2 id="pullcnt">0</h2>
-                                    <small>Pull Requests</small>
-                                </div>
-                            </div>
-                            <div class="card-pull">
-                                <div class="card-info-small">
-                                    <h2 id="openpull">0</h2>
-                                    <small>Open Pulls</small>
-                                </div>
-                            </div>
-                            <div class="card-pull">
-                                <div class="card-info-small">
-                                    <h2 id="closedpull">0</h2>
-                                    <small>Closed Pulls</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mid3">
-                        <div class="mid3-head">
-                            <h3>Pull Request Chart</h3>
-                        </div>
-                        <div class="mid3-content">
-                            <div id="pullchart" style="height: 260px;"></div>
+                        <div class="left4-content">
+                            <div id="activitychart" style="height: 500px;"></div>
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="right">
                     <div class="right1">
                         <div class="right1-head">
@@ -184,14 +195,14 @@
                                 <tr>
                                     <th>Student ID</th>
                                     <th>Student Name</th>
-                                    <th>Contributions</th>
+                                    <th>Recent Contributions</th>
                                 </tr>
                                 <!-- 其他行... -->
                             </table>
                         </div>
                     </div>
                     <div class="right2">
-                        <div id="contrichart" style="height: 300px;"></div>
+                        <div id="contrichart" style="height: 400px;"></div>
                     </div>
                 
                     
