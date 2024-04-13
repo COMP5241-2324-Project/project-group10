@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from backend import cache
-from gemini.gemini import generate_std_score, generate_group_score, generate_other
+from gemini.gemini import generate_other, generate_std_score, generate_group_score
 
 genaibp = Blueprint('genai', import_name=__name__)
 
@@ -25,7 +25,6 @@ def generate_group_info():
         return jsonify(code=200, flag=True, message="Group score generated successfully", data={"rows": result})
     except Exception as e:
         data = request.get_json()
-        print(data)
         print(e)
         return jsonify(code=500, flag=False, message="Failed to generate group score")
 
@@ -34,7 +33,6 @@ def generate_std_info():
     try:
         data = request.get_json()
         data = data['data']
-        print(data)
         user_name = data['user_name']
         user_contribution = data['user_contributions']
         user_commit = data['user_commits']
