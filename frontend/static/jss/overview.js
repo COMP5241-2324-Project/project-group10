@@ -98,7 +98,7 @@ fetchData_org().then(function (data) {
 
       var dataCell2 = createStyledCell('30%');
       var link = document.createElement("a");
-      link.href = "grouppage.html?groupid=" + encodeURIComponent(rowData.repo_id) + "&orgname=" + encodeURIComponent(orgName);
+      link.href = "grouppage.html?groupid=" + encodeURIComponent(rowData.repo_id) + "&orgname=" + encodeURIComponent(orgName) + "&reponame=" + encodeURIComponent(rowData.repo_name);
       link.textContent = rowData.repo_name;
       dataCell2.appendChild(link);
 

@@ -20,6 +20,11 @@
 First start the backend server
 
 ```
+pip install requirement.txt
+sudo apt update
+sudo apt install redis-server
+redis-server
+
 python main.py
 ```
 
