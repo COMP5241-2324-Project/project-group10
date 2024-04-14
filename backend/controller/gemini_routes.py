@@ -57,13 +57,14 @@ def generate_other_info():
         method = data['method']
         if method == 'student':
             user_id = data['user_id']
-            student_report = r.get('user:'+user_id)
-            #student_report = cache.get('student_score')
+            user_id = str(user_id)
+            #student_report = r.get('user:'+user_id)
+            student_report = cache.get('student_score')
             result = generate_other(text,student_report)
         else:
             repo_name = data['repo_name']
-            group_report = r.get('repo:'+repo_name)
-            # group_report = cache.get('group_score')
+            # group_report = r.get('repo:'+repo_name)
+            group_report = cache.get('group_score')
             result = generate_other(text,group_report)
         # Return the result
         return jsonify(code=200, flag=True, message="successfully", data={"rows": result})

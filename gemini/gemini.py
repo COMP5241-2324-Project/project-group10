@@ -34,11 +34,11 @@ def generate_std_score(user_id,user_name, user_contribution, user_commit, user_i
     total_score,issuse_score = calculate_score(commit_score,pull_score,user_issue,'student',0,user_name)
 
     msg = "现在有一个学生{user_name}，该学生的贡献值为{user_contribution}，commits数为：{user_commit}，发布的issues数为：{user_issue}，pull事件的次数为：{user_pull},commits score:{commits_score},pulls score:{pulls_score}, issuse score:{issuse_score},total score:{total_score},请生成一个学生文档".format(user_name=user_name,user_contribution=user_contribution,user_commit=user_commit,user_issue=user_issue,user_pull=user_pull,commits_score=commit_score,pulls_score=pull_score,issuse_score=issuse_score,total_score=total_score)
-
     messages.append({'role':'user',
                  'parts':[msg]})
     response = model.generate_content(messages).text
-    r.set("user:" + user_id,response)
+    user_id = str(user_id)
+    r.set("user:"+user_id,response)
     return response
 
 def generate_group_score(repo_name,group_star,group_fork,group_commit,group_issue,group_watch,group_pull,user_list):
