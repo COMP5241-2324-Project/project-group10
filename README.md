@@ -17,6 +17,8 @@
 
 # Running
 
+Before running the project to start, please check whether the package in requirement.txt has been installed, and whether redis-server has been installed and started, if not, please refer to the code before main.py in the following code.
+
 First start the backend server
 
 ```
