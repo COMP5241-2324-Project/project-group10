@@ -1,6 +1,19 @@
 import pymysql.cursors
 from backend.config import db_config
+from backend import r
 
+def store_score_in_redis(user_name, user_score):
+    r.set(user_name, user_score)
+
+def store_repo_user(user_name, repo_name):
+    r.set(user_name, repo_name)
+
+def get_information_from_redis(key):
+    value = r.get(key)
+    if value is not None:
+        value = value.decode('utf-8')
+    return value
+    
 db = pymysql.connect(**db_config)
 
 def get_total_data(repo_name):
@@ -66,6 +79,7 @@ def get_group_data(user_name):
 
         cursor.execute("SELECT COUNT(*) FROM student_info WHERE repo=%s and update_time LIKE %s", (repo_name, update_time + '%'))
         total_group_user = cursor.fetchone()[0]
+        store_repo_user(user_name, repo_name)
     db.close()
     return total_group_commit, total_group_pull, total_group_user
 
@@ -102,8 +116,7 @@ def normalization_std_score(user_name, user_commit, user_pull):
 # comit_score, pull_score = normalization_std_score('ninowangpolyu', 24, 0)
 # print(comit_score, pull_score)
 
-def calculate_score(commits_score, pull_score, issues, type):
-    # issues数量在0-3内得分为2.5，3-5的得分为5，5-7得分为7.5，7～15得分为10，超过15的部分，每一个扣除0.2分
+def calculate_score(commits_score, pull_score, issues, type, repo_name, user_name):
     if type == 'group':
         if issues >= 0 and issues < 3:
             issues_score = 2.5
@@ -129,5 +142,19 @@ def calculate_score(commits_score, pull_score, issues, type):
             issues_score = 10 - (issues - 6) * 1.5
     
     total_score = (commits_score * 2 + issues_score * 2 + pull_score) / 5
+    
+    if type == 'group':
+        store_score_in_redis(repo_name, total_score)
+    if type == 'student':
+        repo_name = get_information_from_redis(user_name)
+        group_score = get_information_from_redis(repo_name)
+        total_score = float(group_score)*0.3 + total_score*0.7
+        print("Group score: ", group_score)
+    
+    print("Total score: ", total_score)
+    print("Issues score: ", issues_score)
+    print("Commits score: ", commits_score)
+    print("Pulls score: ", pull_score)
+
     return total_score, issues_score
     

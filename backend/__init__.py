@@ -2,6 +2,9 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_caching import Cache
 from . import config
+import redis
+
+r = redis.Redis(host='localhost', port=6379, db=0)
 
 app = Flask(__name__)
 db = SQLAlchemy()

@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from backend import cache
 from gemini.gemini import generate_other, generate_std_score, generate_group_score
+from backend import r
 
 genaibp = Blueprint('genai', import_name=__name__)
 
@@ -33,12 +34,13 @@ def generate_std_info():
     try:
         data = request.get_json()
         data = data['data']
+        user_id = data['user_id']
         user_name = data['user_name']
         user_contribution = data['user_contributions']
         user_commit = data['user_commits']
         user_issue = data['user_issuses_raised']
         user_pull = data['user_pull_request']
-        result = generate_std_score(user_name, user_contribution, user_commit, user_issue, user_pull)
+        result = generate_std_score(user_id,user_name, user_contribution, user_commit, user_issue, user_pull)
         cache.set('student_score', result, timeout=60*60*24*7)
         # Return the result
         return jsonify(code=200, flag=True, message="Student score generated successfully", data={"rows": result})
@@ -54,10 +56,14 @@ def generate_other_info():
         text = data['text']
         method = data['method']
         if method == 'student':
-            student_report = cache.get('student_score')
+            user_id = data['user_id']
+            student_report = r.get('user:'+user_id)
+            #student_report = cache.get('student_score')
             result = generate_other(text,student_report)
         else:
-            group_report = cache.get('group_score')
+            repo_name = data['repo_name']
+            group_report = r.get('repo:'+repo_name)
+            # group_report = cache.get('group_score')
             result = generate_other(text,group_report)
         # Return the result
         return jsonify(code=200, flag=True, message="successfully", data={"rows": result})
