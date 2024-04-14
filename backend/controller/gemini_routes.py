@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from backend import cache
 from gemini.gemini import generate_other, generate_std_score, generate_group_score
 from backend import r
+from .rating import get_information_from_redis
 
 genaibp = Blueprint('genai', import_name=__name__)
 
@@ -21,7 +22,7 @@ def generate_group_info():
         cur_time = data['cur_time']
         users = data['users']
         result = generate_group_score(repo_name,repo_starts,repo_fork,repo_commites,repo_issues,repo_watch,repo_pull,users)
-        cache.set('group_score', result, timeout=60*60*24*7)
+        # cache.set('group_score', result, timeout=60*60*24*7)
         # Return the result
         return jsonify(code=200, flag=True, message="Group score generated successfully", data={"rows": result})
     except Exception as e:
@@ -41,7 +42,7 @@ def generate_std_info():
         user_issue = data['user_issuses_raised']
         user_pull = data['user_pull_request']
         result = generate_std_score(user_id,user_name, user_contribution, user_commit, user_issue, user_pull)
-        cache.set('student_score', result, timeout=60*60*24*7)
+        # cache.set('student_score', result, timeout=60*60*24*7)
         # Return the result
         return jsonify(code=200, flag=True, message="Student score generated successfully", data={"rows": result})
     except Exception as e:
@@ -58,13 +59,14 @@ def generate_other_info():
         if method == 'student':
             user_id = data['user_id']
             user_id = str(user_id)
-            #student_report = r.get('user:'+user_id)
-            student_report = cache.get('student_score')
+            student_report = get_information_from_redis('user:'+user_id)
+            # student_report = cache.get('student_score')
             result = generate_other(text,student_report)
         else:
             repo_name = data['repo_name']
             # group_report = r.get('repo:'+repo_name)
-            group_report = cache.get('group_score')
+            group_report = get_information_from_redis('repo:'+repo_name)
+            # group_report = cache.get('group_score')
             result = generate_other(text,group_report)
         # Return the result
         return jsonify(code=200, flag=True, message="successfully", data={"rows": result})

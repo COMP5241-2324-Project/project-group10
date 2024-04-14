@@ -49,7 +49,7 @@ def generate_group_score(repo_name,group_star,group_fork,group_commit,group_issu
         user_name_list.append(user['user_name'])
     commit_score, pull_score = normalization_group_score(repo_name,group_commit,group_pull)
     total_score, issues_score = calculate_score(commit_score,pull_score,group_issue,'group',repo_name,0)
-
+    
     msg = "现在有一个小组{repo_name}，这个小组成员有{user_name_list},这个小组的GitHub star数为{group_star},fork数为{group_fork},commites数为{group_commit},issues数为{group_issue},watch数为{group_watch},pull数为{group_pull},commits score:{commits_score},pulls score:{pulls_score},issues score:{issues_score},total score:{total_score},请生成一个小组文档".format(repo_name=repo_name,group_star=group_star,group_fork=group_fork,group_commit=group_commit,group_issue=group_issue,group_watch=group_watch,group_pull=group_pull,user_name_list=user_name_list,commits_score=commit_score,pulls_score=pull_score,issues_score=issues_score,total_score=total_score)
     
     messages.append({'role':'user',

@@ -14,32 +14,40 @@ def get_information_from_redis(key):
         value = value.decode('utf-8')
     return value
     
-db = pymysql.connect(**db_config)
+def link_db():
+    try:
+        db.ping()
+        print ("link success")
+    except:
+        print ("link again")
+        db = pymysql.connect(**db_config)
+        cursor = db.cursor()
+    return cursor
 
 def get_total_data(repo_name):
-    with db.cursor() as cursor:
-        cursor.execute("SELECT org_id, update_time FROM repo WHERE repo_name=%s ORDER BY update_time DESC LIMIT 1", (repo_name,))
-        result = cursor.fetchone()
-        org_id, update_time = result[0], result[1]
-        update_time = update_time.strftime('%Y-%m-%d')
+    cursor = link_db()
+    
+    cursor.execute("SELECT org_id, update_time FROM repo WHERE repo_name=%s ORDER BY update_time DESC LIMIT 1", (repo_name,))
+    result = cursor.fetchone()
 
-        cursor.execute("SELECT SUM(repo_commites) FROM repo WHERE org_id=%s AND update_time LIKE %s", (org_id, update_time + '%'))
-        total_commits = cursor.fetchone()[0]
-        
-        cursor.execute("SELECT SUM(repo_pull) FROM repo WHERE org_id=%s AND update_time LIKE %s", (org_id, update_time + '%'))
-        total_pulls = cursor.fetchone()[0]
+    org_id, update_time = result[0], result[1]
+    update_time = update_time.strftime('%Y-%m-%d')
 
-        cursor.execute("SELECT COUNT(*) FROM repo WHERE org_id=%s AND update_time LIKE %s", (org_id, update_time + '%'))
-        total_repos = cursor.fetchone()[0]
-        
+    cursor.execute("SELECT SUM(repo_commites) FROM repo WHERE org_id=%s AND update_time LIKE %s", (org_id, update_time + '%'))
+    total_commits = cursor.fetchone()[0]
+
+    cursor.execute("SELECT SUM(repo_pull) FROM repo WHERE org_id=%s AND update_time LIKE %s", (org_id, update_time + '%'))
+    total_pulls = cursor.fetchone()[0]
+
+    cursor.execute("SELECT COUNT(*) FROM repo WHERE org_id=%s AND update_time LIKE %s", (org_id, update_time + '%'))
+    total_repos = cursor.fetchone()[0]
+    
     return total_commits, total_pulls, total_repos
 
 def normalization_group_score(repo_name,group_commit,group_pull):
     total_commit, total_pull, total_repo = get_total_data(repo_name)
-
     nor_commit = group_commit/total_commit*total_repo
     nor_pull = group_pull/total_pull
-
     if nor_commit >= 1.5:
         comit_score = 10
     elif nor_commit >= 1.25:
@@ -64,23 +72,23 @@ def normalization_group_score(repo_name,group_commit,group_pull):
 # print(comit_score, pull_score)
 
 def get_group_data(user_name):
-    with db.cursor() as cursor:
+    cursor = link_db()
         
-        cursor.execute("SELECT repo, update_time FROM student_info WHERE user_name=%s ORDER BY update_time DESC LIMIT 1", (user_name,))
-        result = cursor.fetchone()
-        repo_name, update_time = result[0], result[1]
-        update_time = update_time.strftime('%Y-%m-%d')
-   
-        cursor.execute("SELECT SUM(user_contributions) FROM student_info WHERE repo=%s and update_time LIKE %s", (repo_name, update_time + '%'))
-        total_group_commit = cursor.fetchone()[0]
+    cursor.execute("SELECT repo, update_time FROM student_info WHERE user_name=%s ORDER BY update_time DESC LIMIT 1", (user_name,))
+    result = cursor.fetchone()
+    repo_name, update_time = result[0], result[1]
+    update_time = update_time.strftime('%Y-%m-%d')
 
-        cursor.execute("SELECT SUM(user_pull_requests) FROM student_info WHERE repo=%s and update_time LIKE %s", (repo_name, update_time + '%'))
-        total_group_pull = cursor.fetchone()[0]
+    cursor.execute("SELECT SUM(user_contributions) FROM student_info WHERE repo=%s and update_time LIKE %s", (repo_name, update_time + '%'))
+    total_group_commit = cursor.fetchone()[0]
 
-        cursor.execute("SELECT COUNT(*) FROM student_info WHERE repo=%s and update_time LIKE %s", (repo_name, update_time + '%'))
-        total_group_user = cursor.fetchone()[0]
-        store_repo_user(user_name, repo_name)
-    db.close()
+    cursor.execute("SELECT SUM(user_pull_requests) FROM student_info WHERE repo=%s and update_time LIKE %s", (repo_name, update_time + '%'))
+    total_group_pull = cursor.fetchone()[0]
+
+    cursor.execute("SELECT COUNT(*) FROM student_info WHERE repo=%s and update_time LIKE %s", (repo_name, update_time + '%'))
+    total_group_user = cursor.fetchone()[0]
+    store_repo_user(user_name, repo_name)
+
     return total_group_commit, total_group_pull, total_group_user
 
 
