@@ -637,7 +637,8 @@ async function fetchResult(question) {
     "message": "string",
     "data": {
       "text": question,
-      "method": "student"
+      "method": "student",
+      "user_id": userid
     }
   });
 
