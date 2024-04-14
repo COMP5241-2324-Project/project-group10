@@ -15,9 +15,14 @@
 
 # 运行
 
-首先需要启动后端服务器
+首先需要启动后端服务器，启动前请根据requirement.txt安装相关包，其次请确保你已经安装好了redis-server. 若没有进行准备工作，请参考下面代码中main.py前的代码
 
 ```
+pip install requirement.txt
+sudo apt update
+sudo apt install redis-server
+redis-server
+
 python main.py
 ```
 
