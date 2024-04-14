@@ -2,7 +2,8 @@
 var urlParams = new URLSearchParams(window.location.search);
 var repoid = urlParams.get('groupid');
 var orgname = urlParams.get('orgname');
-console.log(repoid + " " + orgname);
+var reponame = urlParams.get('reponame');
+console.log(repoid + " reponame:" + reponame + " " + orgname);
 
 var raw = {
   "code": 0,
@@ -397,7 +398,7 @@ fetchData_repo(repoid).then(function (data) {
 
     fetchData4print(raw).then(function (data) {
 
-      console.log("suceess:" + data);
+      console.log(data);
 
       var md = data.data.rows;
       console.log(md);
@@ -539,7 +540,8 @@ async function fetchResult(question) {
     "message": "string",
     "data": {
       "text": question,
-      "method": "group"
+      "method": "group",
+      "repo_name": reponame
     }
   });
 
